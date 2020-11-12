@@ -1,0 +1,262 @@
+.home-button {
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	height: 50px;
+	width: 50px;
+	font-size: 20px;
+}
+
+.card-container {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	padding-top: 20px;
+	box-sizing: border-box;
+}
+
+.card {
+	min-width: 700px;
+	filter: drop-shadow(var(--main-shadow) var(--main-shadow) 0 black);
+}
+
+.card-meat {
+	padding: 30px;
+	border: var(--main-border) solid black;
+	border-radius: var(--main-radius);
+	background: white;
+	box-sizing: border-box;
+}
+
+
+
+/* Tabs */
+.tab-container {
+	display: flex;
+	justify-content: center;
+	height: var(--tab-height);
+	width: 100%;
+	transform: translateY(var(--main-border));
+}
+
+.tab {
+	position: relative;
+	display: flex;
+	align-self: flex-end;
+	justify-content: center;
+	align-items: center;
+	height: calc(var(--tab-height) - 6px);
+	font-size: 15px;
+	font-weight: 400;
+	font-style: italic;
+	padding: 0 25px;
+	margin-left: calc(-2 * var(--main-border));
+	border: var(--main-border) solid black;
+	border-top-left-radius: var(--main-radius);
+	border-top-right-radius: var(--main-radius);
+	background: var(--accent-light1);
+	transition: height 0.2s;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+input[name="tabulation"]:checked + .tab {
+	height: var(--tab-height);
+	border-bottom: 0;
+	background: white;
+	z-index: 9999;
+}
+.tab:nth-of-type(1) {z-index: 4;}
+.tab:nth-of-type(2) {z-index: 3;}
+.tab:nth-of-type(3) {z-index: 2;}
+.tab:nth-of-type(4) {z-index: 1;}
+
+
+
+/* Top */
+.card-top {
+	position: relative;
+	display: flex;
+	width: 100%;
+	margin-bottom: 30px;
+}
+
+.calc-title {font-size: 18px;}
+.solve {
+	font-size: 15px;
+	font-style: italic;
+	color: #888;
+}
+
+
+
+/* Given */
+.given {
+	display: flex;
+	align-items: center;
+	height: var(--input-height);
+	font-size: 15px;
+	padding-right: 12px;
+	margin-left: auto;
+	border: 2px solid var(--accent);
+	border-radius: 4px;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+
+.given-icon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-left: 12px;
+	padding-right: 8px;
+	padding-bottom: 5px;
+	color: var(--accent);
+}
+
+.given-option-container {
+	position: absolute;
+	display: none;
+	top: calc(var(--input-height) + 5px);
+	right: 0;
+	border: 2px solid var(--accent);
+	border-radius: 4px;
+	overflow: hidden;
+	box-sizing: border-box;
+	z-index: 9999;
+}
+
+.option {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	height: var(--input-height);
+	font-size: 15px;
+	padding: 0 12px;
+	background: white;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+
+.given:hover, .option:hover {background: var(--accent-light1);}
+
+.given-vars {
+	font-family: 'STIX General';
+	font-size: 16px;
+	font-style: italic;
+	margin-left: 5px;
+	color: #777;
+}
+
+
+
+/* Equation */
+.card-middle {
+	display: none;
+	margin-bottom: 30px;
+}
+
+
+
+/* Formula */
+.formula-container {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+.formula-positioner {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	min-height: 100px;
+}
+.formula {
+	display: none;
+	font-size: 26px;
+}
+.MathJax_Display {margin: 5px 12px !important;}
+.mi, .mn, .mo {font-family: 'STIX General' !important;}
+
+
+
+/* Values */
+.value-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.value {
+	display: flex;
+	align-items: center;
+	height: var(--input-height);
+	margin: 4px 0;
+}
+
+.variable {
+	display: flex;
+	justify-content: center;
+	width: 30px;
+	font-family: 'STIX General';
+	font-size: 25px;
+	font-style: italic;
+}
+
+.equal {
+	font-size: 20px;
+	margin-right: 10px;
+}
+
+.field {
+	height: 100%;
+	width: var(--input-width);
+	font-family: var(--font1);
+	font-size: 16px;
+	font-weight: 400;
+	padding: 0 8px;
+	border: 2px solid var(--accent);
+	border-radius: var(--input-radius);
+	box-sizing: border-box;
+}
+
+.result {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	width: var(--input-width);
+	font-family: var(--font1);
+	font-size: 16px;
+	padding: 0 10px;
+	border: none;
+	border-radius: var(--input-radius);
+	background: #f7f7f7;
+	box-sizing: border-box;
+}
+
+
+
+/* Buttons */
+.button-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: var(--input-height);
+	font-size: 14px;
+	line-height: 20px;
+	padding: 0 16px;
+	outline: 0;
+	border: 2px solid black;
+	border-radius: var(--input-radius);
+	cursor: pointer;
+}
+.button svg {margin-right: 6px;}
+.button:active {filter: brightness(0.9);}
+
+.clear {background: #f008;}
+.calculate {background: var(--accent);}

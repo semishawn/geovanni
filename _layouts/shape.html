@@ -1,0 +1,103 @@
+---
+layout: base
+---
+
+{{ content }}
+
+<div class="card-container">
+	<a class="drop-button home-button" href="/"><i class="fas fa-home"></i></a>
+
+	<div class="card">
+		<div class="tab-container">
+			{%- for equation in page.equations %}
+			<input type="radio" name="tabulation" id="{{ equation.solveFor.name }}"
+			{%- if forloop.first == true -%}
+				{{ raw }} checked{{ raw }}
+			{%- endif -%}
+			>
+			<label class="tab" for="{{ equation.solveFor.name }}">{{ equation.solveFor.name }}</label>
+			{% endfor %}
+		</div>
+
+		<div class="card-meat">
+			<div class="card-top">
+				<div class="calc-title">
+					<span>{{ page.shape }}</span>
+					<span>Calculator</span><br>
+					<span class="solve">Solving for</span>
+					<span class="solve equation-label"></span>
+				</div>
+
+				<!-- <div class="given">
+					<i class="given-icon fas fa-sort-down"></i>
+					<div class="given-selected">base and height<span class="given-vars">(bh)</span></div>
+				</div>
+
+				<div class="given-option-container">
+					<div class="option">base and height<span class="given-vars">(bh)</span></div>
+					<div class="option">three sides<span class="given-vars">(abc)</span></div>
+					<div class="option">side angle side<span class="given-vars">(SAS)</span></div>
+					<div class="option">angle side angle<span class="given-vars">(ASA)</span></div>
+				</div> -->
+			</div>
+
+			{% for equation in page.equations %}
+			<div class="card-middle {{ equation.solveFor.name }}">
+				<div class="value-container">
+					{%- for value in equation.variables %}
+					<div class="value">
+						<span class="variable">{{ value.var }}</span>
+						<span class="equal">=</span>
+						<input class="field" type="text" placeholder="{{ value.name }}" autocomplete="off">
+					</div>
+					{% endfor -%}
+			
+					<div class="value">
+						<span class="variable">{{ equation.solveFor.var }}</span>
+						<span class="equal">=</span>
+						<input class="result" type="text" placeholder="{{ equation.solveFor.name }}" autocomplete="off">
+					</div>
+				</div>
+			
+				<div class="formula-container">
+					{% for formula in equation.formula %}
+					<div class="formula-positioner">
+						<div class="formula">$${{ formula }}$$</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+			{% endfor %}
+			
+			<div class="button-container">
+				<button class="drop-button button calculate"><i class="fas fa-calculator"></i>Calculate</button>
+				<button class="drop-button button clear"><i class="fas fa-trash"></i>Clear values</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=default"></script>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({showMathMenu: false});
+	MathJax.Hub.Queue(() => $('.formula').show());
+</script>
+<script src="/js/main.js"></script>
+<script>
+	{%- for equation in page.equations %}
+	function calc{{ equation.solveFor.name }}() {
+		{%- assign count = -1 -%}
+		{%- for value in equation.variables %}
+		var {{ value.var }} = math.bignumber(parseFloat($('.card-middle:visible').find('.field').eq(
+			{%- assign count = count | plus:1 -%}
+			{{- count -}}
+		).val()));
+		{%- endfor %}
+		{%- for value in equation.specialVariables %}
+		var {{ value.var }} = {{ value.formula }};
+		{%- endfor %}
+		var result = {{ equation.jsFormula }};
+		calcFinish(result);
+	}
+	{%- endfor %}
+</script>

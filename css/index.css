@@ -1,0 +1,51 @@
+body {margin: 0;}
+
+.shape-link-container {
+	display: flex;
+	margin: 20px;
+}
+
+.shape-link {
+	height: 50px;
+	width: 50px;
+}
+.shape-link + .shape-link {margin-left: 15px;}
+
+.shape-indicator {
+	background: var(--accent);
+	border-bottom-color: var(--accent);
+}
+
+.circle .shape-indicator {
+	height: 22px;
+	width: 22px;
+	border-radius: 50%;
+}
+
+.ellipse .shape-indicator {
+	height: 15px;
+	width: 22px;
+	border-radius: 50%;
+}
+
+.rectangle .shape-indicator {
+	height: 15px;
+	width: 22px;
+	border-radius: 3px;
+}
+
+.square .shape-indicator {
+	height: 20px;
+	width: 20px;
+	border-radius: 3px;
+}
+
+.triangle .shape-indicator {
+	--a: 14px;
+	height: 0;
+	width: 0;
+	border-right: var(--a) solid transparent;
+	border-left: var(--a) solid transparent;
+	border-bottom: calc(var(--a) * 2 * 0.8660254) solid var(--accent);
+	background: transparent;
+}

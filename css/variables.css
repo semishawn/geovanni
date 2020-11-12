@@ -1,0 +1,17 @@
+:root {
+	--font1: 'IBM Plex Sans', sans-serif;
+
+	/* Values */
+	--main-border: 3px;
+	--main-shadow: 9px;
+	--main-radius: 7px;
+	--tab-height: 40px;
+	--input-height: 36px;
+	--input-width: 180px;
+	--input-radius: 4px;
+
+	/* Colors */
+	--accent-light1: hsl(44, 100%, 94%);
+	--accent: #fab700;
+	--accent-dark1: hsl(44, 100%, 46%);
+}

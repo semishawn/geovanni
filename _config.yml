@@ -1,0 +1,10 @@
+title: Geovanni
+baseurl: ""
+url: ""
+
+incremental: true
+
+collections:
+  shapes:
+    output: true
+    permalink: /shapes/:path
