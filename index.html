@@ -6,17 +6,17 @@
 
 <head>
 {% include head.html %}
-	<link rel="stylesheet" href="/css/index.css">
+	<link rel="stylesheet" href="{{ site.baseurl }}/css/index.css">
 	<title>Geovanni</title>
 </head>
 
 <body>
 	<div class="shape-link-container">
-		{%- for shape in site.shapes -%}
+		{% for shape in site.shapes -%}
 		<a class="drop-button shape-link {{ shape.shape | downcase }}" href="shapes/2d/{{ shape.shape | downcase }}">
 			<div class="shape-indicator"></div>
 		</a>
-		{%- endfor -%}
+		{% endfor %}
 	</div>
 </body>
 

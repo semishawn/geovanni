@@ -5,7 +5,7 @@ layout: base
 {{ content }}
 
 <div class="card-container">
-	<a class="drop-button home-button" href="/"><i class="fas fa-home"></i></a>
+	<a class="drop-button home-button" href="{{ site.baseurl }}/"><i class="fas fa-home"></i></a>
 
 	<div class="card">
 		<div class="tab-container">
@@ -82,7 +82,7 @@ layout: base
 	MathJax.Hub.Config({showMathMenu: false});
 	MathJax.Hub.Queue(() => $('.formula').show());
 </script>
-<script src="/js/main.js"></script>
+<script src="{{ site.baseurl }}/js/main.js"></script>
 <script>
 	{%- for equation in page.equations %}
 	function calc{{ equation.solveFor.name }}() {
