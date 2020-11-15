@@ -15,10 +15,10 @@ input[type="radio"] {display: none;}
 	border-bottom-right-radius: 5px;
 	border: var(--main-border) solid black;
 	border-radius: var(--main-radius);
-	box-shadow: 0 0 0 0 black;
+	box-shadow: calc(var(--main-shadow)/2) calc(var(--main-shadow)/2) 0 0 black;
 	color: black;
 	background: white;
-	transition: all 0.15s;
+	transition: box-shadow 0.15s;
 	box-sizing: border-box;
 }
-.drop-button:hover {box-shadow: calc(var(--main-shadow)/2) calc(var(--main-shadow)/2) 0 0 black;}
+.drop-button:hover {box-shadow: 0 0 0 0 black;}

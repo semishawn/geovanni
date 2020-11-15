@@ -13,7 +13,7 @@
 <body>
 	<div class="shape-link-container">
 		{% for shape in site.shapes -%}
-		<a class="drop-button shape-link {{ shape.shape | downcase }}" href="shapes/2d/{{ shape.shape | downcase }}">
+		<a class="drop-button shape-link {{ shape.shape | downcase }}" href="shapes/{{ shape.shape | downcase }}">
 			<div class="shape-indicator"></div>
 		</a>
 		{% endfor %}

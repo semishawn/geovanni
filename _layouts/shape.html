@@ -12,7 +12,7 @@ layout: base
 			{%- for equation in page.equations %}
 			<input type="radio" name="tabulation" id="{{ equation.solveFor.name }}"
 			{%- if forloop.first == true -%}
-				{{ raw }} checked{{ raw }}
+			{{ raw }} checked{{ raw }}
 			{%- endif -%}
 			>
 			<label class="tab" for="{{ equation.solveFor.name }}">{{ equation.solveFor.name }}</label>
@@ -20,59 +20,67 @@ layout: base
 		</div>
 
 		<div class="card-meat">
-			<div class="card-top">
-				<div class="calc-title">
-					<span>{{ page.shape }}</span>
-					<span>Calculator</span><br>
-					<span class="solve">Solving for</span>
-					<span class="solve equation-label"></span>
-				</div>
-
-				<!-- <div class="given">
-					<i class="given-icon fas fa-sort-down"></i>
-					<div class="given-selected">base and height<span class="given-vars">(bh)</span></div>
-				</div>
-
-				<div class="given-option-container">
-					<div class="option">base and height<span class="given-vars">(bh)</span></div>
-					<div class="option">three sides<span class="given-vars">(abc)</span></div>
-					<div class="option">side angle side<span class="given-vars">(SAS)</span></div>
-					<div class="option">angle side angle<span class="given-vars">(ASA)</span></div>
-				</div> -->
-			</div>
-
 			{% for equation in page.equations %}
-			<div class="card-middle {{ equation.solveFor.name }}">
-				<div class="value-container">
-					{%- for value in equation.variables %}
-					<div class="value">
-						<span class="variable">{{ value.var }}</span>
-						<span class="equal">=</span>
-						<input class="field" type="text" placeholder="{{ value.name }}" autocomplete="off">
+			<div class="equation {{ equation.solveFor.name }}">
+				<div class="card-top">
+					<div class="calc-title">
+						<span class="title-shape">{{ page.shape }} Calculator</span><br>
+						<span class="title-solve">Solving for {{ equation.solveFor.name }}</span>
 					</div>
-					{% endfor -%}
-			
-					<div class="value">
-						<span class="variable">{{ equation.solveFor.var }}</span>
-						<span class="equal">=</span>
-						<input class="result" type="text" placeholder="{{ equation.solveFor.name }}" autocomplete="off">
+
+					<div class="given">
+						<span class="given-title">Given:</span>
+
+						<div class="given-select">
+							<i class="given-icon fas fa-sort-down"></i>
+							{%- for given in equation.givens limit:1 %}
+							<div class="given-current">{{ given.terminology }}</div>
+							{%- endfor %}
+						</div>
+
+						<div class="given-dropdown">
+							{%- for given in equation.givens %}
+							<div class="given-option">{{ given.terminology }}</div>
+							{%- endfor %}
+						</div>
 					</div>
 				</div>
-			
-				<div class="formula-container">
-					{% for formula in equation.formula %}
-					<div class="formula-positioner">
-						<div class="formula">$${{ formula }}$$</div>
+
+				{% for given in equation.givens %}
+				<div class="card-middle given-{{ given.terminology | replace: ' ', '-' }}">
+					<div class="variables-and-formula">
+						<table class="variable-container">
+							{%- for variable in given.variables %}
+							<tr class="variable">
+								<td><div class="char">{{ variable.char }}</div></td>
+								<td><div class="equal">=</div></td>
+								<td colspan="2"><input class="field" type="text" placeholder="{{ variable.name }}" autocomplete="off"></td>
+							</tr>
+							{%- endfor %}
+							<tr class="variable">
+								<td><div class="char">{{ equation.solveFor.char }}</div></td>
+								<td><div class="equal">=</div></td>
+								<td><input class="result" type="text" placeholder="{{ equation.solveFor.name }}" autocomplete="off"></td>
+								<td><button class="copy"><i class="far fa-copy"></i></button></td>
+							</tr>
+						</table>
+					
+						<div class="formula-container">
+							{%- if given.specialVariable %}
+							<div class="formula">$${{ given.specialVariable.mathjax }}$$</div>
+							{%- endif %}
+							<div class="formula">$${{ given.mathjax }}$$</div>
+						</div>
 					</div>
-					{% endfor %}
+
+					<div class="button-container">
+						<button class="drop-button button calculate" onclick="calc{{ equation.solveFor.name }}Given{{ given.terminology | replace: ' ', '' }}()"><i class="fas fa-calculator"></i>Calculate</button>
+						<button class="drop-button button clear"><i class="fas fa-trash"></i>Clear values</button>
+					</div>
 				</div>
+				{% endfor %}
 			</div>
 			{% endfor %}
-			
-			<div class="button-container">
-				<button class="drop-button button calculate"><i class="fas fa-calculator"></i>Calculate</button>
-				<button class="drop-button button clear"><i class="fas fa-trash"></i>Clear values</button>
-			</div>
 		</div>
 	</div>
 </div>
@@ -85,19 +93,28 @@ layout: base
 <script src="{{ site.baseurl }}/js/main.js"></script>
 <script>
 	{%- for equation in page.equations %}
-	function calc{{ equation.solveFor.name }}() {
-		{%- assign count = -1 -%}
-		{%- for value in equation.variables %}
-		var {{ value.var }} = math.bignumber(parseFloat($('.card-middle:visible').find('.field').eq(
-			{%- assign count = count | plus:1 -%}
-			{{- count -}}
-		).val()));
+		{%- for given in equation.givens %}
+		function calc{{ equation.solveFor.name }}Given{{ given.terminology | replace: ' ', '' }}() {
+			let preScope = {
+				{%- assign count = -1 -%}
+				{%- for variable in given.variables %}
+				{{ variable.char }}: math.bignumber($('.field:visible').eq({% assign count = count | plus:1 %}{{ count }}).val()),
+				{%- endfor %}
+			}
+			let scope = {
+				{%- assign count = -1 -%}
+				{%- for variable in given.variables %}
+				{{ variable.char }}: math.bignumber($('.field:visible').eq({% assign count = count | plus:1 %}{{ count }}).val()),
+				{%- endfor %}
+				{%- if given.specialVariable %}
+				{{ given.specialVariable.char }}: math.evaluate('{{ given.specialVariable.formula }}', preScope)
+				{%- endif %}
+			}
+			var result = math.evaluate('{{ given.formula }}', scope);
+			calcFinish(result);
+		}
 		{%- endfor %}
-		{%- for value in equation.specialVariables %}
-		var {{ value.var }} = {{ value.formula }};
-		{%- endfor %}
-		var result = {{ equation.jsFormula }};
-		calcFinish(result);
-	}
-	{%- endfor %}
+
+
+	{% endfor %}
 </script>

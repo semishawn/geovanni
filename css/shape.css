@@ -17,11 +17,14 @@
 }
 
 .card {
-	min-width: 700px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	filter: drop-shadow(var(--main-shadow) var(--main-shadow) 0 black);
 }
 
 .card-meat {
+	min-width: 100%;
 	padding: 30px;
 	border: var(--main-border) solid black;
 	border-radius: var(--main-radius);
@@ -37,6 +40,7 @@
 	justify-content: center;
 	height: var(--tab-height);
 	width: 100%;
+	margin: 0 50px;
 	transform: translateY(var(--main-border));
 }
 
@@ -47,29 +51,36 @@
 	justify-content: center;
 	align-items: center;
 	height: calc(var(--tab-height) - 6px);
+	width: 140px;
 	font-size: 15px;
 	font-weight: 400;
 	font-style: italic;
-	padding: 0 25px;
 	margin-left: calc(-2 * var(--main-border));
 	border: var(--main-border) solid black;
 	border-top-left-radius: var(--main-radius);
 	border-top-right-radius: var(--main-radius);
 	background: var(--accent-light1);
-	transition: height 0.2s;
+	transform: translateX(var(--main-border));
+	transition: height 0.15s;
 	box-sizing: border-box;
 	cursor: pointer;
 }
+.tab:hover {height: var(--tab-height);}
 input[name="tabulation"]:checked + .tab {
 	height: var(--tab-height);
 	border-bottom: 0;
 	background: white;
 	z-index: 9999;
 }
-.tab:nth-of-type(1) {z-index: 4;}
-.tab:nth-of-type(2) {z-index: 3;}
-.tab:nth-of-type(3) {z-index: 2;}
-.tab:nth-of-type(4) {z-index: 1;}
+.tab:nth-of-type(1) {z-index: 5;}
+.tab:nth-of-type(2) {z-index: 4;}
+.tab:nth-of-type(3) {z-index: 3;}
+.tab:nth-of-type(4) {z-index: 2;}
+.tab:nth-of-type(5) {z-index: 1;}
+
+
+
+.equation {display: none;}
 
 
 
@@ -77,12 +88,13 @@ input[name="tabulation"]:checked + .tab {
 .card-top {
 	position: relative;
 	display: flex;
+	justify-content: space-between;
 	width: 100%;
 	margin-bottom: 30px;
 }
 
-.calc-title {font-size: 18px;}
-.solve {
+.title-shape {font-size: 18px;}
+.title-solve {
 	font-size: 15px;
 	font-style: italic;
 	color: #888;
@@ -92,6 +104,13 @@ input[name="tabulation"]:checked + .tab {
 
 /* Given */
 .given {
+	display: flex;
+	align-items: center;
+}
+
+.given-title {margin-right: 10px;}
+
+.given-select {
 	display: flex;
 	align-items: center;
 	height: var(--input-height);
@@ -108,16 +127,15 @@ input[name="tabulation"]:checked + .tab {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding-left: 12px;
-	padding-right: 8px;
+	padding: 0 9px;
 	padding-bottom: 5px;
 	color: var(--accent);
 }
 
-.given-option-container {
+.given-dropdown {
 	position: absolute;
 	display: none;
-	top: calc(var(--input-height) + 5px);
+	top: calc(50% + var(--input-height)/2 + 5px);
 	right: 0;
 	border: 2px solid var(--accent);
 	border-radius: 4px;
@@ -126,19 +144,19 @@ input[name="tabulation"]:checked + .tab {
 	z-index: 9999;
 }
 
-.option {
+.given-option {
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
 	height: var(--input-height);
 	font-size: 15px;
-	padding: 0 12px;
+	padding: 0 13px;
 	background: white;
 	box-sizing: border-box;
 	cursor: pointer;
 }
 
-.given:hover, .option:hover {background: var(--accent-light1);}
+.given-select:hover, .given-option:hover {background: var(--accent-light1);}
 
 .given-vars {
 	font-family: 'STIX General';
@@ -150,9 +168,14 @@ input[name="tabulation"]:checked + .tab {
 
 
 
-/* Equation */
+/* Middle */
 .card-middle {
 	display: none;
+}
+
+.variables-and-formula {
+	display: flex;
+	align-items: center;
 	margin-bottom: 30px;
 }
 
@@ -160,56 +183,56 @@ input[name="tabulation"]:checked + .tab {
 
 /* Formula */
 .formula-container {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-}
-.formula-positioner {
+	flex: 1;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	min-height: 100px;
+	min-width: 250px;
 }
 .formula {
 	display: none;
-	font-size: 26px;
+	font-size: 25px;
+	margin: 10px 50px;
 }
-.MathJax_Display {margin: 5px 12px !important;}
+.MathJax_Display {margin: 0 !important;}
 .mi, .mn, .mo {font-family: 'STIX General' !important;}
 
 
 
-/* Values */
-.value-container {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+/* Variables */
+.variable-container {
+	width: 260px;
+	border-spacing: 5px;
 }
 
-.value {
-	display: flex;
-	align-items: center;
+td {
 	height: var(--input-height);
-	margin: 4px 0;
+	padding: 0;
 }
 
-.variable {
+.char {
 	display: flex;
 	justify-content: center;
-	width: 30px;
+	align-items: center;
+	height: 100%;
+	width: 25px;
 	font-family: 'STIX General';
 	font-size: 25px;
 	font-style: italic;
 }
 
 .equal {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 20px;
 	font-size: 20px;
-	margin-right: 10px;
 }
 
 .field {
 	height: 100%;
-	width: var(--input-width);
+	width: 100%;
 	font-family: var(--font1);
 	font-size: 16px;
 	font-weight: 400;
@@ -223,15 +246,31 @@ input[name="tabulation"]:checked + .tab {
 	display: flex;
 	align-items: center;
 	height: 100%;
-	width: var(--input-width);
+	width: 100%;
 	font-family: var(--font1);
 	font-size: 16px;
 	padding: 0 10px;
 	border: none;
 	border-radius: var(--input-radius);
-	background: #f7f7f7;
+	background: #eee;
 	box-sizing: border-box;
 }
+
+.copy {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: var(--input-height);
+	width: var(--input-height);
+	font-size: 18px;
+	padding: 0;
+	border: 2px solid var(--accent);
+	border-radius: var(--input-radius);
+	background: white;
+	cursor: pointer;
+	box-sizing: border-box;
+}
+.copy:hover {background: var(--accent-light1);}
 
 
 

@@ -1,0 +1,59 @@
+---
+---
+
+<!DOCTYPE html>
+<html>
+
+<head>
+{% include head.html %}
+	<link rel="stylesheet" href="bulk.css">
+</head>
+
+<body>
+	<div class="card-container">
+		<div class="card">
+			<div class="card-top">
+				<div class="calc-title">
+					<span>Circle Calculator</span>
+				</div>
+			</div>
+
+			<table class="variable-container">
+				<tr class="variable">
+					<td class="char">r</td>
+					<td class="equal">=</td>
+					<td><input class="field" type="text" placeholder="Radius" autocomplete="off"></td>
+					<td class="copy"><i class="fas fa-copy"></i></span></td>
+				</tr>
+				<tr class="variable">
+					<td class="char">d</td>
+					<td class="equal">=</td>
+					<td><input class="field" type="text" placeholder="Diameter" autocomplete="off"></td>
+					<td class="copy"><i class="fas fa-copy"></i></span></td>
+				</tr>
+				<tr class="variable">
+					<td class="char">C</td>
+					<td class="equal">=</td>
+					<td><input class="field" type="text" placeholder="Circumference" autocomplete="off"></td>
+					<td class="copy"><i class="fas fa-copy"></i></span></td>
+				</tr>
+			</table>
+
+			<div class="button-container">
+				<button class="drop-button button clear"><i class="fas fa-trash"></i>Clear values</button>
+				<button class="drop-button button calculate"><i class="fas fa-calculator"></i>Calculate</button>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		$('.calculate').click(function() {
+			$('.copy').css('visibility', 'visible');
+			$('.field').each(function() {
+				if ($(this).val()) $(this).parent().parent().find('.copy').css('visibility', 'hidden');
+			});
+		});
+	</script>
+</body>
+
+</html>

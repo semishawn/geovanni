@@ -1,0 +1,127 @@
+.card-container {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	padding-top: 20px;
+	box-sizing: border-box;
+}
+
+.card {
+	width: 400px;
+	padding: 30px;
+	border: var(--main-border) solid black;
+	border-radius: var(--main-radius);
+	background: white;
+	filter: drop-shadow(var(--main-shadow) var(--main-shadow) 0 black);
+	box-sizing: border-box;
+}
+
+
+
+/* Top */
+.card-top {
+	position: relative;
+	display: flex;
+	width: 100%;
+	margin-bottom: 30px;
+}
+
+.calc-title {font-size: 18px;}
+
+
+
+/* Values */
+.variable-container {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 30px;
+	border-spacing: 5px;
+}
+
+td {
+	height: var(--input-height);
+	padding: 0;
+}
+
+.char {
+	text-align: center;
+	font-family: 'STIX General';
+	font-size: 25px;
+	font-style: italic;
+}
+
+.equal {
+	text-align: center;
+	width: 20px;
+	font-size: 20px;
+}
+
+.field {
+	height: 100%;
+	width: var(--input-width);
+	font-family: var(--font1);
+	font-size: 16px;
+	font-weight: 400;
+	padding: 0 8px;
+	border: 2px solid var(--accent);
+	border-radius: var(--input-radius);
+	box-sizing: border-box;
+}
+
+.result {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	width: var(--input-width);
+	font-family: var(--font1);
+	font-size: 16px;
+	padding: 0 10px;
+	border: none;
+	border-radius: var(--input-radius);
+	background: #f7f7f7;
+	box-sizing: border-box;
+}
+
+.copy {
+	display: flex;
+	visibility: hidden;
+	justify-content: center;
+	align-items: center;
+	height: var(--input-height);
+	width: var(--input-height);
+	padding: 0;
+	border: 2px solid var(--accent);
+	border-radius: var(--input-radius);
+	color: #777;
+	cursor: pointer;
+	box-sizing: border-box;
+}
+
+
+
+/* Buttons */
+.button-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: var(--input-height);
+	font-size: 14px;
+	line-height: 20px;
+	padding: 0 16px;
+	outline: 0;
+	border: 2px solid black;
+	border-radius: var(--input-radius);
+	cursor: pointer;
+}
+.button svg {margin-right: 6px;}
+.button:active {filter: brightness(0.9);}
+
+.clear {background: #f008;}
+.calculate {background: var(--accent);}
