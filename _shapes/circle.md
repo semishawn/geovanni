@@ -59,13 +59,13 @@ equations: [
 				formula: 'C / (2 * pi)'
 			},
 			{
-				terminology: Area,
+				terminology: area,
 				variables: [{char: A, name: Area}],
 				mathjax: 'r=\sqrt{\frac{A}{\pi}}',
 				formula: 'sqrt(A / pi)'
 			},
 			{
-				terminology: ciameter,
+				terminology: diameter,
 				variables: [{char: d, name: Diameter}],
 				mathjax: 'r=\frac{d}{2}',
 				formula: 'd / 2'

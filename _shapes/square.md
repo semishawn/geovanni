@@ -7,22 +7,22 @@ equations: [
 		solveFor: {char: A, name: Area},
 		givens: [
 			{
-				terminology: Side,
+				terminology: side,
 				variables: [{char: s, name: Side}],
-				formula: 'A=s^2',
-				jsFormula: ''
+				mathjax: 'A=s^2',
+				formula: ''
 			},
 			{
-				terminology: Diagonal,
+				terminology: diagonal,
 				variables: [{char: d, name: Diagonal}],
-				formula: 'A=\frac{d^2}{2}',
-				jsFormula: ''
+				mathjax: 'A=\frac{d^2}{2}',
+				formula: ''
 			},
 			{
-				terminology: Perimeter,
+				terminology: perimeter,
 				variables: [{char: P, name: Perimeter}],
-				formula: 'A=\frac{P^2}{16}',
-				jsFormula: ''
+				mathjax: 'A=\frac{P^2}{16}',
+				formula: ''
 			}
 		]
 	},
@@ -30,22 +30,22 @@ equations: [
 		solveFor: {char: P, name: Perimeter},
 		givens: [
 			{
-				terminology: Side,
+				terminology: side,
 				variables: [{char: s, name: Side}],
-				formula: 'P=4s',
-				jsFormula: ''
+				mathjax: 'P=4s',
+				formula: ''
 			},
 			{
-				terminology: Area,
+				terminology: area,
 				variables: [{char: A, name: Area}],
-				formula: 'P=4\sqrt{A}',
-				jsFormula: ''
+				mathjax: 'P=4\sqrt{A}',
+				formula: ''
 			},
 			{
-				terminology: Diagonal,
+				terminology: diagonal,
 				variables: [{char: d, name: Diagonal}],
-				formula: 'P=2d \sqrt{2}',
-				jsFormula: ''
+				mathjax: 'P=2d \sqrt{2}',
+				formula: ''
 			}
 		]
 	},
@@ -53,22 +53,22 @@ equations: [
 		solveFor: {char: d, name: Diagonal},
 		givens: [
 			{
-				terminology: Side,
+				terminology: side,
 				variables: [{char: s, name: Side}],
-				formula: 'd=s \sqrt{2}',
-				jsFormula: ''
+				mathjax: 'd=s \sqrt{2}',
+				formula: ''
 			},
 			{
-				terminology: Perimeter,
+				terminology: perimeter,
 				variables: [{char: P, name: Perimeter}],
-				formula: 'd=\frac{P \sqrt{2}}{4}',
-				jsFormula: ''
+				mathjax: 'd=\frac{P \sqrt{2}}{4}',
+				formula: ''
 			},
 			{
-				terminology: Area,
+				terminology: area,
 				variables: [{char: A, name: Area}],
-				formula: 'd=\sqrt{2A}',
-				jsFormula: ''
+				mathjax: 'd=\sqrt{2A}',
+				formula: ''
 			}
 		]
 	},
@@ -76,22 +76,22 @@ equations: [
 		solveFor: {char: s, name: Side},
 		givens: [
 			{
-				terminology: Area,
+				terminology: area,
 				variables: [{char: A, name: Area}],
-				formula: 's=\sqrt{A}',
-				jsFormula: ''
+				mathjax: 's=\sqrt{A}',
+				formula: ''
 			},
 			{
-				terminology: Perimeter,
+				terminology: perimeter,
 				variables: [{char: P, name: Perimeter}],
-				formula: 's=\frac{P}{4}',
-				jsFormula: ''
+				mathjax: 's=\frac{P}{4}',
+				formula: ''
 			},
 			{
-				terminology: Diagonal,
+				terminology: diagonal,
 				variables: [{char: d, name: Diagonal}],
-				formula: 's=\frac{d}{\sqrt{2}}',
-				jsFormula: ''
+				mathjax: 's=\frac{d}{\sqrt{2}}',
+				formula: ''
 			}
 		]
 	}

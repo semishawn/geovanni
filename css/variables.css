@@ -1,4 +1,5 @@
 :root {
+	/* Fonts */
 	--font1: 'IBM Plex Sans', sans-serif;
 
 	/* Values */
@@ -8,6 +9,8 @@
 	--tab-height: 40px;
 	--input-height: 36px;
 	--input-width: 150px;
+	--input-font-size: 15px;
+	--input-border: 2px;
 	--input-radius: 4px;
 
 	/* Colors */

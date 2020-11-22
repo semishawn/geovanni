@@ -51,13 +51,26 @@ layout: base
 					<div class="variables-and-formula">
 						<table class="variable-container">
 							{%- for variable in given.variables %}
-							<tr class="variable">
+							<tr>
 								<td><div class="char">{{ variable.char }}</div></td>
 								<td><div class="equal">=</div></td>
 								<td colspan="2"><input class="field" type="text" placeholder="{{ variable.name }}" autocomplete="off"></td>
 							</tr>
 							{%- endfor %}
-							<tr class="variable">
+							<tr>
+								<td colspan="2"></td>
+								<td colspan="2">
+									<div class="decimal-setter">
+										Decimal Places
+										<div class="setter-toggles">
+											<button class="setter dec" tabindex="-1"><i class="fas fa-caret-left"></i></button>
+											<span class="decimal-current">2</span>
+											<button class="setter inc" tabindex="-1"><i class="fas fa-caret-right"></i></button>
+										</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
 								<td><div class="char">{{ equation.solveFor.char }}</div></td>
 								<td><div class="equal">=</div></td>
 								<td><input class="result" type="text" placeholder="{{ equation.solveFor.name }}" autocomplete="off"></td>
@@ -85,7 +98,6 @@ layout: base
 	</div>
 </div>
 
-<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=default"></script>
 <script type="text/x-mathjax-config">
 	MathJax.Hub.Config({showMathMenu: false});
 	MathJax.Hub.Queue(() => $('.formula').show());
@@ -95,12 +107,13 @@ layout: base
 	{%- for equation in page.equations %}
 		{%- for given in equation.givens %}
 		function calc{{ equation.solveFor.name }}Given{{ given.terminology | replace: ' ', '' }}() {
-			let preScope = {
+			let {% if given.specialVariable %}preScope{% else %}scope{% endif %} = {
 				{%- assign count = -1 -%}
 				{%- for variable in given.variables %}
 				{{ variable.char }}: math.bignumber($('.field:visible').eq({% assign count = count | plus:1 %}{{ count }}).val()),
 				{%- endfor %}
 			}
+			{%- if given.specialVariable %}
 			let scope = {
 				{%- assign count = -1 -%}
 				{%- for variable in given.variables %}
@@ -110,8 +123,12 @@ layout: base
 				{{ given.specialVariable.char }}: math.evaluate('{{ given.specialVariable.formula }}', preScope)
 				{%- endif %}
 			}
+			{%- endif %}
 			var result = math.evaluate('{{ given.formula }}', scope);
-			calcFinish(result);
+			var precision = $('.decimal-current').html();
+			if (result.toString().indexOf('e') > 0) result = result.toPrecision(1 + parseInt(precision));
+			else result = math.round(result, precision);
+			$('.result:visible').val(result);
 		}
 		{%- endfor %}
 

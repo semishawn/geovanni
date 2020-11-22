@@ -5,6 +5,16 @@ $(document).ready(function() {
 
 	var initialGiven = $('.card-middle').eq(0).attr('class').split(' ')[1];
 	$('.' + initialGiven).css('display', 'block');
+
+	$('.char').each(function() {
+		var char = $(this).html();
+		if (char.indexOf('1') > 0 || char.indexOf('2') > 0) {
+			var origChar = char.substr(0, 1);
+			var origNum = char.substr(char.length - 1);
+			var subNum = '<sub>' + origNum + '</sub>';
+			$(this).html(origChar + subNum);
+		}
+	});
 });
 
 
@@ -44,17 +54,31 @@ $(document).click(function(e) {
 
 // Highlight variable on text-box focus
 $('.field, .result').focus(function() {
-	var value = $(this).parent().parent().find('.char').html();
-	$('.mi:contains(' + value + ')').css('color', 'var(--accent)');
+	var char = $(this).parent().parent().find('.char').html();
+	if (/[0-9]/.test(char)) {
+		var subChar = char.substr(0, 1);
+		var subNum = char.replace(/[^0-9]/g, '');
+		var mSubSup = $('.msubsup:contains(' + subChar + subNum + '):visible');
+		mSubSup.each(function() {
+			if ($(this).is(':has(.msubsup)')) $(this).find('*').css('color', 'black');
+			else $(this).find('*').css('color', 'var(--accent)');
+		});
+	}
+	else {
+		$('.mi:contains(' + char + '):visible').css('color', 'var(--accent)');
+		$('.mo:contains(' + char + '):visible').css('color', 'var(--accent)');
+	}
+	var trig = ['sin', 'cos', 'tan', 'csc', 'sec', 'cot'];
+	$.each(trig, (index, val) => $('.mi:contains(' + val + ')').css('color', 'black'));
 });
-$('.field, .result').focusout(() => $('.mi').css('color', 'black'));
+$('.field, .result').focusout(() => $('.mi, .mo, .mn').css('color', 'black'));
 
 
 
 // Input filters
 $('.field').on('propertychange input', function() {
-	var numbers = $(this).val().replace(/[^0-9\.]/g, '');
-	$(this).val(numbers);
+	var numsOnly = $(this).val().replace(/[^0-9\.]/g, '');
+	$(this).val(numsOnly);
 });
 
 $('.result').keydown(function(e) {
@@ -62,17 +86,16 @@ $('.result').keydown(function(e) {
 	if (e.key == 'ArrowRight') return true;
 	if (e.metaKey && e.key == 'c') return true;
 	if (e.metaKey && e.key == 'a') return true;
-	else return false;
+	return false;
 });
 
 
 
 // Clear values
-$('.clear').click(() => clear());
-function clear() {
+$('.clear').click(function() {
 	$('.field').val('');
 	$('.result').val('');
-}
+});
 
 
 
@@ -84,21 +107,31 @@ math.config = {
 
 
 
-// Calculation finish
-function calcFinish(result) {
-	if (result == 0 || result == '' || result == 'NaN') result = 'Hmm...';
-	else if (result.toString().indexOf('e') > 0) result = result.toPrecision(1 + 2);
-	else result = math.round(result, 2);
-	$('.result:visible').val(result);
-}
-
-
-
 // Copy result click
 $('.copy').click(function() {
-	var copyInput = $('<input>');
-	$('body').append(copyInput);
-	copyInput.val($('.result:visible').val()).select();
-	document.execCommand('copy');
-	copyInput.remove();
+	if ($('.result:visible').val().length > 0) {
+		var copyInput = $('<input>');
+		$('body').append(copyInput);
+		copyInput.val($('.result:visible').val()).select();
+		document.execCommand('copy');
+		copyInput.remove();
+
+		$('.copy svg').attr('class', 'fas fa-check');
+		setTimeout(() => $('.copy svg').attr('class', 'far fa-copy'), 700);
+	}
 });
+
+
+
+// Increase/decrease custom stepper
+$('.dec').click(function() {
+	if ($('.decimal-current').html() > 0) $('.decimal-current').html(parseInt($('.decimal-current').html()) - 1);
+});
+$('.inc').click(function() {
+	if ($('.decimal-current').html() < 10) $('.decimal-current').html(parseInt($('.decimal-current').html()) + 1);
+});
+
+
+
+// If error when calculating
+window.onerror = () => $('.result:visible').val('Hmm...');

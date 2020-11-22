@@ -9,7 +9,7 @@ body {margin: 0;}
 	height: 50px;
 	width: 50px;
 }
-.shape-link + .shape-link {margin-left: 15px;}
+.shape-link + .shape-link {margin-left: 12px;}
 
 .shape-indicator {
 	background: var(--accent);
@@ -31,17 +31,21 @@ body {margin: 0;}
 .rectangle .shape-indicator {
 	height: 15px;
 	width: 22px;
-	border-radius: 3px;
 }
 
 .square .shape-indicator {
 	height: 20px;
 	width: 20px;
-	border-radius: 3px;
+}
+
+.rhombus .shape-indicator {
+	height: 19px;
+	width: 19px;
+	transform: skew(-20deg);
 }
 
 .triangle .shape-indicator {
-	--a: 14px;
+	--a: 13px;
 	height: 0;
 	width: 0;
 	border-right: var(--a) solid transparent;
