@@ -37,4 +37,6 @@ equations: [
 		]
 	},
 ]
+
+shape-height: 110px;
 ---

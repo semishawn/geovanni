@@ -96,4 +96,6 @@ equations: [
 		]
 	}
 ]
+
+shape-height: 145px;
 ---

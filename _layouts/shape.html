@@ -4,6 +4,10 @@ layout: base
 
 {{ content }}
 
+<style>
+	.shape-vector svg {height: {{ page.shape-height }};}
+</style>
+
 <div class="card-container">
 	<a class="drop-button home-button" href="{{ site.baseurl }}/"><i class="fas fa-home"></i></a>
 
@@ -48,41 +52,45 @@ layout: base
 
 				{% for given in equation.givens %}
 				<div class="card-middle given-{{ given.terminology | replace: ' ', '-' }}">
-					<div class="variables-and-formula">
-						<table class="variable-container">
-							{%- for variable in given.variables %}
-							<tr>
-								<td><div class="char">{{ variable.char }}</div></td>
-								<td><div class="equal">=</div></td>
-								<td colspan="2"><input class="field" type="text" placeholder="{{ variable.name }}" autocomplete="off"></td>
-							</tr>
-							{%- endfor %}
-							<tr>
-								<td colspan="2"></td>
-								<td colspan="2">
-									<div class="decimal-setter">
-										Decimal Places
-										<div class="setter-toggles">
-											<button class="setter dec" tabindex="-1"><i class="fas fa-caret-left"></i></button>
-											<span class="decimal-current">2</span>
-											<button class="setter inc" tabindex="-1"><i class="fas fa-caret-right"></i></button>
-										</div>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td><div class="char">{{ equation.solveFor.char }}</div></td>
-								<td><div class="equal">=</div></td>
-								<td><input class="result" type="text" placeholder="{{ equation.solveFor.name }}" autocomplete="off"></td>
-								<td><button class="copy"><i class="far fa-copy"></i></button></td>
-							</tr>
-						</table>
-					
+					<div class="shape-container">
 						<div class="formula-container">
 							{%- if given.specialVariable %}
 							<div class="formula">$${{ given.specialVariable.mathjax }}$$</div>
 							{%- endif %}
 							<div class="formula">$${{ given.mathjax }}$$</div>
+						</div>
+
+						<div class="shape-data">
+							<table class="variable-container">
+								{%- for variable in given.variables %}
+								<tr>
+									<td><div class="char">{{ variable.char }}</div></td>
+									<td><div class="equal">=</div></td>
+									<td colspan="2"><input class="field" type="text" placeholder="{{ variable.name }}" autocomplete="off"></td>
+								</tr>
+								{%- endfor %}
+								<tr>
+									<td colspan="2"></td>
+									<td colspan="2">
+										<div class="decimal-setter">
+											Decimal Places
+											<div class="setter-toggles">
+												<button class="setter dec" tabindex="-1"><i class="fas fa-caret-left"></i></button>
+												<span class="decimal-current">2</span>
+												<button class="setter inc" tabindex="-1"><i class="fas fa-caret-right"></i></button>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td><div class="char">{{ equation.solveFor.char }}</div></td>
+									<td><div class="equal">=</div></td>
+									<td><input class="result" type="text" placeholder="{{ equation.solveFor.name }}" autocomplete="off"></td>
+									<td><button class="copy"><i class="far fa-copy"></i></button></td>
+								</tr>
+							</table>
+
+							<div class="shape-vector"></div>
 						</div>
 					</div>
 
@@ -100,38 +108,40 @@ layout: base
 
 <script type="text/x-mathjax-config">
 	MathJax.Hub.Config({showMathMenu: false});
-	MathJax.Hub.Queue(() => $('.formula').show());
+	MathJax.Hub.Queue(() => $('.formula-container').show());
 </script>
 <script src="{{ site.baseurl }}/js/main.js"></script>
 <script>
-	{%- for equation in page.equations %}
-		{%- for given in equation.givens %}
-		function calc{{ equation.solveFor.name }}Given{{ given.terminology | replace: ' ', '' }}() {
-			let {% if given.specialVariable %}preScope{% else %}scope{% endif %} = {
-				{%- assign count = -1 -%}
-				{%- for variable in given.variables %}
-				{{ variable.char }}: math.bignumber($('.field:visible').eq({% assign count = count | plus:1 %}{{ count }}).val()),
-				{%- endfor %}
-			}
-			{%- if given.specialVariable %}
-			let scope = {
-				{%- assign count = -1 -%}
-				{%- for variable in given.variables %}
-				{{ variable.char }}: math.bignumber($('.field:visible').eq({% assign count = count | plus:1 %}{{ count }}).val()),
-				{%- endfor %}
-				{%- if given.specialVariable %}
-				{{ given.specialVariable.char }}: math.evaluate('{{ given.specialVariable.formula }}', preScope)
-				{%- endif %}
-			}
-			{%- endif %}
-			var result = math.evaluate('{{ given.formula }}', scope);
-			var precision = $('.decimal-current').html();
-			if (result.toString().indexOf('e') > 0) result = result.toPrecision(1 + parseInt(precision));
-			else result = math.round(result, precision);
-			$('.result:visible').val(result);
+	$.get('../img/{{ page.shape | downcase }}/{{ page.shape | downcase }}.svg', function(data) {
+		$('.shape-vector').append(data);
+	}, 'html');
+
+	{% for equation in page.equations %}
+	{%- for given in equation.givens %}
+	function calc{{ equation.solveFor.name }}Given{{ given.terminology | replace: ' ', '' }}() {
+		let {% if given.specialVariable %}preScope{% else %}scope{% endif %} = {
+			{%- assign count = -1 -%}
+			{%- for variable in given.variables %}
+			{{ variable.char }}: math.bignumber($('.field:visible').eq({% assign count = count | plus:1 %}{{ count }}).val()),
+			{%- endfor %}
 		}
-		{%- endfor %}
-
-
+		{%- if given.specialVariable %}
+		let scope = {
+			{%- assign count = -1 -%}
+			{%- for variable in given.variables %}
+			{{ variable.char }}: math.bignumber($('.field:visible').eq({% assign count = count | plus:1 %}{{ count }}).val()),
+			{%- endfor %}
+			{%- if given.specialVariable %}
+			{{ given.specialVariable.char }}: math.evaluate('{{ given.specialVariable.formula }}', preScope)
+			{%- endif %}
+		}
+		{%- endif %}
+		var result = math.evaluate('{{ given.formula }}', scope);
+		var precision = $('.decimal-current').html();
+		if (result.toString().indexOf('e') > 0) result = result.toPrecision(1 + parseInt(precision));
+		else result = math.round(result, precision);
+		$('.result:visible').val(result);
+	}
+	{%- endfor %}
 	{% endfor %}
 </script>

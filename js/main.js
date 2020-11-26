@@ -63,15 +63,20 @@ $('.field, .result').focus(function() {
 			if ($(this).is(':has(.msubsup)')) $(this).find('*').css('color', 'black');
 			else $(this).find('*').css('color', 'var(--accent)');
 		});
+		$('g:contains(' + subChar + subNum + ')').addClass('selected');
 	}
 	else {
 		$('.mi:contains(' + char + '):visible').css('color', 'var(--accent)');
 		$('.mo:contains(' + char + '):visible').css('color', 'var(--accent)');
+		$('g:contains(' + char + ')').addClass('selected');
 	}
 	var trig = ['sin', 'cos', 'tan', 'csc', 'sec', 'cot'];
 	$.each(trig, (index, val) => $('.mi:contains(' + val + ')').css('color', 'black'));
 });
-$('.field, .result').focusout(() => $('.mi, .mo, .mn').css('color', 'black'));
+$('.field, .result').focusout(function() {
+	$('.mi, .mo, .mn').css('color', 'black');
+	$('g').removeClass('selected');
+});
 
 
 
@@ -102,7 +107,8 @@ $('.clear').click(function() {
 // Math config
 math.config = {
 	number: 'BigNumber',
-	precision: 64
+	precision: 64,
+	angles: 'deg'
 }
 
 

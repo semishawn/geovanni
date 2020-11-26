@@ -12,8 +12,8 @@ equations: [
 					{char: b, name: Base},
 					{char: h, name: Height}
 				],
-				mathjax: 'A=\frac{1}{2}bh',
-				formula: '(1/2) * b * h'
+				mathjax: 'A=\frac{bh}{2}',
+				formula: '(b * h) / 2'
 			},
 			{
 				terminology: three sides,
@@ -34,11 +34,11 @@ equations: [
 				terminology: two sides and angle between,
 				variables: [
 					{char: a, name: Side},
-					{char: γ, name: Angle},
+					{char: α, name: Angle},
 					{char: b, name: Side}
 				],
-				mathjax: 'A=\frac{1}{2}ab \sin{\gamma}',
-				formula: '(1/2) * a * b * sin(γ)'
+				mathjax: 'A=\frac{ab \sin{\alpha}}{2}',
+				formula: '(a * b * sin(unit(α, "deg"))) / 2'
 			},
 			{
 				terminology: two angles and side between,
@@ -47,8 +47,8 @@ equations: [
 					{char: a, name: Side},
 					{char: γ, name: Angle}
 				],
-				mathjax: 'A=\frac{a^2 \sin{\beta} \sin{\gamma}}{\sin(\beta + \gamma)}',
-				formula: '(a^2 * sin(β) * sin(γ)) / sin(β + γ)'
+				mathjax: 'A=\frac{a^2 \sin{\beta}\sin{\gamma}}{2 \sin(\beta+\gamma)}',
+				formula: '(a^2 * sin(unit(β, "deg")) * sin(unit(γ, "deg"))) / (2 * sin(unit((β + γ), "deg")))'
 			}
 		]
 	},
@@ -76,8 +76,8 @@ equations: [
 					{char: A, name: Area},
 					{char: h, name: Height}
 				],
-				mathjax: 'b=2\frac{A}{h}',
-				formula: '2 * (A / h)'
+				mathjax: 'b=\frac{2A}{h}',
+				formula: '(2 * A) / h'
 			},
 		]
 	},
@@ -90,10 +90,12 @@ equations: [
 					{char: A, name: Area},
 					{char: b, name: Base}
 				],
-				mathjax: 'h=2\frac{A}{b}',
-				formula: '2 * (A / b)'
+				mathjax: 'h=\frac{2A}{b}',
+				formula: '(2 * A) / b'
 			},
 		]
 	}
 ]
+
+shape-height: 145px;
 ---

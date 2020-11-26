@@ -93,7 +93,6 @@ input[name="tabulation"]:checked + .tab {
 	display: flex;
 	justify-content: space-between;
 	width: 100%;
-	margin-bottom: 30px;
 }
 
 .title-shape {font-size: 18px;}
@@ -163,37 +162,16 @@ input[name="tabulation"]:checked + .tab {
 
 
 /* Middle */
-.variables-and-formula {
+.shape-container {margin: 30px 0;}
+
+
+
+/* Shape Data */
+.shape-data {
 	display: flex;
 	align-items: center;
-	margin-bottom: 30px;
 }
 
-
-
-/* Formula */
-.formula-container {
-	flex: 1;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	min-width: 250px;
-}
-.formula {
-	display: none;
-	font-size: 26px;
-	margin: 10px 50px;
-}
-.MathJax_Display {margin: 0 !important;}
-.MathJax:focus {
-	outline: 0 !important;
-	border: none !important;
-}
-.mi, .mn, .mo {font-family: 'STIX General' !important;}
-
-
-
-/* Variables */
 .variable-container {
 	width: 260px;
 	border-spacing: 5px;
@@ -234,7 +212,7 @@ td {
 	font-family: var(--font1);
 	font-size: var(--input-font-size);
 	font-weight: 400;
-	padding: 0 10px;
+	padding: 0 9px;
 	border: var(--input-border) solid var(--accent);
 	border-radius: var(--input-radius);
 	box-sizing: border-box;
@@ -292,7 +270,7 @@ td {
 	width: 100%;
 	font-family: var(--font1);
 	font-size: var(--input-font-size);
-	padding: 0 10px;
+	padding: 0 9px;
 	border: none;
 	border-radius: var(--input-radius);
 	background: #eee;
@@ -315,6 +293,39 @@ td {
 }
 .copy:hover {background: var(--accent-light1);}
 .fa-check {font-size: 15px;}
+
+
+
+/* Shape Info */
+.formula-container {
+	display: none;
+	margin-bottom: 25px;
+}
+.formula {
+	font-size: 25px;
+	margin: 0 20px;
+}
+.formula + .formula {margin-top: 18px;}
+.MathJax_Display {margin: 0 !important;}
+.MathJax:focus {
+	outline: 0 !important;
+	border: none !important;
+}
+.mi, .mn, .mo {font-family: 'STIX General' !important;}
+
+.shape-vector {
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-width: 320px;
+}
+
+.selected text {fill: var(--accent) !important;}
+.selected *:not(text) {
+	stroke: var(--accent) !important;
+	stroke-width: 1 !important;
+}
 
 
 

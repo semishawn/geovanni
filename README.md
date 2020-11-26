@@ -1,2 +1,2 @@
-# geovanni
- A curious little geometry calculator.
+# Geovanni
+A curious little geometry calculator.

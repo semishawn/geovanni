@@ -70,4 +70,6 @@ equations: [
 		]
 	}
 ]
+
+shape-height: 120px;
 ---

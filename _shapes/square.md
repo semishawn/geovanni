@@ -10,19 +10,19 @@ equations: [
 				terminology: side,
 				variables: [{char: s, name: Side}],
 				mathjax: 'A=s^2',
-				formula: ''
+				formula: 's^2'
 			},
 			{
 				terminology: diagonal,
 				variables: [{char: d, name: Diagonal}],
 				mathjax: 'A=\frac{d^2}{2}',
-				formula: ''
+				formula: 'd^2 / 2'
 			},
 			{
 				terminology: perimeter,
 				variables: [{char: P, name: Perimeter}],
 				mathjax: 'A=\frac{P^2}{16}',
-				formula: ''
+				formula: 'P^2 / 16'
 			}
 		]
 	},
@@ -33,19 +33,19 @@ equations: [
 				terminology: side,
 				variables: [{char: s, name: Side}],
 				mathjax: 'P=4s',
-				formula: ''
+				formula: '4 * s'
 			},
 			{
 				terminology: area,
 				variables: [{char: A, name: Area}],
 				mathjax: 'P=4\sqrt{A}',
-				formula: ''
+				formula: '4 * sqrt(A)'
 			},
 			{
 				terminology: diagonal,
 				variables: [{char: d, name: Diagonal}],
 				mathjax: 'P=2d \sqrt{2}',
-				formula: ''
+				formula: '2 * d * sqrt(2)'
 			}
 		]
 	},
@@ -56,19 +56,19 @@ equations: [
 				terminology: side,
 				variables: [{char: s, name: Side}],
 				mathjax: 'd=s \sqrt{2}',
-				formula: ''
+				formula: 's * sqrt(2)'
 			},
 			{
 				terminology: perimeter,
 				variables: [{char: P, name: Perimeter}],
 				mathjax: 'd=\frac{P \sqrt{2}}{4}',
-				formula: ''
+				formula: '(P * sqrt(2)) / 4'
 			},
 			{
 				terminology: area,
 				variables: [{char: A, name: Area}],
 				mathjax: 'd=\sqrt{2A}',
-				formula: ''
+				formula: 'sqrt(2 * A)'
 			}
 		]
 	},
@@ -79,21 +79,23 @@ equations: [
 				terminology: area,
 				variables: [{char: A, name: Area}],
 				mathjax: 's=\sqrt{A}',
-				formula: ''
+				formula: 'sqrt(A)'
 			},
 			{
 				terminology: perimeter,
 				variables: [{char: P, name: Perimeter}],
 				mathjax: 's=\frac{P}{4}',
-				formula: ''
+				formula: 'P / 4'
 			},
 			{
 				terminology: diagonal,
 				variables: [{char: d, name: Diagonal}],
 				mathjax: 's=\frac{d}{\sqrt{2}}',
-				formula: ''
+				formula: 'd / sqrt(2)'
 			}
 		]
 	}
 ]
+
+shape-height: 140px;
 ---
