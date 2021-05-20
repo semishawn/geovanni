@@ -1,0 +1,242 @@
+.calculator-body {
+	--calculator-spacing: 2rem;
+	padding: var(--calculator-spacing);
+}
+
+
+
+/* Given */
+.given-label {margin-right: 0.7rem;}
+
+.given {
+	position: relative;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.given-select {
+	display: flex;
+	align-items: center;
+	height: var(--input-height);
+	border: var(--main-border) solid black;
+	border-radius: var(--input-radius);
+	padding: 0 var(--input-padding);
+	cursor: pointer;
+	box-sizing: border-box;
+}
+.given-select svg {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 18px;
+	padding-right: 8px;
+	padding-bottom: 6px;
+}
+
+.given-dropdown {
+	position: absolute;
+	display: none;
+	top: calc(var(--input-height) + var(--input-margin));
+	right: 0;
+	border: var(--main-border) solid black;
+	border-radius: var(--input-radius);
+	overflow: hidden;
+	box-sizing: border-box;
+	z-index: 999;
+}
+
+.given-option {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	height: calc(var(--input-height) - 2 * var(--main-border));
+	padding: 0 var(--input-padding);
+	background: var(--color-primary);
+	cursor: pointer;
+	box-sizing: border-box;
+}
+
+.given-select:hover, .given-option:hover {
+	color: var(--color-primary);
+	background: black;
+}
+
+
+
+/* Calculator Body */
+.calculation-content {
+	display: none;
+	margin-top: var(--calculator-spacing);
+}
+
+.shape-data {
+	display: flex;
+	align-items: center;
+}
+
+.MathJax_Display {margin: 0 !important;}
+.MathJax:focus {
+	outline: 0 !important;
+	border: 0 !important;
+}
+
+.formula-container {margin-bottom: var(--calculator-spacing);}
+.formula {
+	font-size: 1.5rem;
+	margin: 0 1.3rem;
+}
+.formula + .formula {margin-top: 1.2rem;}
+
+.variable-container {
+	--field-width: 15.3rem;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+
+.variable-row {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	height: var(--input-height);
+	width: 100%;
+}
+.variable-row + .variable-row {margin-top: var(--input-margin);}
+
+.char {
+	flex-grow: 1;
+	font-size: 1.5rem;
+	margin-right: 0.5rem;
+}
+
+.field {
+	height: 100%;
+	width: var(--field-width);
+	min-width: 0;
+	font-size: var(--input-font-size);
+	padding: 0 var(--input-padding);
+	border: var(--main-border) solid black;
+	border-radius: var(--input-radius);
+	background: transparent;
+	-webkit-appearance: none;
+	box-sizing: border-box;
+}
+
+.decimal-row {
+	position: relative;
+	display: flex;
+	align-items: center;
+	height: var(--input-height);
+	width: var(--field-width);
+	font-size: var(--input-font-size);
+	font-style: italic;
+	padding-left: var(--input-padding);
+	margin: var(--input-margin) 0;
+	border: var(--main-border) solid black;
+	border-radius: var(--input-radius);
+	background: transparent;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+
+.setter-container {
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: flex;
+	align-items: center;
+	height: 100%;
+}
+
+.current-places {
+	text-align: center;
+	font-style: normal;
+	width: 1.6rem;
+}
+
+.setter {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	width: 1.3rem;
+	font-size: 0.7rem;
+	border: 0;
+	background: transparent;
+	cursor: pointer;
+}
+.setter:hover {
+	color: var(--color-primary);
+	background: black;
+}
+
+.result-wrap {
+	display: flex;
+	height: 100%;
+	width: var(--field-width);
+}
+
+.result {background: var(--color-accent);}
+
+.copy {
+	display: none;
+	height: 100%;
+	width: var(--input-height);
+	font-size: 1.3rem;
+	margin-left: var(--input-margin);
+	border: var(--main-border) solid black;
+	border-radius: var(--input-radius);
+	background: transparent;
+	cursor: pointer;
+	box-sizing: border-box;
+}
+.copy:hover {
+	color: var(--color-primary);
+	background: black;
+}
+.fa-check {font-size: 1.1rem;}
+
+
+
+/* Shape */
+.shape-vector {
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 13.3rem;
+	margin-left: 3rem;
+}
+
+
+
+/* Selected Data */
+.selected-char {color: var(--color-accent);}
+
+.selected-shape text {fill: var(--color-primary) !important;}
+.selected-shape *:not(text) {stroke: var(--color-primary) !important;}
+
+
+
+/* Window Bottom */
+.btn-container {
+	display: flex;
+	justify-content: space-between;
+	margin-top: var(--calculator-spacing);
+}
+
+.btn {
+	height: var(--input-height);
+	padding: 0 var(--input-padding);
+	border: var(--main-border) solid black;
+	border-radius: var(--input-radius);
+	background: transparent;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+.btn:hover {
+	color: var(--color-primary);
+	background: black;
+}
+.btn svg {margin-right: 0.4rem;}

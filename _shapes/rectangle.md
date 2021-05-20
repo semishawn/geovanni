@@ -1,36 +1,35 @@
 ---
-layout: shape
-shape: Rectangle
+shape: rectangle
 
 equations: [
 	{
-		solveFor: {char: A, name: Area},
+		solveFor: {char: 'A', name: 'area'},
 		givens: [
 			{
-				terminology: length and width,
+				terminology: 'length and width',
 				variables: [
-					{char: l, name: Length},
-					{char: w, name: Width}
+					{char: 'l', name: 'length'},
+					{char: 'w', name: 'width'}
 				],
 				mathjax: 'A=lw',
 				formula: 'l * w'
 			},
 			{
-				terminology: perimeter,
-				variables: [{char: P, name: Perimeter}],
+				terminology: 'perimeter',
+				variables: [{char: 'P', name: 'perimeter'}],
 				mathjax: 'A=\frac{P^2}{4}',
 				formula: 'P^2 / 4'
 			}
 		]
 	},
 	{
-		solveFor: {char: P, name: Perimeter},
+		solveFor: {char: 'P', name: 'perimeter'},
 		givens: [
 			{
-				terminology: length and width,
+				terminology: 'length and width',
 				variables: [
-					{char: l, name: Length},
-					{char: w, name: Width}
+					{char: 'l', name: 'length'},
+					{char: 'w', name: 'width'}
 				],
 				mathjax: 'P=2l+2w',
 				formula: '(2 * l) + (2 * w)'
@@ -38,31 +37,31 @@ equations: [
 		]
 	},
 	{
-		solveFor: {char: l, name: Length},
+		solveFor: {char: 'l', name: 'length'},
 		givens: [
 			{
-				terminology: width and area,
+				terminology: 'width and area',
 				variables: [
-					{char: w, name: Width},
-					{char: A, name: Area}
+					{char: 'w', name: 'width'},
+					{char: 'A', name: 'area'}
 				],
 				mathjax: 'l=\frac{A}{w}',
 				formula: 'A / w'
 			},
 			{
-				terminology: width and perimeter,
+				terminology: 'width and perimeter',
 				variables: [
-					{char: w, name: Width},
-					{char: P, name: Perimeter}
+					{char: 'w', name: 'width'},
+					{char: 'P', name: 'perimeter'}
 				],
 				mathjax: 'l=\frac{P-2w}{2}',
 				formula: '(P - (2 * w)) / 2'
 			},
 			{
-				terminology: width and diagonal,
+				terminology: 'width and diagonal',
 				variables: [
-					{char: w, name: Width},
-					{char: d, name: Diagonal}
+					{char: 'w', name: 'width'},
+					{char: 'd', name: 'diagonal'}
 				],
 				mathjax: 'l=\sqrt{d^2-w^2}',
 				formula: 'sqrt(d^2 - w^2)'
@@ -70,31 +69,31 @@ equations: [
 		]
 	},
 	{
-		solveFor: {char: w, name: Width},
+		solveFor: {char: 'w', name: 'width'},
 		givens: [
 			{
-				terminology: length and area,
+				terminology: 'length and area',
 				variables: [
-					{char: l, name: Length},
-					{char: A, name: Area}
+					{char: 'l', name: 'length'},
+					{char: 'A', name: 'area'}
 				],
 				mathjax: 'w=\frac{A}{l}',
 				formula: 'A / l'
 			},
 			{
-				terminology: length and perimeter,
+				terminology: 'length and perimeter',
 				variables: [
-					{char: l, name: Length},
-					{char: P, name: Perimeter}
+					{char: 'l', name: 'length'},
+					{char: 'P', name: 'perimeter'}
 				],
 				mathjax: 'w=\frac{P-2l}{2}',
 				formula: '(P - (2 * l)) / 2'
 			},
 			{
-				terminology: length and diagonal,
+				terminology: 'length and diagonal',
 				variables: [
-					{char: l, name: Length},
-					{char: d, name: Diagonal}
+					{char: 'l', name: 'length'},
+					{char: 'd', name: 'diagonal'}
 				],
 				mathjax: 'w=\sqrt{d^2-l^2}',
 				formula: 'sqrt(d^2 - l^2)'
@@ -102,31 +101,31 @@ equations: [
 		]
 	},
 	{
-		solveFor: {char: d, name: Diagonal},
+		solveFor: {char: 'd', name: 'diagonal'},
 		givens: [
 			{
-				terminology: length and width,
+				terminology: 'length and width',
 				variables: [
-					{char: l, name: Length},
-					{char: w, name: Width}
+					{char: 'l', name: 'length'},
+					{char: 'w', name: 'width'}
 				],
 				mathjax: 'd=\sqrt{l^2+w^2}',
 				formula: 'sqrt(2 + w^2)'
 			},
 			{
-				terminology: length and area,
+				terminology: 'length and area',
 				variables: [
-					{char: l, name: Length},
-					{char: A, name: Area}
+					{char: 'l', name: 'length'},
+					{char: 'A', name: 'area'}
 				],
 				mathjax: 'd=\frac{\sqrt{l^4+A^2}}{l}',
 				formula: '(sqrt(l^4 + A^2)) / l'
 			},
 			{
-				terminology: width and area,
+				terminology: 'width and area',
 				variables: [
-					{char: w, name: Width},
-					{char: A, name: Area}
+					{char: 'w', name: 'width'},
+					{char: 'A', name: 'area'}
 				],
 				mathjax: 'd=\frac{\sqrt{w^4+A^2}}{w}',
 				formula: '(sqrt(w^4 + A^2)) / w'
@@ -134,6 +133,4 @@ equations: [
 		]
 	},
 ]
-
-shape-height: 120px;
 ---

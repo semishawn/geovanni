@@ -1,6 +1,6 @@
 title: Geovanni
 description: >- # this means to ignore newlines until "baseurl:"
-  A pseudo-encyclopedia, of sorts.
+  A curious little geometry calculator.
 baseurl: "/geovanni"
 url: "https://semishawn.github.io"
 github_username: semishawn
@@ -12,4 +12,3 @@ future: true
 collections:
   shapes:
     output: true
-    permalink: /shapes/:path

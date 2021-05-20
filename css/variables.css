@@ -1,20 +1,22 @@
 :root {
 	/* Fonts */
-	--font1: 'IBM Plex Sans', sans-serif;
+	--main-font: 'IBM Plex Sans';
+	--math-font: 'STIX General';
 
-	/* Values */
-	--main-border: 3px;
-	--main-shadow: 9px;
-	--main-radius: 7px;
-	--tab-height: 40px;
-	--input-height: 36px;
-	--input-width: 150px;
-	--input-font-size: 15px;
-	--input-border: 2px;
-	--input-radius: 4px;
+	/* Main */
+	--main-font-size: 14px;
+	--main-font-weight: 500;
+	--main-border: 0.22rem;
+	--main-radius: 0.8rem;
+	--main-shadow: 0.5rem;
+
+	/* Inputs */
+	--input-height: 2.5rem;
+	--input-padding: 0.8rem;
+	--input-margin: 0.31rem;
+	--input-radius: 0.4rem;
 
 	/* Colors */
-	--accent-light1: hsl(44, 100%, 94%);
-	--accent: #fab700;
-	--accent-dark1: hsl(44, 100%, 46%);
+	--color-primary: #f0eadc;
+	--color-accent: #f6cab3;
 }

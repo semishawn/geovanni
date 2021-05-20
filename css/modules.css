@@ -1,0 +1,209 @@
+.module {
+	--shape-dimension: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	width: 8.2rem;
+	margin: 0.9rem 0.3rem;
+	cursor: pointer;
+	user-select: none;
+}
+.module * {transition: all 0.1s, visibility 0s;}
+
+.module-label {text-transform: capitalize;}
+
+.module-icon-container {
+	--icon-height: 5.4rem;
+	--icon-file-width: calc(var(--icon-height) * 0.76);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: var(--icon-height);
+	margin-bottom: 0.6rem;
+}
+
+.module:hover .module-icon-container {
+	filter: drop-shadow(calc(var(--main-shadow) / 2) calc(var(--main-shadow) / 2) 0 black);
+}
+
+
+
+/* Folder Module Icon */
+.i-folder {
+	--tab-height: 14%;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	height: calc(var(--icon-height) * 0.82);
+	width: calc(var(--icon-height) * 1.06);
+	box-sizing: border-box;
+}
+
+.i-folder-tab {
+	height: var(--tab-height);
+	width: 50%;
+	border-top-left-radius: var(--input-radius);
+	border-top-right-radius: var(--input-radius);
+	background: black;
+	box-sizing: border-box;
+}
+
+.i-folder-inside {
+	position: relative;
+	flex-grow: 1;
+	width: 100%;
+	border-radius: var(--input-radius);
+	border-top-left-radius: 0;
+	background: black;
+	box-sizing: border-box;
+}
+
+.i-folder-front {
+	position: absolute;
+	bottom: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: calc(100% - var(--tab-height));
+	width: 100%;
+	border: var(--main-border) solid black;
+	border-radius: var(--input-radius);
+	background: var(--color-primary);
+	transform-origin: bottom left;
+	box-sizing: border-box;
+}
+.open .i-folder-front {transform: skewX(10deg) scaleY(90%);}
+
+
+
+/* Mini Shape Icons */
+.i-mini-triangle {
+	--height-coef: 1.732050808;
+	height: 0;
+	width: 0;
+	border-right: calc(var(--shape-dimension) / 2) solid transparent;
+	border-left: calc(var(--shape-dimension) / 2) solid transparent;
+	border-bottom: calc(var(--shape-dimension) / 2 * var(--height-coef)) solid var(--color-accent);
+}
+.i-mini-circle {
+	height: var(--shape-dimension);
+	width: var(--shape-dimension);
+	border-radius: 50%;
+	background: var(--color-accent);
+}
+.i-mini-ellipse {
+	height: var(--shape-dimension);
+	width: calc(1.4 * var(--shape-dimension));
+	border-radius: 50%;
+	background: var(--color-accent);
+}
+.i-mini-parallelogram {
+	height: var(--shape-dimension);
+	width: calc(1.3 * var(--shape-dimension));
+	border-radius: 0.2rem;
+	background: var(--color-accent);
+	transform: skewX(-20deg);
+}
+.i-mini-rectangle {
+	height: var(--shape-dimension);
+	width: calc(1.4 * var(--shape-dimension));
+	border-radius: 0.2rem;
+	background: var(--color-accent);
+}
+.i-mini-rhombus {
+	height: var(--shape-dimension);
+	width: var(--shape-dimension);
+	border-radius: 0.2rem;
+	background: var(--color-accent);
+	transform: rotate(-45deg) skew(15deg, 15deg);
+}
+.i-mini-square {
+	height: var(--shape-dimension);
+	width: var(--shape-dimension);
+	border-radius: 0.2rem;
+	background: var(--color-accent);
+}
+
+
+
+/* File Module Icon */
+.i-file {
+	--corner-dimension: calc(var(--icon-height) / 3.5);
+	position: relative;
+	height: 100%;
+	width: var(--icon-file-width);
+	clip-path: polygon(
+		calc(100% - var(--corner-dimension) + var(--main-border)) 0,
+		100% calc(var(--corner-dimension) - var(--main-border)),
+		100% 100%,
+		0 100%,
+		0 0
+	);
+}
+
+.i-file-paper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+	padding-top: var(--shape-dimension);
+	border: var(--main-border) solid black;
+	border-radius: var(--input-radius);
+	background: var(--color-primary);
+	box-sizing: border-box;
+}
+
+.i-file-corner {
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: var(--corner-dimension);
+	width: var(--corner-dimension);
+	border: var(--main-border) solid black;
+	background: var(--color-primary);
+	border-bottom-left-radius: var(--input-radius);
+	box-sizing: border-box;
+}
+
+.i-file-corner-border {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 0;
+	height: 0;
+	border-top: calc(var(--corner-dimension) + 0.414 * var(--main-border)) solid black;
+	border-left: calc(var(--corner-dimension) + 0.414 * var(--main-border)) solid transparent;
+}
+
+
+
+/* Four Function Module Icon */
+.i-four-function {
+	--spacing: 0.2rem;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+	height: 100%;
+	width: var(--icon-file-width);
+	grid-gap: var(--spacing);
+	padding: var(--spacing);
+	border: var(--main-border) solid black;
+	border-radius: var(--input-radius);
+	background: var(--color-primary);
+	box-sizing: border-box;
+}
+
+.i-four-function div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 0.85rem;
+	line-height: 0;
+	border: var(--main-border) solid black;
+	border-radius: calc(var(--input-radius) * 0.7);
+	box-sizing: border-box;
+}
+
+.i-four-function-screen {grid-column: span 2;}

@@ -1,81 +1,81 @@
-// Initialization
-$(document).ready(function() {
-	var initialEquation = $('.tab').eq(0).attr('for');
-	$('.' + initialEquation).css('display', 'block');
+// Math config
+math.config = {
+	number: 'BigNumber',
+	precision: 64,
+	angles: 'deg'
+}
 
-	var initialGiven = $('.card-middle').eq(0).attr('class').split(' ')[1];
-	$('.' + initialGiven).css('display', 'block');
 
-	$('.char').each(function() {
-		var char = $(this).html();
-		if (char.indexOf('1') > 0 || char.indexOf('2') > 0) {
-			var origChar = char.substr(0, 1);
-			var origNum = char.substr(char.length - 1);
-			var subNum = '<sub>' + origNum + '</sub>';
-			$(this).html(origChar + subNum);
-		}
-	});
+
+/* Window drag functionality */
+$('.window').draggable({
+	containment: 'parent',
+	handle: '.window-bar'
 });
 
 
 
-// On tab change
-$('input[name="tabulation"]').change(function() {
-	$('.equation').hide();
-	var chosenEquation = $(this).attr('id');
-	$('.' + chosenEquation).css('display', 'block');
+// Plugin for making window move on top of all other windows on click
+$.fn.maxZ = function() {
+	var epoch = Date.now().toString().slice(3);
+	$(this).css('z-index', epoch);
+}
 
-	$('.card-middle').hide();
-	var initialGiven = $('.' + chosenEquation).find('.card-middle').eq(0).attr('class').split(' ')[1];
-	$('.' + initialGiven).css('display', 'block');
+$('.window').mousedown(function() {
+	$(this).maxZ();
+});
 
-	var chosenGiven = $('.' + chosenEquation).find('.given-option').eq(0).html();
-	$(this).parent().parent().find('.given-current').html(chosenGiven);
+
+
+// Toggle windows on module click
+$('.desktop-module').click(function() {
+	$(this).find('.i-folder').toggleClass('open');
+	var shape = $(this).attr('data-shape');
+	$('.folder[data-shape="' + shape + '"]').toggleClass('show').maxZ();
+});
+
+$('.app-module').click(function() {
+	var shape = $(this).closest('.folder').attr('data-shape');
+	var variable = $(this).attr('data-variable');
+	$('.calculator[data-shape="' + shape + '"][data-variable="' + variable + '"]').toggleClass('show').maxZ();
+});
+
+
+
+// Close window on clicking close button
+$('.close-btn').click(function() {
+	var window = $(this).closest('.window');
+	window.removeClass('show');
+	window.css({
+		'top': '',
+		'left': ''
+	});
+
+	// If closing folder, animate folder icon closing
+	if (window.is('.folder')) {
+		var shape = window.attr('data-shape');
+		$('.desktop-module[data-shape="' + shape + '"]').find('.open').removeClass('open');
+	}
 });
 
 
 
 // Given functionality
-$('.given-select').click(() => $('.given-dropdown').toggle());
+$('.given-select').click(function() {
+	$(this).closest('.given').find('.given-dropdown').toggle();
+});
 
 $('.given-option').click(function() {
-	var chosenGiven = $(this).html();
-	$(this).parent().parent().find('.given-current').html(chosenGiven);
-	$('.given-dropdown').hide();
-	$('.card-middle').hide();
-	$('.given-' + chosenGiven.replaceAll(' ', '-')).css('display', 'block');
+	var terminology = $(this).html();
+	var terminologySlug = $(this).attr('data-given');
+	$(this).closest('.given').find('.given-current').html(terminology);
+	$(this).closest('.given').find('.given-dropdown').hide();
+	$(this).closest('.window').find('.calculation-content').hide();
+	$(this).closest('.window').find('.calculation-content[data-given=' + terminologySlug + ']').show();
 });
 
 $(document).click(function(e) {
 	if (!$(e.target).closest('.given').length) $('.given-dropdown').hide();
-});
-
-
-
-// Highlight variable on text-box focus
-$('.field, .result').focus(function() {
-	var char = $(this).parent().parent().find('.char').html();
-	if (/[0-9]/.test(char)) {
-		var subChar = char.substr(0, 1);
-		var subNum = char.replace(/[^0-9]/g, '');
-		var mSubSup = $('.msubsup:contains(' + subChar + subNum + '):visible');
-		mSubSup.each(function() {
-			if ($(this).is(':has(.msubsup)')) $(this).find('*').css('color', 'black');
-			else $(this).find('*').css('color', 'var(--accent)');
-		});
-		$('g:contains(' + subChar + subNum + ')').addClass('selected');
-	}
-	else {
-		$('.mi:contains(' + char + '):visible').css('color', 'var(--accent)');
-		$('.mo:contains(' + char + '):visible').css('color', 'var(--accent)');
-		$('g:contains(' + char + ')').addClass('selected');
-	}
-	var trig = ['sin', 'cos', 'tan', 'csc', 'sec', 'cot'];
-	$.each(trig, (index, val) => $('.mi:contains(' + val + ')').css('color', 'black'));
-});
-$('.field, .result').focusout(function() {
-	$('.mi, .mo, .mn').css('color', 'black');
-	$('g').removeClass('selected');
 });
 
 
@@ -96,48 +96,62 @@ $('.result').keydown(function(e) {
 
 
 
-// Clear values
-$('.clear').click(function() {
-	$('.field').val('');
-	$('.result').val('');
-});
-
-
-
-// Math config
-math.config = {
-	number: 'BigNumber',
-	precision: 64,
-	angles: 'deg'
-}
-
-
-
-// Copy result click
-$('.copy').click(function() {
-	if ($('.result:visible').val().length > 0) {
-		var copyInput = $('<input>');
-		$('body').append(copyInput);
-		copyInput.val($('.result:visible').val()).select();
-		document.execCommand('copy');
-		copyInput.remove();
-
-		$('.copy svg').attr('class', 'fas fa-check');
-		setTimeout(() => $('.copy svg').attr('class', 'far fa-copy'), 700);
+// Increase/decrease decimal places
+$('.setter').click(function() {
+	var place = $(this).siblings('.current-places');
+	if ($(this).is('.dec')) {
+		if (place.html() > 0)
+			place.html(parseInt(place.html()) - 1);
+	} else {
+		if (place.html() < 10)
+			place.html(parseInt(place.html()) + 1);
 	}
 });
 
 
 
-// Increase/decrease custom stepper
-$('.dec').click(function() {
-	if ($('.decimal-current').html() > 0) $('.decimal-current').html(parseInt($('.decimal-current').html()) - 1);
+// Copy result
+$('.copy').click(function() {
+	var calcContent = $(this).closest('.calculator').find('.calculation-content:visible');
+
+	var copyInput = $('<input>');
+	$('body').append(copyInput);
+	var relativeInput = calcContent.find('.result').val();
+	copyInput.val(relativeInput).select();
+	document.execCommand('copy');
+	copyInput.remove();
+
+	$(this).find('svg').attr('class', 'fas fa-check');
+	setTimeout(() => $(this).find('svg').attr('class', 'far fa-copy'), 700);
 });
-$('.inc').click(function() {
-	if ($('.decimal-current').html() < 10) $('.decimal-current').html(parseInt($('.decimal-current').html()) + 1);
+
+
+
+// Highlight variable on text-box focus
+$('.field').focusin(function() {
+	var calcContent = $(this).closest('.calculator').find('.calculation-content:visible');
+	var char = $(this).closest('.variable-row').find('.char').find('script').html().replace(/[^a-z A-Z 0-9]+/g, '');
+
+	// If char has subscript
+	if (/\d/.test(char)) {
+		// If superscript char contains an exponent
+		if (calcContent.find('.msubsup:contains(' + char + ')').find('.msubsup').length !== 0)
+			calcContent.find('.msubsup:contains(' + char + '):first-child').addClass('selected-char');
+		else calcContent.find('.msubsup:contains(' + char + ')').addClass('selected-char');
+	}
+	else calcContent.find('.mi:contains(' + char + ')').addClass('selected-char');
+});
+
+$('.field').focusout(function() {
+	$('*').removeClass('selected-char');
+	$('g').removeClass('selected-shape');
 });
 
 
 
-// If error when calculating
-window.onerror = () => $('.result:visible').val('Hmm...');
+// Clear values
+$('.clear').click(function() {
+	var calcContent = $(this).closest('.calculator').find('.calculation-content:visible');
+	calcContent.find('.field').val('');
+	calcContent.find('.copy').hide();
+});
