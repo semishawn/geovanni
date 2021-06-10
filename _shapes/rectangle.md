@@ -15,10 +15,40 @@ equations: [
 				formula: 'l * w'
 			},
 			{
-				terminology: 'perimeter',
-				variables: [{char: 'P', name: 'perimeter'}],
-				mathjax: 'A=\frac{P^2}{4}',
-				formula: 'P^2 / 4'
+				terminology: 'length and diagonal',
+				variables: [
+					{char: 'l', name: 'length'},
+					{char: 'd', name: 'diagonal'}
+				],
+				mathjax: 'A=l\sqrt{d^2-l^2}',
+				formula: 'l * sqrt(d^2 - l^2)'
+			},
+			{
+				terminology: 'width and diagonal',
+				variables: [
+					{char: 'w', name: 'width'},
+					{char: 'd', name: 'diagonal'}
+				],
+				mathjax: 'A=w\sqrt{d^2-w^2}',
+				formula: 'w * sqrt(d^2 - w^2)'
+			},
+			{
+				terminology: 'length and perimeter',
+				variables: [
+					{char: 'l', name: 'length'},
+					{char: 'P', name: 'perimeter'}
+				],
+				mathjax: 'A=\frac{Pl-2l^2}{2}',
+				formula: '((P * l) - (2 * l^2)) / 2'
+			},
+			{
+				terminology: 'width and perimeter',
+				variables: [
+					{char: 'w', name: 'width'},
+					{char: 'P', name: 'perimeter'}
+				],
+				mathjax: 'A=\frac{Pw-2w^2}{2}',
+				formula: '((P * w) - (2 * w^2)) / 2'
 			}
 		]
 	},

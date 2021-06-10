@@ -8,8 +8,8 @@ equations: [
 			{
 				terminology: 'two diagonals',
 				variables: [
-					{char: 'd_1', name: 'diagonal'},
-					{char: 'd_2', name: 'diagonal'}
+					{char: 'd_1', name: 'diagonal 1'},
+					{char: 'd_2', name: 'diagonal 2'}
 				],
 				mathjax: 'A=\frac{d_1 d_2}{2}',
 				formula: '(d1 * d2) / 2'
@@ -55,16 +55,16 @@ equations: [
 		]
 	},
 	{
-		solveFor: {char: 'd_2', name: 'diagonal'},
+		solveFor: {char: 'd_1', name: 'diagonal 1'},
 		givens: [
 			{
-				terminology: 'side and one diagonal',
+				terminology: 'side and diagonal',
 				variables: [
 					{char: 's', name: 'side'},
-					{char: 'd_1', name: 'diagonal'},
+					{char: 'd_2', name: 'diagonal 2'},
 				],
-				mathjax: 'd_2=\sqrt{4s^2-{d_1}^2}',
-				formula: 'sqrt((4 * s^2) - d1^2)'
+				mathjax: 'd_1=\sqrt{4s^2-{d_2}^2}',
+				formula: 'sqrt((4 * s^2) - d2^2)'
 			}
 		]
 	}

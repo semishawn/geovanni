@@ -9,238 +9,358 @@
 </head>
 
 <body>
-	<div class="desktop">
-		<div class="desktop-modules-container">
-			{%- for shape in site.shapes %}
-			<div class="module desktop-module" data-shape="{{ shape.shape }}">
-				<div class="module-icon-container">
-					<div class="module-icon i-folder">
-						<div class="i-folder-tab"></div>
-						<div class="i-folder-inside"></div>
-						<div class="i-folder-front">
-							<div class="i-mini-shape i-mini-{{ shape.shape }}"></div>
-						</div>
+	<div class="startup">
+		<div class="startup-window">
+			<div class="startup-border">
+				<img class="startup-logo" src="img/logo.svg">
+				<span class="startup-title">Geovanni</span>
+				<div class="startup-bar">
+					<div class="startup-bar-fill">
+						<div class="startup-bar-barberpole"></div>
 					</div>
 				</div>
-				<span class="module-label">{{ shape.shape }} Calculators</span>
-			</div>
-			{%- endfor %}
-
-			<div class="module-spacer"></div>
-
-			<div class="module four-function-module">
-				<div class="module-icon-container">
-					<div class="module-icon i-four-function">
-						<div class="i-four-function-screen">80085</div>
-						<div>+</div>
-						<div>-</div>
-						<div>×</div>
-						<div>÷</div>
-					</div>
-				</div>
-				<span class="module-label">Basic Calculator</span>
-			</div>
-		</div>
-
-
-
-		{%- for shape in site.shapes %}
-		<div class="window folder" data-shape="{{ shape.shape }}">
-			<div class="window-bar">
-				<div class="control-buttons-container">
-					<span class="close-btn">
-						<span class="close-peg"></span>
-						<span class="close-peg"></span>
-					</span>
-					<span class="window-title">{{ shape.shape }} Calculators</span>
-				</div>
-			</div>
-			<div class="folder-body">
-				{%- for equation in shape.equations %}
-				<div class="module app-module" data-variable="{{ equation.solveFor.name }}">
-					<div class="module-icon-container">
-						<div class="module-icon i-file">
-							<div class="i-file-paper">
-								<div class="i-mini-shape i-mini-{{ shape.shape }}"></div>
-							</div>
-							<div class="i-file-corner"></div>
-							<div class="i-file-corner-border"></div>
-						</div>
-					</div>
-					<span class="module-label">{{ equation.solveFor.name }}</span>
-				</div>
-				{%- endfor %}
-			</div>
-		</div>
-		{%- endfor %}
-
-
-
-		{%- for shape in site.shapes %}
-		{%- for equation in shape.equations %}
-		<div class="window calculator" data-shape="{{ shape.shape }}" data-variable="{{ equation.solveFor.name }}">
-			<div class="window-bar">
-				<div class="control-buttons-container">
-					<span class="close-btn">
-						<span class="close-peg"></span>
-						<span class="close-peg"></span>
-					</span>
-					<span class="window-title">{{ shape.shape }} ~ {{ equation.solveFor.name }}</span>
-				</div>
-			</div>
-			<div class="calculator-body">
-				<div class="given">
-					<span class="given-label">Given:</span>
-					<div class="given-select">
-						<i class="fas fa-sort-down"></i>
-						{%- for given in equation.givens limit:1 %}
-						<span class="given-current">{{ given.terminology }}</span>
-						{%- endfor %}
-					</div>
-					<div class="given-dropdown">
-						{%- for given in equation.givens %}
-						{% assign given_slug = given.terminology | slugify | replace:"-","_" | remove:"(" | replace:")" %}
-						<div class="given-option" data-given="{{ given_slug }}">{{ given.terminology }}</div>
-						{%- endfor %}
-					</div>
-				</div>
-
-				{%- for given in equation.givens %}
-				{% assign given_slug = given.terminology | slugify | replace:"-","_" | remove:"(" | replace:")" %}
-
-				<div class="calculation-content"
-					data-given="{{ given_slug }}"
-					{%- if forloop.first %}
-					style="display: block;"
-					{%- endif %}
-				>
-					<div class="formula-container">
-						{%- if given.specialVariable %}
-						<div class="formula">$${{ given.specialVariable.mathjax }}$$</div>
-						{%- endif %}
-						<div class="formula">$${{ given.mathjax }}$$</div>
-					</div>
-
-					<div class="shape-data">
-						<div class="variable-container">
-							{%- for variable in given.variables %}
-							<div class="variable-row">
-								<div class="char">$${{ variable.char }}=$$</div>
-								<input class="field" type="text" placeholder="{{ variable.name | capitalize }}" autocomplete="off">
-							</div>
-							{%- endfor %}
-
-							<div class="decimal-row">
-								Decimal Places
-								<div class="setter-container">
-									<button class="setter dec"><i class="fas fa-minus"></i></button>
-									<span class="current-places">2</span>
-									<button class="setter inc"><i class="fas fa-plus"></i></button>
-								</div>
-							</div>
-
-							<div class="variable-row">
-								<div class="char">$${{ equation.solveFor.char }}=$$</div>
-								<div class="result-wrap">
-									<input class="field result" type="text" placeholder="{{ equation.solveFor.name | capitalize }}" autocomplete="off">
-									<button class="copy"><i class="far fa-copy"></i></button>
-								</div>
-							</div>
-						</div>
-						<object class="shape-vector" data="img/diagrams/{{ shape.shape }}.svg"></object>
-					</div>
-
-					<div class="btn-container">
-						<button class="btn calculate" id="{{ shape.shape }}_{{ equation.solveFor.name }}_given_{{ given_slug }}"><i class="fas fa-calculator"></i>Calculate</button>
-						<button class="btn clear"><i class="fas fa-trash"></i>Clear values</button>
-					</div>
-
-					<script>
-						$('#{{ shape.shape }}_{{ equation.solveFor.name }}_given_{{ given_slug }}').click(function() {
-							var calcContent = $(this).closest('.calculator').find('.calculation-content:visible');
-
-							let {% if given.specialVariable %}preScope{% else %}scope{% endif %} = {
-								{%- assign count = -1 -%}
-								{%- for variable in given.variables %}
-								{{ variable.char }}: math.bignumber(calcContent.find('.field:visible').eq({% assign count = count | plus:1 %}{{ count }}).val()),
-								{%- endfor %}
-							}
-							{%- if given.specialVariable %}
-							let scope = {
-								{%- assign count = -1 -%}
-								{%- for variable in given.variables %}
-								{{ variable.char }}: math.bignumber(calcContent.find('.field:visible').eq({% assign count = count | plus:1 %}{{ count }}).val()),
-								{%- endfor %}
-								{%- if given.specialVariable %}
-								{{ given.specialVariable.char }}: math.evaluate('{{ given.specialVariable.formula }}', preScope)
-								{%- endif %}
-							}
-							{%- endif %}
-
-							var result = math.evaluate('{{ given.formula }}', scope);
-							var precision = calcContent.find('.current-places').html();
-							if (result.toString().indexOf('e') > 0) result = result.toPrecision(1 + parseInt(precision));
-							else result = math.round(result, precision);
-							calcContent.find('.result').val(result);
-							calcContent.find('.copy').show();
-						});
-					</script>
-				</div>
-				{%- endfor %}
-			</div>
-		</div>
-		{%- endfor %}
-		{%- endfor %}
-
-
-
-		<div class="window four-function">
-			<div class="window-bar">
-				<div class="control-buttons-container">
-					<span class="close-btn">
-						<span class="close-peg"></span>
-						<span class="close-peg"></span>
-					</span>
-					<span class="window-title">Basic Calculator</span>
-				</div>
-			</div>
-			<div class="four-function-body">
-				<input class="four-function-result" type="text" value="0">
-				<button class="four-function-key" style="grid-column-end: span 2;" data-action="clear">Clear</button>
-				<button class="four-function-key" data-action="delete"><i class="fas fa-backspace"></i></button>
-				<button class="four-function-key four-function-operator">÷</button>
-				<button class="four-function-key">7</button>
-				<button class="four-function-key">8</button>
-				<button class="four-function-key">9</button>
-				<button class="four-function-key four-function-operator">×</button>
-				<button class="four-function-key">4</button>
-				<button class="four-function-key">5</button>
-				<button class="four-function-key">6</button>
-				<button class="four-function-key four-function-operator">-</button>
-				<button class="four-function-key">1</button>
-				<button class="four-function-key">2</button>
-				<button class="four-function-key">3</button>
-				<button class="four-function-key four-function-operator" style="grid-row-end: span 2;">+</button>
-				<button class="four-function-key">0</button>
-				<button class="four-function-key">.</button>
-				<button class="four-function-key" data-action="equals">=</button>
 			</div>
 		</div>
 	</div>
 
 
 
-	<div class="taskbar"></div>
+	<div class="desktop-modules-container">
+		{%- for shape in site.shapes %}
+		<div class="module folder-module" data-shape="{{ shape.shape }}">
+			<div class="module-icon-container">
+				<div class="module-icon i-folder">
+					<div class="i-folder-tab"></div>
+					<div class="i-folder-inside"></div>
+					<div class="i-folder-front">
+						<div class="i-mini-shape i-mini-{{ shape.shape }}"></div>
+					</div>
+				</div>
+			</div>
+			<span class="module-label">{{ shape.shape }} Calculators</span>
+		</div>
+		{%- endfor %}
+
+		<div class="module-spacer"></div>
+
+		<div class="module four-function-module">
+			<div class="module-icon-container">
+				<div class="module-icon i-four-function">
+					<div class="i-four-function-screen">80085</div>
+					<div>+</div>
+					<div>-</div>
+					<div>×</div>
+					<div>÷</div>
+				</div>
+			</div>
+			<span class="module-label">Basic Calculator</span>
+		</div>
+
+		<div class="module guide-module">
+			<div class="module-icon-container">
+				<div class="module-icon i-info">?</div>
+			</div>
+			<span class="module-label">Geovanni Guide</span>
+		</div>
+	</div>
+
+
+
+	{%- for shape in site.shapes %}
+	<div class="window folder" data-shape="{{ shape.shape }}">
+
+		<div class="window-head">
+			<div class="window-title-bar">
+				<div class="close-btn">
+					<div class="close-peg"></div>
+					<div class="close-peg"></div>
+				</div>
+				<span class="window-title">{{ shape.shape }} Calculators</span>
+			</div>
+		</div>
+
+		<div class="folder-body">
+			<div class="module ubercalc-module">
+				<div class="module-icon-container">
+					<div class="module-icon i-atom">
+						<div class="i-atom-ring"></div>
+						<div class="i-atom-ring"></div>
+						<div class="i-atom-ring"></div>
+						<div class="i-atom-ring"></div>
+						<div class="i-atom-ring"></div>
+						<div class="i-atom-ring"></div>
+						<div class="i-atom-nucleus"></div>
+					</div>
+				</div>
+				<span class="module-label">ÜberCalc</span>
+			</div>
+
+			{%- for equation in shape.equations %}
+			<div class="module calc-module" data-variable="{{ equation.solveFor.name }}">
+				<div class="module-icon-container">
+					<div class="module-icon i-file">
+						<div class="i-file-paper">
+							<div class="i-mini-shape i-mini-{{ shape.shape }}"></div>
+						</div>
+						<div class="i-file-corner"></div>
+						<div class="i-file-corner-border"></div>
+					</div>
+				</div>
+				<span class="module-label">{{ equation.solveFor.name }}</span>
+			</div>
+			{%- endfor %}
+		</div>
+	</div>
+	{%- endfor %}
+
+
+
+	{%- for shape in site.shapes %}
+	{%- for equation in shape.equations %}
+	<div class="window varcalc" data-shape="{{ shape.shape }}" data-variable="{{ equation.solveFor.name }}">
+
+		<div class="window-head">
+			<div class="window-title-bar">
+				<div class="close-btn">
+					<div class="close-peg"></div>
+					<div class="close-peg"></div>
+				</div>
+				<span class="window-title">{{ shape.shape }} ~ {{ equation.solveFor.name }}</span>
+			</div>
+		</div>
+
+		<div class="calc-body">
+			<div class="given">
+				{%- if equation.tooltip %}
+				<div class="given-info" tooltip="{{ equation.tooltip }}" flow="bottom">
+					<i class="fas fa-info-circle"></i>
+				</div>
+				{%- endif %}
+
+				<span class="given-label">Given:</span>
+				<div class="btn given-select">
+					<i class="fas fa-sort-down"></i>
+					{%- for given in equation.givens limit:1 %}
+					<span class="given-current">{{ given.terminology }}</span>
+					{%- endfor %}
+				</div>
+				<div class="given-dropdown">
+					{%- for given in equation.givens %}
+					{% assign given_slug = given.terminology | slugify | replace:"-","_" | remove:"(" | replace:")" %}
+					<div class="given-option" data-given="{{ given_slug }}">{{ given.terminology }}</div>
+					{%- endfor %}
+				</div>
+			</div>
+
+			{%- for given in equation.givens %}
+			{% assign given_slug = given.terminology | slugify | replace:"-","_" | remove:"(" | replace:")" %}
+
+			<div class="calc-content"
+				data-given="{{ given_slug }}"
+				{%- if forloop.first -%}
+				style="display: block;"
+				{%- endif -%}
+			>
+
+				<div class="formula-container">
+					{%- if given.specialVariable %}
+					<div class="formula">$${{ given.specialVariable.mathjax }}$$</div>
+					{%- endif %}
+					<div class="formula">$${{ given.mathjax }}$$</div>
+				</div>
+
+				<div class="shape-data">
+					<div class="variable-container">
+						{%- for variable in given.variables %}
+						<div class="variable-row">
+							<div class="char">$${{ variable.char }}=$$</div>
+							<input class="field" type="text" placeholder="{{ variable.name | capitalize }}" autocomplete="off">
+						</div>
+						{%- endfor %}
+
+						<div class="decimal-row">
+							Decimal Places
+							<div class="setter-container">
+								<button class="setter dec"><i class="fas fa-minus"></i></button>
+								<span class="current-places">2</span>
+								<button class="setter inc"><i class="fas fa-plus"></i></button>
+							</div>
+						</div>
+
+						<div class="variable-row">
+							<div class="char">$${{ equation.solveFor.char }}=$$</div>
+							<div class="result-wrap">
+								<input class="field result" type="text" placeholder="{{ equation.solveFor.name | capitalize }}" autocomplete="off">
+								<button class="copy"><i class="far fa-copy"></i></button>
+							</div>
+						</div>
+					</div>
+					<div class="shape-diagram"></div>
+				</div>
+
+				<div class="btn-container">
+					<button class="btn calculate" id="{{ shape.shape }}_{{ equation.solveFor.name }}_given_{{ given_slug }}"><i class="fas fa-calculator"></i>Calculate</button>
+					<button class="btn clear"><i class="fas fa-trash"></i>Clear values</button>
+				</div>
+
+				<script>
+					$('#{{ shape.shape }}_{{ equation.solveFor.name }}_given_{{ given_slug }}').click(function() {
+						var calcBody = $(this).closest('.calc-body');
+
+						let {% if given.specialVariable %}preScope{% else %}scope{% endif %} = {
+							{%- assign count = -1 -%}
+							{%- for variable in given.variables %}
+							{{ variable.char }}: math.bignumber(calcBody.find('.field:visible').eq({% assign count = count | plus:1 %}{{ count }}).val()),
+							{%- endfor %}
+						}
+						{%- if given.specialVariable %}
+						let scope = {
+							{%- assign count = -1 -%}
+							{%- for variable in given.variables %}
+							{{ variable.char }}: math.bignumber(calcBody.find('.field:visible').eq({% assign count = count | plus:1 %}{{ count }}).val()),
+							{%- endfor %}
+							{%- if given.specialVariable %}
+							{{ given.specialVariable.char }}: math.evaluate('{{ given.specialVariable.formula }}', preScope)
+							{%- endif %}
+						}
+						{%- endif %}
+
+						var result = math.evaluate('{{ given.formula }}', scope);
+						var precision = calcBody.find('.current-places').html();
+						var roundedResult = math.round(result, precision);
+						calcBody.find('.result').val(roundedResult);
+						calcBody.find('.copy').show();
+					});
+				</script>
+			</div>
+			{%- endfor %}
+		</div>
+	</div>
+	{%- endfor %}
+
+	<div class="window ubercalc" data-shape="{{ shape.shape }}">
+
+		<div class="window-head">
+			<div class="window-title-bar">
+				<div class="close-btn">
+					<div class="close-peg"></div>
+					<div class="close-peg"></div>
+				</div>
+				<span class="window-title">{{ shape.shape }} ~ ÜberCalc</span>
+			</div>
+		</div>
+
+		<div class="calc-body">
+			<div class="shape-data">
+				<div class="variable-container">
+					{%- for equation in shape.equations %}
+					<div class="variable-row">
+						<div class="char">$${{ equation.solveFor.char }}=$$</div>
+						<input class="field" type="text" placeholder="{{ equation.solveFor.name | capitalize }}" autocomplete="off">
+					</div>
+					{%- endfor %}
+
+					<div class="decimal-row">
+						Decimal Places
+						<div class="setter-container">
+							<button class="setter dec"><i class="fas fa-minus"></i></button>
+							<span class="current-places">2</span>
+							<button class="setter inc"><i class="fas fa-plus"></i></button>
+						</div>
+					</div>
+				</div>
+
+				<div class="shape-diagram"></div>
+			</div>
+
+			<div class="btn-container">
+				<button class="btn calculate"><i class="fas fa-calculator"></i>Calculate</button>
+				<button class="btn clear"><i class="fas fa-trash"></i>Clear values</button>
+			</div>
+		</div>
+	</div>
+	{%- endfor %}
+
+
+
+	<div class="window four-function">
+
+		<div class="window-head">
+			<div class="window-title-bar">
+				<div class="close-btn">
+					<div class="close-peg"></div>
+					<div class="close-peg"></div>
+				</div>
+				<span class="window-title">Basic Calculator</span>
+			</div>
+		</div>
+
+		<div class="four-function-body">
+			<input class="four-function-result" type="text">
+			<button class="four-function-key" style="grid-column-end: span 2;" data-action="clear">Clear</button>
+			<button class="four-function-key" data-action="delete"><i class="fas fa-backspace"></i></button>
+			<button class="four-function-key four-function-operator">÷</button>
+			<button class="four-function-key">7</button>
+			<button class="four-function-key">8</button>
+			<button class="four-function-key">9</button>
+			<button class="four-function-key four-function-operator">×</button>
+			<button class="four-function-key">4</button>
+			<button class="four-function-key">5</button>
+			<button class="four-function-key">6</button>
+			<button class="four-function-key four-function-operator">-</button>
+			<button class="four-function-key">1</button>
+			<button class="four-function-key">2</button>
+			<button class="four-function-key">3</button>
+			<button class="four-function-key four-function-operator" style="grid-row-end: span 2;">+</button>
+			<button class="four-function-key">0</button>
+			<button class="four-function-key">.</button>
+			<button class="four-function-key" data-action="equals">=</button>
+		</div>
+	</div>
+
+
+
+	<div class="window guide">
+
+		<div class="window-head">
+			<div class="window-title-bar">
+				<div class="close-btn">
+					<div class="close-peg"></div>
+					<div class="close-peg"></div>
+				</div>
+				<span class="window-title">Geovanni Guide</span>
+			</div>
+			<div class="window-tab-container">
+				<input type="radio" name="tab" id="tab-1" autocomplete="off" checked>
+				<label class="window-tab" for="tab-1">Introduction</label>
+
+				<input type="radio" name="tab" id="tab-2" autocomplete="off">
+				<label class="window-tab" for="tab-2">How To Use</label>
+
+				<input type="radio" name="tab" id="tab-3" autocomplete="off">
+				<label class="window-tab" for="tab-3">Precautions</label>
+			</div>
+		</div>
+
+		<div class="guide-body">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictum fusce ut placerat orci nulla pellentesque. Adipiscing at in tellus integer feugiat scelerisque. Et malesuada fames ac turpis egestas integer eget. Leo a diam sollicitudin tempor id eu nisl nunc. Fringilla urna porttitor rhoncus dolor purus non enim praesent elementum. Massa sed elementum tempus egestas. Duis tristique sollicitudin nibh sit amet. Elit pellentesque habitant morbi tristique. Habitant morbi tristique senectus et netus et malesuada fames. Elementum tempus egestas sed sed risus pretium quam. Facilisi cras fermentum odio eu feugiat pretium nibh. Ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum. Dolor morbi non arcu risus quis. Vivamus arcu felis bibendum ut tristique et. Volutpat lacus laoreet non curabitur gravida arcu ac. Viverra justo nec ultrices dui sapien eget mi proin. Pharetra vel turpis nunc eget lorem dolor sed viverra. Maecenas accumsan lacus vel facilisis volutpat est velit egestas dui. Ut tellus elementum sagittis vitae et leo duis ut. Vel quam elementum pulvinar etiam. Sit amet mauris commodo quis. Blandit massa enim nec dui nunc mattis enim. Donec enim diam vulputate ut pharetra sit amet aliquam id. Tortor at auctor urna nunc id cursus metus aliquam. Fames ac turpis egestas integer eget. Facilisis leo vel fringilla est ullamcorper eget nulla facilisi etiam. Vitae semper quis lectus nulla at. Lorem donec massa sapien faucibus et molestie ac. Viverra suspendisse potenti nullam ac. Quis auctor elit sed vulputate mi. Volutpat sed cras ornare arcu dui vivamus arcu felis. Augue interdum velit euismod in. Imperdiet massa tincidunt nunc pulvinar sapien et ligula ullamcorper malesuada. Tempus urna et pharetra pharetra massa massa ultricies mi quis. Duis convallis convallis tellus id interdum. Curabitur gravida arcu ac tortor dignissim convallis aenean et. Vitae congue mauris rhoncus aenean. Porttitor massa id neque aliquam vestibulum. Ullamcorper dignissim cras tincidunt lobortis feugiat. Lobortis scelerisque fermentum dui faucibus in ornare quam viverra. Egestas egestas fringilla phasellus faucibus scelerisque eleifend donec. Venenatis lectus magna fringilla urna porttitor. Sagittis id consectetur purus ut faucibus. Parturient montes nascetur ridiculus mus mauris. Sagittis nisl rhoncus mattis rhoncus. Enim nec dui nunc mattis enim ut. Congue mauris rhoncus aenean vel elit scelerisque mauris. Mauris rhoncus aenean vel elit scelerisque mauris. Quis imperdiet massa tincidunt nunc pulvinar sapien et ligula ullamcorper. Ut venenatis tellus in metus vulputate eu. Tempus iaculis urna id volutpat lacus. Sit amet volutpat consequat mauris nunc congue. Suspendisse sed nisi lacus sed viverra. Ac turpis egestas maecenas pharetra. Lacus laoreet non curabitur gravida arcu ac tortor. Nec sagittis aliquam malesuada bibendum arcu vitae elementum. In vitae turpis massa sed elementum tempus. Diam maecenas sed enim ut sem viverra aliquet eget. Convallis posuere morbi leo urna molestie. At imperdiet dui accumsan sit amet nulla. Orci sagittis eu volutpat odio facilisis mauris sit amet. Leo integer malesuada nunc vel risus commodo. Pulvinar neque laoreet suspendisse interdum consectetur libero id. Vitae nunc sed velit dignissim sodales ut eu sem integer. Augue eget arcu dictum varius. Maecenas ultricies mi eget mauris. Felis bibendum ut tristique et egestas quis ipsum suspendisse ultrices. Neque viverra justo nec ultrices dui sapien eget. Sit amet risus nullam eget. Ut faucibus pulvinar elementum integer enim. Varius vel pharetra vel turpis nunc eget. Fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec. Montes nascetur ridiculus mus mauris vitae ultricies. Vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant. Tincidunt arcu non sodales neque sodales ut. Ac odio tempor orci dapibus ultrices in iaculis nunc.
+		</div>
+	</div>
 
 
 	
-	<!-- <script type="text/x-mathjax-config">
-		MathJax.Hub.Config({showMathMenu: false});
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			messageStyle: 'none',
+			showMathMenu: false
+		});
 		MathJax.Hub.Queue(function() {
 			$('.formula-container').show();
 		});
-	</script> -->
-	<script src="{{ site.baseurl }}/js/main.js"></script>
+	</script>
+	<script src="{{ site.baseurl }}/js/initialize.js"></script>
+	<script src="{{ site.baseurl }}/js/varcalc.js"></script>
+	<script src="{{ site.baseurl }}/js/ubercalc.js"></script>
 	<script src="{{ site.baseurl }}/js/four-function.js"></script>
 </body>
 

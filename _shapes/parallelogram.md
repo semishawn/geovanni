@@ -43,6 +43,34 @@ equations: [
 				formula: 'A / b'
 			}
 		]
+	},
+	{
+		solveFor: {char: 'P', name: 'perimeter'},
+		givens: [
+			{
+				terminology: 'base and side',
+				variables: [
+					{char: 'b', name: 'base'},
+					{char: 'a', name: 'side'}
+				],
+				mathjax: 'P=2b+2a',
+				formula: '(2 * b) + (2 * a)'
+			}
+		]
+	},
+	{
+		solveFor: {char: 'a', name: 'side'},
+		givens: [
+			{
+				terminology: 'base and perimeter',
+				variables: [
+					{char: 'b', name: 'base'},
+					{char: 'P', name: 'perimeter'}
+				],
+				mathjax: 'a=\frac{P}{2}-b',
+				formula: '(P / 2) - b'
+			}
+		]
 	}
 ]
 ---

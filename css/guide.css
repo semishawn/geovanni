@@ -1,0 +1,73 @@
+.guide {
+	--guide-padding: 2rem;
+	--scroll-width: 2rem;
+	width: 45rem;
+}
+
+.guide-body {
+	height: 30rem;
+	padding: 2rem;
+	padding-right: calc(var(--guide-padding) + var(--scroll-width));
+	box-sizing: border-box;
+}
+
+.simplebar-track {
+	width: var(--scroll-width) !important;
+	border-left: var(--main-border) solid black;
+	background: var(--color-primary1);
+	box-sizing: border-box;
+}
+.simplebar-scrollbar:before {
+	--margin: 0.2rem;
+	top: var(--margin) !important;
+	bottom: var(--margin) !important;
+	left: var(--margin) !important;
+	right: var(--margin) !important;
+	opacity: 1 !important;
+	border: var(--main-border) solid black;
+	border-radius: 999rem;
+	background: var(--color-primary1);
+	box-sizing: border-box;
+}
+
+
+
+/* Tabs */
+.window-title {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-transform: capitalize;
+}
+
+.window-tab-container {
+	display: flex;
+	justify-content: center;
+	padding: 0 calc(2 * var(--input-height));
+	transform: translateY(var(--main-border));
+	box-sizing: border-box;
+}
+
+.window-tab {
+	--radius: calc((var(--main-radius) + var(--input-radius)) / 2);
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: var(--input-height);
+	border: var(--main-border) solid black;
+	border-top-left-radius: var(--radius);
+	border-top-right-radius: var(--radius);
+	padding-top: var(--main-border);
+	background: var(--color-accent1);
+	cursor: pointer;
+	box-sizing: border-box;
+}
+input:checked + .window-tab {
+	border-bottom: 0;
+	padding: 0;
+	background: var(--color-primary1);
+}
+
+.window-tab:not(:first-of-type) {margin-left: calc(-1 * var(--main-border));}

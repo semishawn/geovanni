@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/mathjs@8.0.1/lib/browser/math.min.js"></script>
+</head>
+
+<body>
+	<script>
+		math.config({
+			number: 'BigNumber',
+			precision: 64,
+			angles: 'deg'
+		});
+
+		math.import({
+			ellipticInt: function (n) {
+				var n2 = math.square(math.bignumber(n));
+
+				var a0 = math.bignumber(1);
+				var g0 = math.sqrt(math.subtract(math.bignumber(1), n2));
+
+				var an = a0;
+				var gn = g0;
+
+				var twoPow = math.bignumber(0.25);
+				var partialSum = math.subtract(math.bignumber(1), math.divide(n2, math.bignumber(2)));
+
+				var iter = 0;
+
+				do {
+					partialSum = math.subtract(partialSum, math.multiply(twoPow, math.square(math.subtract(an, gn))));
+					twoPow = math.multiply(twoPow, math.bignumber(2));
+
+					a0 = math.divide(math.add(an, gn), math.bignumber(2));
+					g0 = math.sqrt(math.multiply(an, gn));
+
+					an = a0;
+					gn = g0;
+
+					iter++;
+				}
+				while (math.larger(math.abs(math.subtract(an, gn)), math.bignumber(1e-15)));
+
+				return math.divide(math.multiply(math.pi, math.divide(partialSum, an)), math.bignumber(2));
+			}
+		});
+
+		let preScope = {
+			a: math.bignumber(3),
+			b: math.bignumber(2)
+		}
+
+		let scope = {
+			a: math.bignumber(3),
+			b: math.bignumber(2),
+			e: math.evaluate('sqrt(1 - b^2 / a^2)', preScope)
+		}
+
+		var result = math.evaluate('4 * a * ellipticInt(e)', scope);
+
+		console.log(result.toString());
+	</script>
+</body>
+
+</html>

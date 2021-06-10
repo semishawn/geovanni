@@ -20,6 +20,20 @@ equations: [
 		solveFor: {char: 'C', name: 'circumference'},
 		givens: [
 			{
+				terminology: 'major and minor axis (Complete elliptic integral)',
+				variables: [
+					{char: 'a', name: 'major axis'},
+					{char: 'b', name: 'minor axis'}
+				],
+				specialVariable: {
+					char: 'e',
+					mathjax: 'e=\sqrt{1-\frac{b^2}{a^2}}',
+					formula: 'sqrt(1 - (b^2 / a^2))'
+				},
+				mathjax: 'C=4a\int_0^\frac{\pi}{2} \sqrt{1-e^2 sin^{2}\theta} d\theta',
+				formula: '4 * a * ellipticInt(e)'
+			},
+			{
 				terminology: 'major and minor axis (Ramanujan approximation)',
 				variables: [
 					{char: 'a', name: 'major axis'},
@@ -32,22 +46,9 @@ equations: [
 				},
 				mathjax: 'C=\pi(a+b)\left(1+\frac{3h}{10+\sqrt{4-3h}}\right)',
 				formula: 'pi * (a + b) * (1 + (3 * h) / (10 + sqrt(4 - (3 * h))))'
-			},
-			{
-				terminology: 'major and minor axis (Gauss-Kummer sum)',
-				variables: [
-					{char: 'a', name: 'major axis'},
-					{char: 'b', name: 'minor axis'}
-				],
-				specialVariable: {
-					char: 'h',
-					mathjax: 'h=\left(\frac{a-b}{a+b}\right)^2',
-					formula: '((a - b) / (a + b))^2'
-				},
-				mathjax: 'C=\sum_{n=0}^{\infty} {\frac{1}{2} \choose n}^2 h^{2n}',
-				formula: 'pi * (a + b) * ()'
-			},
-		]
+			}
+		],
+		tooltip: "An ellipse's circumference cannot be exactly determined with a standard algebraic formula. Both methods are accurate to the maximum 10 digits. For elliptic integral, a > b must be true."
 	},
 	{
 		solveFor: {char: 'a', name: 'major axis'},

@@ -20,6 +20,7 @@
 	justify-content: center;
 	align-items: center;
 	height: var(--icon-height);
+	width: var(--icon-height);
 	margin-bottom: 0.6rem;
 }
 
@@ -69,7 +70,7 @@
 	width: 100%;
 	border: var(--main-border) solid black;
 	border-radius: var(--input-radius);
-	background: var(--color-primary);
+	background: var(--color-primary1);
 	transform-origin: bottom left;
 	box-sizing: border-box;
 }
@@ -84,45 +85,45 @@
 	width: 0;
 	border-right: calc(var(--shape-dimension) / 2) solid transparent;
 	border-left: calc(var(--shape-dimension) / 2) solid transparent;
-	border-bottom: calc(var(--shape-dimension) / 2 * var(--height-coef)) solid var(--color-accent);
+	border-bottom: calc(var(--shape-dimension) / 2 * var(--height-coef)) solid var(--color-accent1);
 }
 .i-mini-circle {
 	height: var(--shape-dimension);
 	width: var(--shape-dimension);
 	border-radius: 50%;
-	background: var(--color-accent);
+	background: var(--color-accent1);
 }
 .i-mini-ellipse {
 	height: var(--shape-dimension);
 	width: calc(1.4 * var(--shape-dimension));
 	border-radius: 50%;
-	background: var(--color-accent);
+	background: var(--color-accent1);
 }
 .i-mini-parallelogram {
 	height: var(--shape-dimension);
 	width: calc(1.3 * var(--shape-dimension));
 	border-radius: 0.2rem;
-	background: var(--color-accent);
+	background: var(--color-accent1);
 	transform: skewX(-20deg);
 }
 .i-mini-rectangle {
 	height: var(--shape-dimension);
 	width: calc(1.4 * var(--shape-dimension));
 	border-radius: 0.2rem;
-	background: var(--color-accent);
+	background: var(--color-accent1);
 }
 .i-mini-rhombus {
 	height: var(--shape-dimension);
 	width: var(--shape-dimension);
 	border-radius: 0.2rem;
-	background: var(--color-accent);
+	background: var(--color-accent1);
 	transform: rotate(-45deg) skew(15deg, 15deg);
 }
 .i-mini-square {
 	height: var(--shape-dimension);
 	width: var(--shape-dimension);
 	border-radius: 0.2rem;
-	background: var(--color-accent);
+	background: var(--color-accent1);
 }
 
 
@@ -151,7 +152,7 @@
 	padding-top: var(--shape-dimension);
 	border: var(--main-border) solid black;
 	border-radius: var(--input-radius);
-	background: var(--color-primary);
+	background: var(--color-primary1);
 	box-sizing: border-box;
 }
 
@@ -162,7 +163,7 @@
 	height: var(--corner-dimension);
 	width: var(--corner-dimension);
 	border: var(--main-border) solid black;
-	background: var(--color-primary);
+	background: var(--color-primary1);
 	border-bottom-left-radius: var(--input-radius);
 	box-sizing: border-box;
 }
@@ -191,7 +192,7 @@
 	padding: var(--spacing);
 	border: var(--main-border) solid black;
 	border-radius: var(--input-radius);
-	background: var(--color-primary);
+	background: var(--color-primary1);
 	box-sizing: border-box;
 }
 
@@ -202,8 +203,87 @@
 	font-size: 0.85rem;
 	line-height: 0;
 	border: var(--main-border) solid black;
-	border-radius: calc(var(--input-radius) * 0.7);
+	border-radius: calc(var(--input-radius) / 2);
 	box-sizing: border-box;
 }
 
 .i-four-function-screen {grid-column: span 2;}
+
+
+
+/* Atom Icon */
+.i-atom {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: var(--icon-height);
+	width: var(--icon-height);
+}
+
+.i-atom-nucleus {
+	--dimension: 20%;
+	position: absolute;
+	height: var(--dimension);
+	width: var(--dimension);
+	border-radius: 50%;
+	background: var(--color-accent1);
+}
+
+.i-atom-ring {
+	position: absolute;
+	height: 100%;
+	width: 45%;
+	border: var(--main-border) solid black;
+	border-radius: 100%;
+	box-sizing: border-box;
+}
+
+.i-atom-ring:nth-child(-n+3) {background: var(--color-primary1);}
+
+.i-atom-ring:nth-child(3n-1) {transform: rotate(60deg);}
+.i-atom-ring:nth-child(3n) {transform: rotate(120deg);}
+
+
+
+/* Info Icon */
+.guide-module {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	padding: inherit;
+}
+
+.i-info {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+	font-size: 4rem;
+	font-weight: 900;
+	border: var(--main-border) solid black;
+	border-radius: 50%;
+	background: var(--color-primary1);
+	box-sizing: border-box;
+}
+
+/* .i-info {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 6rem;
+	font-weight: 900;
+	box-sizing: border-box;
+}
+
+.i-info-border {
+	position: absolute;
+	-webkit-text-stroke-color: black;
+	-webkit-text-stroke-width: calc(2 * var(--main-border));
+}
+
+.i-info-fill {
+	position: absolute;
+	color: var(--color-primary1);
+} */
