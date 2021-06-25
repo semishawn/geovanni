@@ -1,9 +1,11 @@
 ---
 shape: circle
+order: 1
 
-equations: [
+properties: [
 	{
-		solveFor: {char: 'A', name: 'area'},
+		char: 'A',
+		name: 'area',
 		givens: [
 			{
 				terminology: 'radius',
@@ -19,14 +21,15 @@ equations: [
 			},
 			{
 				terminology: 'circumference',
-				variables: [{char: C, name: 'circumference'}],
+				variables: [{char: 'C', name: 'circumference'}],
 				mathjax: 'A=\frac{C^2}{4\pi}',
 				formula: '(C^2) / (4 * pi)'
 			}
 		]
 	},
 	{
-		solveFor: {char: 'C', name: 'circumference'},
+		char: 'C',
+		name: 'circumference',
 		givens: [
 			{
 				terminology: 'radius',
@@ -49,7 +52,8 @@ equations: [
 		]
 	},
 	{
-		solveFor: {char: 'r', name: 'radius'},
+		char: 'r',
+		name: 'radius',
 		givens: [
 			{
 				terminology: 'circumference',
@@ -60,8 +64,8 @@ equations: [
 			{
 				terminology: 'area',
 				variables: [{char: 'A', name: 'area'}],
-				mathjax: 'r=\sqrt{\frac{A}{\pi}}',
-				formula: 'sqrt(A / pi)'
+				mathjax: 'r=\frac{\sqrt{\pi A}}{\pi}',
+				formula: 'sqrt(pi * A) / pi'
 			},
 			{
 				terminology: 'diameter',
@@ -72,7 +76,8 @@ equations: [
 		]
 	},
 	{
-		solveFor: {char: 'd', name: 'diameter'},
+		char: 'd',
+		name: 'diameter',
 		givens: [
 			{
 				terminology: 'circumference',
@@ -83,8 +88,8 @@ equations: [
 			{
 				terminology: 'area',
 				variables: [{char: 'A', name: 'area'}],
-				mathjax: 'd=2\sqrt{\frac{A}{\pi}}',
-				formula: '2 * sqrt(A / pi)'
+				mathjax: 'd=\frac{2\sqrt{\pi A}}{\pi}',
+				formula: '2 * sqrt(pi * A) / pi'
 			},
 			{
 				terminology: 'radius',

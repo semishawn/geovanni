@@ -1,9 +1,11 @@
 ---
 shape: rectangle
+order: 2
 
-equations: [
+properties: [
 	{
-		solveFor: {char: 'A', name: 'area'},
+		char: 'A',
+		name: 'area',
 		givens: [
 			{
 				terminology: 'length and width',
@@ -53,7 +55,8 @@ equations: [
 		]
 	},
 	{
-		solveFor: {char: 'P', name: 'perimeter'},
+		char: 'P',
+		name: 'perimeter',
 		givens: [
 			{
 				terminology: 'length and width',
@@ -67,7 +70,8 @@ equations: [
 		]
 	},
 	{
-		solveFor: {char: 'l', name: 'length'},
+		char: 'l',
+		name: 'length',
 		givens: [
 			{
 				terminology: 'width and area',
@@ -99,7 +103,8 @@ equations: [
 		]
 	},
 	{
-		solveFor: {char: 'w', name: 'width'},
+		char: 'w',
+		name: 'width',
 		givens: [
 			{
 				terminology: 'length and area',
@@ -131,7 +136,8 @@ equations: [
 		]
 	},
 	{
-		solveFor: {char: 'd', name: 'diagonal'},
+		char: 'd',
+		name: 'diagonal',
 		givens: [
 			{
 				terminology: 'length and width',

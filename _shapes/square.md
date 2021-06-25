@@ -1,9 +1,12 @@
 ---
 shape: square
+regular: true
+order: 2
 
-equations: [
+properties: [
 	{
-		solveFor: {char: 'A', name: 'area'},
+		char: 'A',
+		name: 'area',
 		givens: [
 			{
 				terminology: 'side',
@@ -26,13 +29,14 @@ equations: [
 		]
 	},
 	{
-		solveFor: {char: 'P', name: 'perimeter'},
+		char: 'P',
+		name: 'perimeter',
 		givens: [
 			{
 				terminology: 'side',
 				variables: [{char: 's', name: 'side'}],
 				mathjax: 'P=4s',
-				formula: '4 * s'
+				formula: '4s'
 			},
 			{
 				terminology: 'area',
@@ -44,12 +48,13 @@ equations: [
 				terminology: 'diagonal',
 				variables: [{char: 'd', name: 'diagonal'}],
 				mathjax: 'P=2d \sqrt{2}',
-				formula: '2 * d * sqrt(2)'
+				formula: '2d * sqrt(2)'
 			}
 		]
 	},
 	{
-		solveFor: {char: 'd', name: 'diagonal'},
+		char: 'd',
+		name: 'diagonal',
 		givens: [
 			{
 				terminology: 'side',
@@ -61,18 +66,19 @@ equations: [
 				terminology: 'perimeter',
 				variables: [{char: 'P', name: 'perimeter'}],
 				mathjax: 'd=\frac{P \sqrt{2}}{4}',
-				formula: '(P * sqrt(2)) / 4'
+				formula: 'P * sqrt(2) / 4'
 			},
 			{
 				terminology: 'area',
 				variables: [{char: 'A', name: 'area'}],
 				mathjax: 'd=\sqrt{2A}',
-				formula: 'sqrt(2 * A)'
+				formula: 'sqrt(2A)'
 			}
 		]
 	},
 	{
-		solveFor: {char: 's', name: 'side'},
+		char: 's',
+		name: 'side',
 		givens: [
 			{
 				terminology: 'area',
@@ -89,8 +95,8 @@ equations: [
 			{
 				terminology: 'diagonal',
 				variables: [{char: 'd', name: 'diagonal'}],
-				mathjax: 's=\frac{d}{\sqrt{2}}',
-				formula: 'd / sqrt(2)'
+				mathjax: 's=\frac{d\sqrt{2}}{2}',
+				formula: 'd * sqrt(2) / 2'
 			}
 		]
 	}

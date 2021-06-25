@@ -1,9 +1,12 @@
 ---
 shape: triangle
+regular: true
+order: 1
 
-equations: [
+properties: [
 	{
-		solveFor: {char: 'A', name: 'area'},
+		char: 'A',
+		name: 'area',
 		givens: [
 			{
 				terminology: 'base and height',
@@ -33,11 +36,11 @@ equations: [
 				terminology: 'two sides and angle between',
 				variables: [
 					{char: 'a', name: 'side'},
-					{char: 'α', name: 'angle'},
+					{char: 'γ', name: 'angle'},
 					{char: 'b', name: 'side'}
 				],
-				mathjax: 'A=\frac{ab \sin{\alpha}}{2}',
-				formula: '(a * b * sin(α deg)) / 2'
+				mathjax: 'A=\frac{ ab \sin( \gamma ) }{2}',
+				formula: '(a * b * sin(γ deg)) / 2'
 			},
 			{
 				terminology: 'two angles and side between',
@@ -46,13 +49,14 @@ equations: [
 					{char: 'a', name: 'side'},
 					{char: 'γ', name: 'angle'}
 				],
-				mathjax: 'A=\frac{a^2 \sin{\beta}\sin{\gamma}}{2 \sin(\beta+\gamma)}',
-				formula: '(a^2 * sin(β deg) * sin(γ deg)) / (2 * sin(β deg + γ deg))'
+				mathjax: 'A=\frac{ a^2 \sin( \beta ) \sin( \gamma ) }{ 2 \sin( 180-\beta-\gamma ) }',
+				formula: '(a^2 * sin(β deg) * sin(γ deg)) / (2 * sin(180 deg - β deg - γ deg))'
 			}
 		]
 	},
 	{
-		solveFor: {char: 'P', name: 'perimeter'},
+		char: 'P',
+		name: 'perimeter',
 		givens: [
 			{
 				terminology: 'three sides',
@@ -68,16 +72,17 @@ equations: [
 				terminology: 'two sides and angle between',
 				variables: [
 					{char: 'a', name: 'side'},
-					{char: 'α', name: 'angle'},
+					{char: 'γ', name: 'angle'},
 					{char: 'b', name: 'side'}
 				],
-				mathjax: 'P=a+b+\sqrt{a^2+b^2-2ab\cos{\alpha}}',
-				formula: 'a + b + sqrt(a^2 + b^2 - (2 * a * b * cos(α deg)))'
+				mathjax: 'P=a+b+\sqrt{a^2+b^2-2ab \cos( \gamma )}',
+				formula: 'a + b + sqrt(a^2 + b^2 - (2 * a * b * cos(γ deg)))'
 			}
 		]
 	},
 	{
-		solveFor: {char: 'b', name: 'base'},
+		char: 'b',
+		name: 'base',
 		givens: [
 			{
 				terminology: 'area and height',
@@ -91,7 +96,8 @@ equations: [
 		]
 	},
 	{
-		solveFor: {char: 'h', name: 'height'},
+		char: 'h',
+		name: 'height',
 		givens: [
 			{
 				terminology: 'area and base',

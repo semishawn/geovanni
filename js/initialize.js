@@ -17,16 +17,14 @@ math.config({
 
 math.import({
 	ellipticInt: function (n) {
-		var n2 = math.square(math.bignumber(n));
-
 		var a0 = math.bignumber(1);
-		var g0 = math.sqrt(math.subtract(math.bignumber(1), n2));
+		var g0 = math.sqrt(math.subtract(math.bignumber(1), n));
 
 		var an = a0;
 		var gn = g0;
 
 		var twoPow = math.bignumber(0.25);
-		var partialSum = math.subtract(math.bignumber(1), math.divide(n2, math.bignumber(2)));
+		var partialSum = math.subtract(math.bignumber(1), math.divide(n, math.bignumber(2)));
 
 		var iter = 0;
 
@@ -50,10 +48,26 @@ math.import({
 
 
 
+// Copy function
+function copy(data) {
+	var $temp = $('<input>');
+	$('body').append($temp);
+	$temp.val(data).select();
+	document.execCommand('copy');
+	$temp.remove();
+}
+
+
+
 // Set each shape vector into each shape diagram
 $('.shape-diagram').each(function() {
 	var shape = $(this).closest('.window').attr('data-shape');
 	$(this).load('img/diagrams/' + shape + '.svg');
+});
+
+$('.mini-shape').each(function() {
+	var shape = $(this).closest('.module').attr('data-shape');
+	$(this).load('img/mini-shapes/mini-shapes_' + shape + '.svg');
 });
 
 
@@ -105,15 +119,12 @@ $('.ubercalc-module').click(function() {
 $('.calc-module').click(function() {
 	var shape = $(this).closest('.folder').attr('data-shape');
 	var variable = $(this).attr('data-variable');
-	$('.varcalc[data-shape="' + shape + '"][data-variable="' + variable + '"]').toggleClass('flex-show').maxZ();
+	$('.propcalc[data-shape="' + shape + '"][data-variable="' + variable + '"]').toggleClass('flex-show').maxZ();
 });
 
-$('.four-function-module').click(function() {
-	$('.four-function').toggleClass('flex-show').maxZ();
-});
-
-$('.guide-module').click(function() {
-	$('.guide').toggleClass('flex-show').maxZ();
+$('.four-function-module, .settings-module, .guide-module').click(function() {
+	var window = $(this).attr('class').split(' ')[1].replace('-module', '');
+	$('.' + window).toggleClass('flex-show').maxZ();
 });
 
 

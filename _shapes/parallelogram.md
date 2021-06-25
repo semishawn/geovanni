@@ -1,9 +1,11 @@
 ---
 shape: parallelogram
+order: 3
 
-equations: [
+properties: [
 	{
-		solveFor: {char: 'A', name: 'area'},
+		char: 'A',
+		name: 'area',
 		givens: [
 			{
 				terminology: 'base and height',
@@ -17,7 +19,8 @@ equations: [
 		]
 	},
 	{
-		solveFor: {char: 'b', name: 'base'},
+		char: 'b',
+		name: 'base',
 		givens: [
 			{
 				terminology: 'area and height',
@@ -31,7 +34,8 @@ equations: [
 		]
 	},
 	{
-		solveFor: {char: 'h', name: 'height'},
+		char: 'h',
+		name: 'height',
 		givens: [
 			{
 				terminology: 'area and base',
@@ -45,7 +49,8 @@ equations: [
 		]
 	},
 	{
-		solveFor: {char: 'P', name: 'perimeter'},
+		char: 'P',
+		name: 'perimeter',
 		givens: [
 			{
 				terminology: 'base and side',
@@ -59,7 +64,8 @@ equations: [
 		]
 	},
 	{
-		solveFor: {char: 'a', name: 'side'},
+		char: 'a',
+		name: 'side',
 		givens: [
 			{
 				terminology: 'base and perimeter',

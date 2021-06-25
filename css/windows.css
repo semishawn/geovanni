@@ -1,5 +1,64 @@
+.window-body {
+	--body-padding: 2rem;
+	padding: var(--body-padding);
+}
+
+
+
+/* Folder */
+.folder-body {
+	--body-padding: 1.3rem;
+	flex: 1;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+}
+
+
+
+/* Four Function */
+.four-function-body {
+	--body-padding: 1.3rem;
+	--key-dimension: 3.3rem;
+	display: grid;
+	grid-template-columns: repeat(4, var(--key-dimension));
+	grid-template-rows: repeat(6, var(--key-dimension));
+	grid-gap: var(--input-spacing);
+}
+.four-function-body * {font-size: 1.3rem;}
+
+.four-function-result {
+	text-align: right;
+	grid-column-end: span 4;
+	padding: 0 var(--input-padding);
+	border: var(--main-border) solid black;
+	border-radius: var(--input-radius);
+	background: var(--color-primary1);
+}
+
+.four-function-key {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: var(--main-border) solid black;
+	border-radius: var(--input-radius);
+	background: var(--color-primary1);
+	cursor: pointer;
+}
+.four-function-operator {background: var(--color-accent1);}
+.four-function-key:hover {
+	color: var(--color-primary1);
+	background: black;
+}
+
+
+
+/* Settings */
+
+
+
+/* Guide */
 .guide {
-	--guide-padding: 2rem;
 	--scroll-width: 2rem;
 	width: 45rem;
 }
@@ -7,15 +66,13 @@
 .guide-body {
 	height: 30rem;
 	padding: 2rem;
-	padding-right: calc(var(--guide-padding) + var(--scroll-width));
-	box-sizing: border-box;
+	padding-right: calc(var(--body-padding) + var(--scroll-width));
 }
 
 .simplebar-track {
 	width: var(--scroll-width) !important;
 	border-left: var(--main-border) solid black;
 	background: var(--color-primary1);
-	box-sizing: border-box;
 }
 .simplebar-scrollbar:before {
 	--margin: 0.2rem;
@@ -27,7 +84,6 @@
 	border: var(--main-border) solid black;
 	border-radius: 999rem;
 	background: var(--color-primary1);
-	box-sizing: border-box;
 }
 
 
@@ -46,7 +102,6 @@
 	justify-content: center;
 	padding: 0 calc(2 * var(--input-height));
 	transform: translateY(var(--main-border));
-	box-sizing: border-box;
 }
 
 .window-tab {
@@ -62,7 +117,6 @@
 	padding-top: var(--main-border);
 	background: var(--color-accent1);
 	cursor: pointer;
-	box-sizing: border-box;
 }
 input:checked + .window-tab {
 	border-bottom: 0;

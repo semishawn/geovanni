@@ -1,0 +1,26 @@
+{% for precision in page.precision_types %}
+<input
+	type="radio"
+	name="{{ specific_slug }}-precision"
+	id="{{ specific_slug }}_{{ precision.abbreviation }}_precision"
+	autocomplete="off"
+	{%- if forloop.first == true %}
+	checked
+	{%- endif %}
+>
+<label
+	class="precision-row {{ precision.abbreviation }}-row"
+	for="{{ specific_slug }}_{{ precision.abbreviation }}_precision"
+>
+	{{ precision.name }}
+	<div
+		class="setter-container"
+		data-lower="{{ precision.lower }}"
+		data-upper="{{ precision.upper }}"
+	>
+		<button class="setter dec"><i class="fas fa-minus"></i></button>
+		<span class="current-places">2</span>
+		<button class="setter inc"><i class="fas fa-plus"></i></button>
+	</div>
+</label>
+{% endfor %}

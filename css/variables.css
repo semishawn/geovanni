@@ -9,11 +9,12 @@
 	--main-border: 0.22rem;
 	--main-radius: 0.8rem;
 	--main-shadow: 0.5rem;
+	--main-transition: 0.1s;
 
 	/* Inputs */
 	--input-height: 2.7rem; /* 2.5rem */
 	--input-padding: 0.9rem; /* 0.8rem */
-	--input-margin: 0.31rem;
+	--input-spacing: 0.31rem;
 	--input-radius: 0.38rem;
 
 	/* Colors */

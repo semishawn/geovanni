@@ -13,7 +13,7 @@ $('.given-option').click(function() {
 });
 
 $(document).click(function(e) {
-	if (!$(e.target).closest('.given').length) $('.given-dropdown').hide();
+	if (!$(e.target).closest('.given-select').length) $('.given-dropdown').hide();
 });
 
 
@@ -37,11 +37,14 @@ $('.result').keydown(function(e) {
 // Increase/decrease decimal places
 $('.setter').click(function() {
 	var place = $(this).siblings('.current-places');
+	var lowerBound = parseInt($(this).parent().attr('data-lower'));
+	var upperBound = parseInt($(this).parent().attr('data-upper'));
+
 	if ($(this).is('.dec')) {
-		if (place.html() > 0)
+		if (place.html() > lowerBound)
 			place.html(parseInt(place.html()) - 1);
 	} else {
-		if (place.html() < 10)
+		if (place.html() < upperBound)
 			place.html(parseInt(place.html()) + 1);
 	}
 });
@@ -51,13 +54,8 @@ $('.setter').click(function() {
 // Copy result
 $('.copy').click(function() {
 	var calcBody = $(this).closest('.calc-body');
-
-	var copyInput = $('<input>');
-	$('body').append(copyInput);
-	var relativeInput = calcBody.find('.result').val();
-	copyInput.val(relativeInput).select();
-	document.execCommand('copy');
-	copyInput.remove();
+	var closestResult = calcBody.find('.result').val();
+	copy(closestResult);
 
 	$(this).find('svg').attr('class', 'fas fa-check');
 	setTimeout(() => $(this).find('svg').attr('class', 'far fa-copy'), 700);
@@ -68,29 +66,23 @@ $('.copy').click(function() {
 // Highlight variable on text-box focus
 $('.field').focusin(function() {
 	var calcBody = $(this).closest('.calc-body');
-	var char = $(this).closest('.variable-row').find('.char').children().not('script').text().replaceAll('=', '');
+	var char = $(this).closest('.variable-row').attr('data-char').replace('_', '');
 
-	// If char has subscript
-	if (/\d/.test(char)) {
-		// If superscript char contains an exponent
-		if (calcBody.find('.msubsup:contains(' + char + ')').find('.msubsup').length !== 0)
-			calcBody.find('.msubsup:contains(' + char + '):first-child').addClass('selected-char');
-		else calcBody.find('.msubsup:contains(' + char + ')').addClass('selected-char');
-	}
-	else {
-		// Color only if math element has variable and variable only
-		calcBody.find('.mi').filter(function() {
-			if ($(this).text() === char) $(this).addClass('selected-char');
-		});
-		calcBody.find('.mo:contains(' + char + ')').addClass('selected-char');
+	if (char.length > 1) {
+		// If char has subscript
+		calcBody.find('.msubsup:contains(' + char + ')').not(':has(.msubsup)').addClass('selected-char');
+	} else {
+		// Making sure variable contains char only
+		calcBody.find('.mi').filter(function () {
+			return $(this).text() == char;
+		}).addClass('selected-char');
 	}
 
 	calcBody.find('g:contains(' + char + ')').addClass('selected-shape');
 });
 
 $('.field').focusout(function() {
-	$('*').removeClass('selected-char');
-	$('g').removeClass('selected-shape');
+	$('*').removeClass('selected-char selected-shape');
 });
 
 

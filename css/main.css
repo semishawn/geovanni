@@ -4,7 +4,6 @@ html, body {
 	width: 100%;
 	margin: 0;
 	overflow: hidden;
-	box-sizing: border-box;
 }
 
 html, body, input, button {
@@ -23,6 +22,8 @@ body {
 input, button {outline: none;}
 
 input[type="radio"] {display: none;}
+
+* {box-sizing: border-box;}
 
 
 
@@ -47,7 +48,6 @@ input[type="radio"] {display: none;}
 	border-radius: var(--input-radius);
 	background: var(--color-primary1);
 	box-shadow: var(--main-shadow) var(--main-shadow) 0 0 black;
-	box-sizing: border-box;
 }
 
 .startup-border {
@@ -59,7 +59,6 @@ input[type="radio"] {display: none;}
 	width: 100%;
 	border: calc(var(--main-border) / 1.5) solid rgba(0, 0, 0, 0.1);
 	border-radius: var(--input-radius);
-	box-sizing: border-box;
 }
 
 .startup-logo {height: 10rem;}
@@ -118,7 +117,6 @@ input[type="radio"] {display: none;}
 	height: 100%;
 	width: 100%;
 	padding: 1.3rem;
-	box-sizing: border-box;
 }
 
 .module-spacer {width: 100%;}
@@ -135,7 +133,6 @@ input[type="radio"] {display: none;}
 	background: var(--color-primary1);
 	box-shadow: var(--main-shadow) var(--main-shadow) 0 0 black;
 	overflow: hidden;
-	box-sizing: border-box;
 	pointer-events: auto;
 	z-index: 0;
 }
@@ -151,7 +148,6 @@ input[type="radio"] {display: none;}
 	flex-direction: column;
 	width: 100%;
 	border-bottom: var(--main-border) solid black;
-	box-sizing: border-box;
 }
 
 .window-title-bar {
@@ -170,7 +166,6 @@ input[type="radio"] {display: none;}
 	border-radius: 50%;
 	margin: var(--close-margin);
 	cursor: pointer;
-	box-sizing: border-box;
 }
 
 .close-peg {
@@ -199,7 +194,7 @@ input[type="radio"] {display: none;}
 	border-radius: var(--input-radius);
 	color: var(--color);
 	background: transparent;
-	box-sizing: border-box;
+	transition: all var(--main-transition);
 	cursor: pointer;
 }
 .btn:hover {
@@ -222,15 +217,16 @@ input[type="radio"] {display: none;}
 [tooltip]:before,
 [tooltip]:after {
 	position: absolute;
-	display: none;
+	visibility: hidden;
 	opacity: 0;
-	margin-top: 1rem;
-	transition: all 0.2s;
+	margin-top: var(--tooltip-float);
+	transition: all var(--main-transition);
+	pointer-events: none;
 }
 [tooltip]:before {
 	--dimension: calc(2 * var(--arrow-height));
 	content: '';
-	top: calc(100% + var(--tooltip-float) + var(--main-border) - 0.01rem);
+	top: calc(100% + var(--tooltip-float) + var(--main-border));
 	left: 50%;
 	height: var(--dimension);
 	width: var(--dimension);
@@ -240,7 +236,6 @@ input[type="radio"] {display: none;}
 	border-top-left-radius: var(--radius);
 	background: var(--color-primary1);
 	transform: translateX(-50%) rotate(45deg);
-	box-sizing: border-box;
 	z-index: 1000;
 }
 [tooltip]:after {
@@ -249,19 +244,20 @@ input[type="radio"] {display: none;}
 	left: 50%;
 	font-size: 0.9rem;
 	text-align: center;
-	width: var(--tooltip-width);
+	width: auto;
+	max-width: var(--tooltip-width);
 	border: var(--main-border) solid black;
 	border-radius: var(--radius);
 	padding: var(--input-padding);
 	background: var(--color-primary1);
 	transform: translateX(-50%);
-	box-sizing: border-box;
+	overflow-wrap: break-word;
 	z-index: 999;
 }
 
 [tooltip]:hover:before,
 [tooltip]:hover:after {
-	display: block;
-	margin: 0;
 	opacity: 1;
+	visibility: visible;
+	margin: 0;
 }
