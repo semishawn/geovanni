@@ -93,6 +93,30 @@ properties: [
 				formula: 'sqrt(A * (5 + 2 * sqrt(5)) * sqrt(5 - 2 * sqrt(5))) / 5'
 			}
 		]
+	},
+	{
+		char: 'R',
+		name: 'circumradius',
+		givens: [
+			{
+				terminology: 'side',
+				variables: [{char: 's', name: 'side'}],
+				mathjax: 'R=\frac{s\left(5+\sqrt{5}\right)\sqrt{10-2\sqrt{5}}}{20}',
+				formula: 's * (5 + sqrt(5)) * sqrt(10 - 2 * sqrt(5)) / 20'
+			},
+			{
+				terminology: 'apothem',
+				variables: [{char: 'a', name: 'apothem'}],
+				mathjax: 'R=a\left(\sqrt{5}-1\right)',
+				formula: 'a * (sqrt(5) - 1)'
+			},
+			{
+				terminology: 'area',
+				variables: [{char: 'A', name: 'area'}],
+				mathjax: 'R=\frac{\sqrt{A\left(5-\sqrt{5}\right)\sqrt{10+2\sqrt{5}}}}{5}',
+				formula: 'sqrt(A * (5 - sqrt(5)) * sqrt(10 + 2 * sqrt(5))) / 5'
+			}
+		]
 	}
 ]
 ---

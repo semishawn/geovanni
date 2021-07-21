@@ -93,6 +93,30 @@ properties: [
 				formula: 'sqrt(7A * cot(pi / 7)) / 7'
 			}
 		]
+	},
+	{
+		char: 'R',
+		name: 'circumradius',
+		givens: [
+			{
+				terminology: 'side',
+				variables: [{char: 's', name: 'side'}],
+				mathjax: 'R=\frac{s\csc\left(\frac{\pi}{7}\right)}{2}',
+				formula: 's * csc(pi / 7) / 2'
+			},
+			{
+				terminology: 'apothem',
+				variables: [{char: 'a', name: 'apothem'}],
+				mathjax: 'R=a\sec\left(\frac{\pi}{7}\right)',
+				formula: 'a * sec(pi / 7)'
+			},
+			{
+				terminology: 'area',
+				variables: [{char: 'A', name: 'area'}],
+				mathjax: '',
+				formula: ''
+			}
+		]
 	}
 ]
 ---

@@ -8,6 +8,15 @@ $(window).on('load', function() {
 
 
 
+// MathJax config
+MathJax.Hub.Queue(
+	function () {
+		$('.MathJax').attr('tabindex', '-1');
+	}
+);
+
+
+
 // Math config
 math.config({
 	number: 'BigNumber',

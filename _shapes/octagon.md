@@ -93,6 +93,30 @@ properties: [
 				formula: 'sqrt(2A * (sqrt(2) + 1)) / 4'
 			}
 		]
+	},
+	{
+		char: 'R',
+		name: 'circumradius',
+		givens: [
+			{
+				terminology: 'side',
+				variables: [{char: 's', name: 'side'}],
+				mathjax: '',
+				formula: ''
+			},
+			{
+				terminology: 'apothem',
+				variables: [{char: 'a', name: 'apothem'}],
+				mathjax: '',
+				formula: ''
+			},
+			{
+				terminology: 'area',
+				variables: [{char: 'A', name: 'area'}],
+				mathjax: '',
+				formula: ''
+			}
+		]
 	}
 ]
 ---

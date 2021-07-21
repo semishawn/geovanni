@@ -94,6 +94,30 @@ properties: [
 				formula: 'sqrt(A * sqrt(3) / 6)'
 			}
 		]
+	},
+	{
+		char: 'R',
+		name: 'circumradius',
+		givens: [
+			{
+				terminology: 'side',
+				variables: [{char: 's', name: 'side'}],
+				mathjax: 'R=s',
+				formula: 's'
+			},
+			{
+				terminology: 'apothem',
+				variables: [{char: 'a', name: 'apothem'}],
+				mathjax: 'R=\frac{2a\sqrt{3}}{3}',
+				formula: '2a * sqrt(3) / 3'
+			},
+			{
+				terminology: 'area',
+				variables: [{char: 'A', name: 'area'}],
+				mathjax: 'R=\frac{\sqrt{2A\sqrt{3}}}{3}',
+				formula: 'sqrt(2A * sqrt(3)) / 3'
+			}
+		]
 	}
 ]
 ---
