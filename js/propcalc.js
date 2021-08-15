@@ -35,16 +35,16 @@ $('.result').keydown(function(e) {
 
 
 // Increase/decrease decimal places
-$('.setter').click(function() {
+$('.precision-setter').click(function() {
 	var place = $(this).siblings('.current-places');
-	var lowerBound = parseInt($(this).parent().attr('data-lower'));
-	var upperBound = parseInt($(this).parent().attr('data-upper'));
+	var min = parseInt($(this).parent().attr('data-min'));
+	var max = parseInt($(this).parent().attr('data-max'));
 
 	if ($(this).is('.dec')) {
-		if (place.html() > lowerBound)
+		if (place.html() > min)
 			place.html(parseInt(place.html()) - 1);
 	} else {
-		if (place.html() < upperBound)
+		if (place.html() < max)
 			place.html(parseInt(place.html()) + 1);
 	}
 });

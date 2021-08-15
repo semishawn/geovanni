@@ -1,3 +1,57 @@
+/* Window Components */
+.window {
+	position: absolute;
+	display: none;
+	flex-direction: column;
+	border: var(--main-border) solid black;
+	border-radius: var(--main-radius);
+	background: var(--color-primary1);
+	box-shadow: var(--main-shadow) var(--main-shadow) 0 0 black;
+	overflow: hidden;
+	pointer-events: auto;
+	z-index: 0;
+}
+
+.window-head {
+	--close-dimension: 2rem;
+	--close-margin: 0.4rem;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	border-bottom: var(--main-border) solid black;
+}
+
+.window-title-bar {
+	position: relative;
+	cursor: grab;
+}
+
+.close-btn {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: var(--close-dimension);
+	width: var(--close-dimension);
+	border: var(--main-border) solid black;
+	border-radius: 50%;
+	margin: var(--close-margin);
+	cursor: pointer;
+}
+
+.close-peg {
+	position: absolute;
+	height: var(--main-border);
+	width: 65%;
+	opacity: 0;
+	border-radius: 999rem;
+	background: black;
+}
+.close-peg:first-child {transform: rotate(45deg);}
+.close-peg:last-child {transform: rotate(-45deg);}
+
+.close-btn:hover .close-peg {opacity: 1;}
+
 .window-body {
 	--body-padding: 2rem;
 	padding: var(--body-padding);
@@ -54,6 +108,73 @@
 
 
 /* Settings */
+.settings {width: 35rem;}
+
+.setting-row {
+	position: relative;
+	display: flex;
+	align-items: center;
+	width: 100%;
+}
+.setting-row ~ .setting-row {margin-top: 1rem;}
+
+.setting-label {white-space: nowrap;}
+
+.setting-dots {
+	width: 100%;
+	margin: 0 var(--input-padding);
+	border-top: var(--main-border) dotted var(--color-grey2);
+}
+
+/* Background Color */
+.background-color-option-container {display: flex;}
+
+input[name="bg"] + label {
+	height: var(--input-height);
+	width: var(--input-height);
+	border: var(--main-border) solid black;
+	border-radius: 50%;
+	transition: border-radius var(--main-transition);
+	cursor: pointer;
+}
+input[name="bg"] + label ~ label {margin-left: var(--input-spacing);}
+input[name="bg"]:checked + label {border-radius: var(--input-radius);}
+label[for="orange-bg"] {background: var(--color-orange1);}
+label[for="pink-bg"]   {background: var(--color-pink1);}
+label[for="blue-bg"]   {background: var(--color-blue1);}
+label[for="grey-bg"]   {background: var(--color-grey1);}
+
+/* Text Size */
+.text-size-setter-container {
+	display: flex;
+	height: var(--input-height);
+	border: var(--main-border) solid black;
+	border-radius: var(--input-radius);
+}
+
+.current-text-size {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	border-left: var(--main-border) solid black;
+	border-right: var(--main-border) solid black;
+	padding: 0 var(--input-padding);
+	user-select: none;
+}
+
+.text-size-setter {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: var(--input-height);
+	cursor: pointer;
+}
+.text-size-setter:hover {
+	background: black;
+	color: var(--color-primary1);
+}
 
 
 
@@ -125,3 +246,45 @@ input:checked + .window-tab {
 }
 
 .window-tab:not(:first-of-type) {margin-left: calc(-1 * var(--main-border));}
+
+
+
+/* Popups */
+.popup {width: 30rem;}
+
+.popup-head .window-title-bar {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: calc(var(--close-dimension) + 2 * var(--close-margin));
+}
+
+.popup-body {
+	--body-padding: 1.5rem;
+	text-align: center;
+	padding: var(--body-padding);
+}
+
+.popup br {margin-bottom: 1rem;}
+
+.popup-btn-container {
+	display: flex;
+	justify-content: center;
+	margin-top: var(--body-padding);
+}
+
+.popup-btn-container .btn {width: 8rem;}
+.popup-btn-container .btn ~ .btn {margin-left: var(--input-padding);}
+
+
+
+/* For windows with overhanging content */
+.window[tooltipped] {overflow: visible;}
+.window[tooltipped] .window-head {
+	border-top-left-radius: var(--main-radius);
+	border-top-right-radius: var(--main-radius);
+}
+.window[tooltipped] .window-body {
+	border-bottom-left-radius: var(--main-radius);
+	border-bottom-right-radius: var(--main-radius);
+}

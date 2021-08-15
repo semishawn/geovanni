@@ -14,13 +14,13 @@
 >
 	{{ precision.name }}
 	<div
-		class="setter-container"
-		data-lower="{{ precision.lower }}"
-		data-upper="{{ precision.upper }}"
+		class="precision-setter-container"
+		data-min="{{ precision.min }}"
+		data-max="{{ precision.max }}"
 	>
-		<button class="setter dec" tabindex="-1"><i class="fas fa-minus"></i></button>
+		<button class="precision-setter dec" tabindex="-1"><i class="fas fa-minus"></i></button>
 		<span class="current-places">2</span>
-		<button class="setter inc" tabindex="-1"><i class="fas fa-plus"></i></button>
+		<button class="precision-setter inc" tabindex="-1"><i class="fas fa-plus"></i></button>
 	</div>
 </label>
 {% endfor %}

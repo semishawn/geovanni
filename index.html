@@ -2,14 +2,14 @@
 precision_types: [
 	{
 		name: 'Decimal Places',
-		lower: 0,
-		upper: 10,
+		min: 0,
+		max: 10,
 		abbreviation: 'decimal'
 	},
 	{
 		name: 'Significant Figures',
-		lower: 1,
-		upper: 64,
+		min: 1,
+		max: 64,
 		abbreviation: 'sig-fig'
 	}
 ]
@@ -93,7 +93,7 @@ precision_types: [
 			<span class="module-label">Basic Calculator</span>
 		</div>
 
-		<!-- <div class="module settings-module">
+		<div class="module settings-module">
 			<div class="module-icon-container">
 				<div class="module-icon i-cog">
 					<div class="i-cog-base"></div>
@@ -107,7 +107,7 @@ precision_types: [
 				</div>
 			</div>
 			<span class="module-label">Settings</span>
-		</div> -->
+		</div>
 
 		<!-- <div class="module guide-module">
 			<div class="module-icon-container">
@@ -379,7 +379,35 @@ precision_types: [
 			</div>
 		</div>
 
-		<div class="window-body settings-body">hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh</div>
+		<div class="window-body settings-body">
+			<div class="setting-row">
+				<div class="setting-label">Background Color</div>
+				<div class="setting-dots"></div>
+				<div class="background-color-option-container">
+					<input type="radio" name="bg" id="orange-bg" autocomplete="off" checked>
+					<label for="orange-bg"></label>
+
+					<input type="radio" name="bg" id="pink-bg" autocomplete="off">
+					<label for="pink-bg"></label>
+
+					<input type="radio" name="bg" id="blue-bg" autocomplete="off">
+					<label for="blue-bg"></label>
+
+					<input type="radio" name="bg" id="grey-bg" autocomplete="off">
+					<label for="grey-bg"></label>
+				</div>
+			</div>
+
+			<div class="setting-row">
+				<div class="setting-label">Text Size</div>
+				<div class="setting-dots"></div>
+				<div class="text-size-setter-container" data-min="10" data-max="16">
+					<div class="text-size-setter dec"><i class="fas fa-minus"></i></div>
+					<div class="current-text-size">14px</div>
+					<div class="text-size-setter inc"><i class="fas fa-plus"></i></div>
+				</div>
+			</div>
+		</div>
 	</div>
 
 
@@ -413,7 +441,27 @@ precision_types: [
 
 
 
+	<div class="window popup cookie-warning">
+		<div class="window-head popup-head">
+			<div class="window-title-bar">Cookie Warning</div>
+		</div>
+
+		<div class="window-body popup-body">
+			Changing settings requires the use of site cookies. Geovanni uses LocalStorage data, which is client-side only, less resource intensive, and more user secured than traditional cookies, though still considered cookies.
+			<br>
+			Is this okay with you?
+			<div class="popup-btn-container">
+				<button class="btn">No thanks</button>
+				<button class="btn important-btn">Sure</button>
+			</div>
+		</div>
+	</div>
+
+
+
+	<!-- JS -->
 	<script src="{{ site.baseurl }}/js/initialize.js"></script>
+	<script src="{{ site.baseurl }}/js/windows.js"></script>
 	<script src="{{ site.baseurl }}/js/propcalc.js"></script>
 	<script src="{{ site.baseurl }}/js/ubercalc.js"></script>
 	<script src="{{ site.baseurl }}/js/four-function.js"></script>

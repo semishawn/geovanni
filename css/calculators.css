@@ -25,9 +25,9 @@
 
 .given-dropdown {
 	position: absolute;
-	display: none;
 	top: calc(var(--input-height) + var(--input-spacing));
 	right: 0;
+	display: none;
 	border: var(--main-border) solid black;
 	border-radius: var(--input-radius);
 	overflow: hidden;
@@ -143,13 +143,13 @@ input:checked + .precision-row {
 }
 input:checked + .precision-row * {pointer-events: all;}
 
-.setter-container {
+.precision-setter-container {
 	display: flex;
 	align-items: center;
 	height: 100%;
 }
 
-.setter {
+.precision-setter {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -160,7 +160,7 @@ input:checked + .precision-row * {pointer-events: all;}
 	transition: all var(--main-transition);
 	cursor: pointer;
 }
-.setter:hover {
+.precision-setter:hover {
 	color: var(--color-primary1);
 	background: black;
 }
@@ -236,19 +236,6 @@ input:checked + .precision-row * {pointer-events: all;}
 	display: flex;
 	justify-content: space-between;
 	margin-top: var(--body-padding);
-}
-
-
-
-/* Specifics */
-.propcalc[tooltipped] {overflow: visible;}
-.propcalc[tooltipped] .window-head {
-	border-top-left-radius: var(--main-radius);
-	border-top-right-radius: var(--main-radius);
-}
-.propcalc[tooltipped] .propcalc-body {
-	border-bottom-left-radius: var(--main-radius);
-	border-bottom-right-radius: var(--main-radius);
 }
 
 

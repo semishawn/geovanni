@@ -17,6 +17,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	background: var(--color-accent1);
+	transition: background var(--main-transition);
 }
 
 input, button {outline: none;}
@@ -123,70 +124,11 @@ input[type="radio"] {display: none;}
 
 
 
-/* Window */
-.window {
-	position: absolute;
-	display: none;
-	flex-direction: column;
-	border: var(--main-border) solid black;
-	border-radius: var(--main-radius);
-	background: var(--color-primary1);
-	box-shadow: var(--main-shadow) var(--main-shadow) 0 0 black;
-	overflow: hidden;
-	pointer-events: auto;
-	z-index: 0;
-}
-.flex-show {display: flex;}
-
-
-
-/* Window Head */
-.window-head {
-	--close-dimension: 2rem;
-	--close-margin: 0.4rem;
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	border-bottom: var(--main-border) solid black;
-}
-
-.window-title-bar {
-	position: relative;
-	cursor: grab;
-}
-
-.close-btn {
-	position: relative;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: var(--close-dimension);
-	width: var(--close-dimension);
-	border: var(--main-border) solid black;
-	border-radius: 50%;
-	margin: var(--close-margin);
-	cursor: pointer;
-}
-
-.close-peg {
-	position: absolute;
-	height: var(--main-border);
-	width: 65%;
-	opacity: 0;
-	border-radius: 999rem;
-	background: black;
-}
-.close-peg:first-child {transform: rotate(45deg);}
-.close-peg:last-child {transform: rotate(-45deg);}
-
-.close-btn:hover .close-peg {opacity: 1;}
-
-
-
 /* Buttons */
 .btn {
 	--color: black;
 	display: flex;
+	justify-content: center;
 	align-items: center;
 	height: var(--input-height);
 	padding: 0 var(--input-padding);
@@ -203,13 +145,19 @@ input[type="radio"] {display: none;}
 }
 .btn svg {margin-right: 0.4rem;}
 
+.important-btn {
+	border: 0;
+	background: var(--color-accent1);
+	color: black;
+}
+
 
 
 /* Tooltip */
 [tooltip] {
 	--tooltip-width: 19rem;
 	--tooltip-float: 0.5rem;
-	--arrow-height: 0.6rem;
+	--arrow-height: 0.5rem;
 	--radius: var(--input-radius);
 	position: relative;
 }
@@ -226,7 +174,7 @@ input[type="radio"] {display: none;}
 [tooltip]:before {
 	--dimension: calc(2 * var(--arrow-height));
 	content: '';
-	top: calc(100% + var(--tooltip-float) + var(--main-border));
+	top: calc(100% + var(--tooltip-float));
 	left: 50%;
 	height: var(--dimension);
 	width: var(--dimension);
@@ -244,7 +192,6 @@ input[type="radio"] {display: none;}
 	left: 50%;
 	font-size: 0.9rem;
 	text-align: center;
-	width: auto;
 	max-width: var(--tooltip-width);
 	border: var(--main-border) solid black;
 	border-radius: var(--radius);
