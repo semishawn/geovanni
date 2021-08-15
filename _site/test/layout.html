@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Geovanni</title>
+
+<!-- Favicon -->
+<link rel="shortcut icon" type="image/x-icon" href="/geovanni/img/logos/favicon-32.png">
+<link rel="icon" sizes="32x32" href="/geovanni/img/logos/favicon-32.png">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
+<!-- CSS -->
+<link rel="stylesheet" href="/geovanni/css/fonts.css">
+<link rel="stylesheet" href="/geovanni/css/variables.css">
+<link rel="stylesheet" href="/geovanni/css/modules.css">
+<link rel="stylesheet" href="/geovanni/css/main.css">
+<link rel="stylesheet" href="/geovanni/css/calculators.css">
+<link rel="stylesheet" href="/geovanni/css/windows.css">
+<style>
+	.flex-show {display: flex;}
+	.grid-show {display: grid;}
+</style>
+
+<!-- Plugins -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://kit.fontawesome.com/5978d27576.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjs@8.0.1/lib/browser/math.min.js"></script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=default"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css"/>
+<script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script>
+</head>
+
+<body>
+	<div class="window varcalc flex-show">
+
+		<div class="window-head">
+			<div class="window-title-bar">
+				<div class="close-btn">
+					<div class="close-peg"></div>
+					<div class="close-peg"></div>
+				</div>
+				<span class="window-title">Bing ~ Bong</span>
+			</div>
+		</div>
+
+		<div class="window-body calc-body">
+			<div class="given">
+				<span class="given-label">Given:</span>
+				<div class="btn given-select">
+					<i class="fas fa-sort-down"></i>
+					<span class="given-current">heehoo</span>
+				</div>
+			</div>
+
+			<div class="calc-content" style="display: block;">
+				<div class="formula-container">
+					<div class="formula">$$A=\frac{Pa}{2}$$</div>
+				</div>
+
+				<div class="shape-data">
+					<div class="variable-container">
+						<div class="variable-row">
+							<div class="char">$$w=$$</div>
+							<input class="field" type="text" placeholder="Snawee" autocomplete="off">
+						</div>
+						<div class="variable-row">
+							<div class="char">$$w=$$</div>
+							<input class="field" type="text" placeholder="Snawee" autocomplete="off">
+						</div>
+						<div class="variable-row">
+							<div class="char">$$w=$$</div>
+							<input class="field" type="text" placeholder="Snawee" autocomplete="off">
+						</div>
+
+						<input type="radio" name="precision" id="dec-precision" autocomplete="off" checked>
+						<label class="precision-row decimal-row" for="dec-precision">
+							Decimal Places
+							<div class="setter-container">
+								<button class="setter dec"><i class="fas fa-minus"></i></button>
+								<span class="current-places">2</span>
+								<button class="setter inc"><i class="fas fa-plus"></i></button>
+							</div>
+						</label>
+
+						<input type="radio" name="precision" id="sig-fig-precision" autocomplete="off">
+						<label class="precision-row sig-fig-row" for="sig-fig-precision">Significant Figures</label>
+
+						<div class="variable-row">
+							<div class="char">$$A=$$</div>
+							<div class="result-wrap">
+								<input class="field result" type="text" placeholder="Weesnaw" autocomplete="off">
+								<button class="copy"><i class="far fa-copy"></i></button>
+							</div>
+						</div>
+					</div>
+					<div class="shape-diagram"></div>
+				</div>
+
+				<div class="btn-container">
+					<button class="btn calculate"><i class="fas fa-calculator"></i>Calculate</button>
+					<button class="btn clear"><i class="fas fa-trash"></i>Clear values</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
