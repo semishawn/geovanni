@@ -1,3 +1,27 @@
+// LocalStorage initialization
+var defaultTheme = "orange";
+if (localStorage.getItem("theme") === null) $(`#${defaultTheme}-theme`).prop("checked", true);
+else {
+	var theme = localStorage.getItem("theme");
+	$(":root").css({
+		"--color-accent1": `var(--color-${theme}1)`,
+		"--color-accent2": `var(--color-${theme}2)`,
+		"--color-accent3": `var(--color-${theme}3)`
+	});
+	$(`#${theme}-theme`).prop("checked", true);
+}
+
+var defaultFontSize = "14px";
+if (localStorage.getItem("fontSize") === null) $(".current-font-size").html(defaultFontSize);
+else {
+	var fontSize = localStorage.getItem("fontSize");
+	$(".current-font-size").html(fontSize);
+	$(":root").css("--main-font-size", fontSize);
+}
+
+
+
+// Stuff to initialize/config once all assets are fully loaded
 $(window).on('load', function() {
 	// MathJax config
 	MathJax.Hub.Queue(
@@ -44,7 +68,7 @@ $(window).on('load', function() {
 
 				iter++;
 			}
-			while (math.larger(math.abs(math.subtract(an, gn)), math.bignumber(1e-15)));
+			while (math.larger(math.abs(math.subtract(an, gn)), math.bignumber(1e-64)));
 
 			return math.divide(math.multiply(math.pi, math.divide(partialSum, an)), math.bignumber(2));
 		}
@@ -74,10 +98,7 @@ $(window).on('load', function() {
 
 
 	// Custom scroll styling
-	new SimpleBar($('.guide-body')[0], {
-		autoHide: false
-	});
-
+	
 
 
 	// Plugin for making window move on top of all other windows on click
@@ -95,7 +116,7 @@ $(window).on('load', function() {
 
 	// Startup animation
 	$('.startup-bar-fill').animate(
-		{width: '100%'}, 2000,
+		{width: '100%'}, 3000,
 		() => $('.startup').delay(300).fadeOut(400)
 	);
 });
@@ -104,9 +125,5 @@ $(window).on('load', function() {
 
 // Copy function
 function copy(data) {
-	var $temp = $('<input>');
-	$('body').append($temp);
-	$temp.val(data).select();
-	document.execCommand('copy');
-	$temp.remove();
+	navigator.clipboard.writeText(data);
 }

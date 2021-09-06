@@ -1,6 +1,5 @@
 title: Geovanni
-description: >- # this means to ignore newlines until "baseurl:"
-  A curious little geometry calculator.
+description: A curious little geometry calculator.
 baseurl: "/geovanni"
 url: "https://semishawn.github.io"
 github_username: semishawn

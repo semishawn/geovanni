@@ -1,3 +1,5 @@
+* {box-sizing: border-box;}
+
 html, body {
 	position: relative;
 	height: 100%;
@@ -24,7 +26,7 @@ input, button {outline: none;}
 
 input[type="radio"] {display: none;}
 
-* {box-sizing: border-box;}
+b {font-weight: 800;}
 
 
 
@@ -42,8 +44,6 @@ input[type="radio"] {display: none;}
 }
 
 .startup-window {
-	height: 500px;
-	width: 500px;
 	padding: 2rem;
 	border: var(--main-border) solid black;
 	border-radius: var(--input-radius);
@@ -58,18 +58,24 @@ input[type="radio"] {display: none;}
 	align-items: center;
 	height: 100%;
 	width: 100%;
-	border: calc(var(--main-border) / 1.5) solid rgba(0, 0, 0, 0.1);
-	border-radius: var(--input-radius);
+	border: var(--main-border) dotted var(--color-grey1);
+	padding: 5rem 4rem;
 }
 
-.startup-logo {height: 10rem;}
+.startup-logo-container {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	margin-bottom: 3rem;
+}
+
+.startup-logo {height: 7rem;}
 
 .startup-title {
-	font-family: var(--font1);
 	font-size: 5rem;
-	font-weight: 700;
+	font-weight: 900;
 	font-style: italic;
-	margin-bottom: 2rem;
+	margin-left: 1rem;
 }
 
 .startup-bar {
@@ -86,7 +92,7 @@ input[type="radio"] {display: none;}
 	background: var(--color-accent2);
 }
 
-/* .startup-bar-barberpole {
+.startup-bar-barberpole {
 	--stripe-width: 1rem;
 	--stripe-color1: var(--color-accent2);
 	--stripe-color2: var(--color-accent3);
@@ -105,7 +111,7 @@ input[type="radio"] {display: none;}
 }
 @keyframes barberpole {
 	to {background-position: 100% 100%;}
-} */
+}
 
 
 
@@ -207,4 +213,24 @@ input[type="radio"] {display: none;}
 	opacity: 1;
 	visibility: visible;
 	margin: 0;
+}
+
+
+
+/* Custom Scrollbar */
+.simplebar-track {
+	width: var(--scroll-width) !important;
+	border-left: var(--main-border) solid black !important;
+	background: var(--color-primary1) !important;
+}
+.simplebar-scrollbar:before {
+	--margin: 0.2rem;
+	top: var(--margin) !important;
+	bottom: var(--margin) !important;
+	left: var(--margin) !important;
+	right: var(--margin) !important;
+	opacity: 1 !important;
+	border: var(--main-border) solid black !important;
+	border-radius: 999rem !important;
+	background: var(--color-primary1) !important;
 }

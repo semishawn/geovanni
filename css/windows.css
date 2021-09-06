@@ -1,5 +1,6 @@
 /* Window Components */
 .window {
+	--scroll-width: 2rem;
 	position: absolute;
 	display: none;
 	flex-direction: column;
@@ -25,6 +26,7 @@
 	position: relative;
 	cursor: grab;
 }
+.mouse-down {cursor: grabbing;}
 
 .close-btn {
 	position: relative;
@@ -62,10 +64,8 @@
 /* Folder */
 .folder-body {
 	--body-padding: 1.3rem;
-	flex: 1;
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
-	grid-template-rows: repeat(2, 1fr);
 }
 
 
@@ -126,10 +126,10 @@
 	border-top: var(--main-border) dotted var(--color-grey2);
 }
 
-/* Background Color */
-.background-color-option-container {display: flex;}
+/* Theme */
+.theme-option-container {display: flex;}
 
-input[name="bg"] + label {
+input[name="theme"] + label {
 	height: var(--input-height);
 	width: var(--input-height);
 	border: var(--main-border) solid black;
@@ -137,22 +137,18 @@ input[name="bg"] + label {
 	transition: border-radius var(--main-transition);
 	cursor: pointer;
 }
-input[name="bg"] + label ~ label {margin-left: var(--input-spacing);}
-input[name="bg"]:checked + label {border-radius: var(--input-radius);}
-label[for="orange-bg"] {background: var(--color-orange1);}
-label[for="pink-bg"]   {background: var(--color-pink1);}
-label[for="blue-bg"]   {background: var(--color-blue1);}
-label[for="grey-bg"]   {background: var(--color-grey1);}
+input[name="theme"] + label ~ label {margin-left: var(--input-spacing);}
+input[name="theme"]:checked + label {border-radius: var(--input-radius);}
 
-/* Text Size */
-.text-size-setter-container {
+/* Font Size */
+.font-size-setter-container {
 	display: flex;
 	height: var(--input-height);
 	border: var(--main-border) solid black;
 	border-radius: var(--input-radius);
 }
 
-.current-text-size {
+.current-font-size {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -163,7 +159,7 @@ label[for="grey-bg"]   {background: var(--color-grey1);}
 	user-select: none;
 }
 
-.text-size-setter {
+.font-size-setter {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -171,7 +167,7 @@ label[for="grey-bg"]   {background: var(--color-grey1);}
 	width: var(--input-height);
 	cursor: pointer;
 }
-.text-size-setter:hover {
+.font-size-setter:hover {
 	background: black;
 	color: var(--color-primary1);
 }
@@ -179,32 +175,12 @@ label[for="grey-bg"]   {background: var(--color-grey1);}
 
 
 /* Guide */
-.guide {
-	--scroll-width: 2rem;
-	width: 45rem;
-}
+.guide {width: 45rem;}
 
 .guide-body {
 	height: 30rem;
 	padding: 2rem;
 	padding-right: calc(var(--body-padding) + var(--scroll-width));
-}
-
-.simplebar-track {
-	width: var(--scroll-width) !important;
-	border-left: var(--main-border) solid black;
-	background: var(--color-primary1);
-}
-.simplebar-scrollbar:before {
-	--margin: 0.2rem;
-	top: var(--margin) !important;
-	bottom: var(--margin) !important;
-	left: var(--margin) !important;
-	right: var(--margin) !important;
-	opacity: 1 !important;
-	border: var(--main-border) solid black;
-	border-radius: 999rem;
-	background: var(--color-primary1);
 }
 
 
@@ -250,7 +226,7 @@ input:checked + .window-tab {
 
 
 /* Popups */
-.popup {width: 30rem;}
+.popup {width: 35rem;}
 
 .popup-head .window-title-bar {
 	display: flex;
@@ -261,16 +237,17 @@ input:checked + .window-tab {
 
 .popup-body {
 	--body-padding: 1.5rem;
+	font-size: 0.9rem;
 	text-align: center;
 	padding: var(--body-padding);
 }
 
-.popup br {margin-bottom: 1rem;}
+.popup-midline {margin-top: 1rem;}
 
 .popup-btn-container {
 	display: flex;
 	justify-content: center;
-	margin-top: var(--body-padding);
+	margin-top: 2rem;
 }
 
 .popup-btn-container .btn {width: 8rem;}

@@ -1,62 +1,54 @@
 <script>
-	$('#ubercalc_{{ specific_slug }}').click(function() {
-		var calcBody = $(this).closest('.calc-body');
-
-		{%- for property in shape.properties %}
-			if ($('#ubercalc_{{ specific_slug }}_{{ property.name | replace:" ","_" }}').val().length == 0) {
+	$(".ubercalc .calculate").click(function() {
+		var calcBody = $(this).closest(".calc-body");
+		var scope = {};
+		var formulas = {
+			{%- for property in shape.properties %}
+			{{ property.name }}: [
 				{%- for given in property.givens %}
-				{%- if forloop.first == true %}
-				if
-				{%- else %}
-				else if
-				{%- endif %} (
-					{%- for variable in given.variables %}
-					$('#ubercalc_{{ specific_slug }}_{{ variable.name | replace:" ","_" }}').val().length > 0
-					{%- unless forloop.last %}&&{% endunless %}
-					{%- endfor %}
-				) {
-					let {% if given.specialVariable %}preScope{% else %}scope{% endif %} = {
-						{%- assign count = -1 -%}
-						{%- for variable in given.variables %}
-						{{ variable.char }}: math.bignumber($('#ubercalc_{{ specific_slug }}_{{ variable.name | replace:" ","_" }}').val()),
-						{%- endfor %}
-					}
-					{%- if given.specialVariable %}
-					let scope = {
-						{%- for variable in given.variables %}
-						{{ variable.char }}: math.bignumber($('#ubercalc_{{ specific_slug }}_{{ variable.name | replace:" ","_" }}').val()),
-						{%- endfor %}
-						{%- if given.specialVariable %}
-						{{ given.specialVariable.char }}: math.evaluate('{{ given.specialVariable.formula }}', preScope)
-						{%- endif %}
-					}
-					{%- endif %}
-
-					var result = math.evaluate('{{ given.formula }}', scope);
-					$('#ubercalc_{{ specific_slug }}_{{ property.name | replace:" ","_" }}').val(result);
-				}
+				"{{ given.formula }}",
 				{%- endfor %}
+			],
+			{%- endfor %}
+		}
+
+		calcBody.find(".field").each(function() {
+			if ($(this).val() != "") {
+				var char = $(this).parent().attr("data-char");
+				scope[char] = $(this).val();
 			}
-		{%- endfor %}
+		});
 
-		calcBody.find('.field').each(function() {
-			var preFormattedResult = $(this).val();
+		var scopeChars = Object.keys(scope);
 
-			if (preFormattedResult == 'Infinity') formattedResult = 'Undefined';
-			else if (preFormattedResult == 'NaN') formattedResult = 'Error';
-			else if (preFormattedResult == '0') formattedResult = '';
-			else {
-				if ($('#{{ specific_slug }}_decimal_precision').is(':checked')) {
-					var precision = calcBody.find('.decimal-row .current-places').html();
-					formattedResult = math.round(preFormattedResult, precision);
-				}
+		calcBody.find(".field").each(function() {
+			if ($(this).val() == "") {
+				var property = $(this).parent().attr("data-property");
+				var propFormulas = formulas[property];
+				var rightFormula = propFormulas.filter(x => x.includes(scopeChars));
+				var preFormattedResult = math.evaluate(rightFormula, scope);
+
+				if (preFormattedResult == "Infinity") formattedResult = "Undefined";
+				else if (preFormattedResult == "NaN") formattedResult = "Error";
+				else if (preFormattedResult == "0") formattedResult = "";
 				else {
-					var precision = calcBody.find('.sig-fig-row .current-places').html();
-					formattedResult = math.format(preFormattedResult, precision);
+					if ($("#{{ specific_slug }}_decimal_precision").is(":checked")) {
+						var precision = calcBody.find(".decimal-row .current-places").html();
+						formattedResult = math.round(preFormattedResult, precision);
+					}
+					else {
+						var precision = calcBody.find(".sig-fig-row .current-places").html();
+						formattedResult = math.format(preFormattedResult, precision);
+					}
 				}
-			}
 
-			$(this).val(formattedResult);
+				$(this).val(formattedResult);
+			}
 		});
 	});
+
+	/* $('.ubercalc .field').on('propertychange input', function() {
+		var calcBody = $(this).closest(".calc-body");
+		calcBody.find(".field").not(this).val("");
+	}); */
 </script>

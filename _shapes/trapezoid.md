@@ -10,8 +10,8 @@ properties: [
 			{
 				terminology: 'two bases and height',
 				variables: [
-					{char: 'a', name: 'base'},
-					{char: 'b', name: 'base'},
+					{char: 'a', name: 'base 1'},
+					{char: 'b', name: 'base 2'},
 					{char: 'h', name: 'height'}
 				],
 				mathjax: 'A=\frac{a+b}{2}h',
@@ -20,8 +20,8 @@ properties: [
 			{
 				terminology: 'four sides',
 				variables: [
-					{char: 'a', name: 'base'},
-					{char: 'b', name: 'base'},
+					{char: 'a', name: 'base 1'},
+					{char: 'b', name: 'base 2'},
 					{char: 'c', name: 'side'},
 					{char: 'd', name: 'side'}
 				],
@@ -38,8 +38,8 @@ properties: [
 			{
 				terminology: 'four sides',
 				variables: [
-					{char: 'a', name: 'base'},
-					{char: 'b', name: 'base'},
+					{char: 'a', name: 'base 1'},
+					{char: 'b', name: 'base 2'},
 					{char: 'c', name: 'side'},
 					{char: 'd', name: 'side'}
 				],
@@ -56,11 +56,43 @@ properties: [
 				terminology: 'area and two bases',
 				variables: [
 					{char: 'A', name: 'area'},
-					{char: 'a', name: 'base'},
-					{char: 'b', name: 'base'}
+					{char: 'a', name: 'base 1'},
+					{char: 'b', name: 'base 2'}
 				],
 				mathjax: 'h=\frac{2A}{a+b}',
 				formula: '(2 * A) / (a + b)'
+			}
+		]
+	},
+	{
+		char: 'a',
+		name: 'base 1',
+		givens: [
+			{
+				terminology: 'area, height, and base 2',
+				variables: [
+					{char: 'A', name: 'area'},
+					{char: 'h', name: 'height'},
+					{char: 'b', name: 'base 2'}
+				],
+				mathjax: 'a=\frac{2A}{h}-b',
+				formula: '((2 * A) / h) - b'
+			}
+		]
+	},
+	{
+		char: 'b',
+		name: 'base 2',
+		givens: [
+			{
+				terminology: 'area, height, and base 1',
+				variables: [
+					{char: 'A', name: 'area'},
+					{char: 'h', name: 'height'},
+					{char: 'a', name: 'base 1'}
+				],
+				mathjax: 'b=\frac{2A}{h}-a',
+				formula: '((2 * A) / h) - a'
 			}
 		]
 	}

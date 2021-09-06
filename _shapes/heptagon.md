@@ -10,21 +10,21 @@ properties: [
 		givens: [
 			{
 				terminology: 'side',
-				variables: [{char: 's', name: 'side'}],
-				mathjax: 'A=\frac{7\cot\left(\frac{\pi}{7}\right)s^{2}}{4}',
-				formula: '7 * cot(pi / 7) * s^2 / 4'
+				variables: [{char: 'a', name: 'side'}],
+				mathjax: 'A=\frac{7a^{2}\cot\left(\frac{\pi}{7}\right)}{4}',
+				formula: '7 * a^2 * cot(pi / 7) / 4'
 			},
 			{
-				terminology: 'apothem',
-				variables: [{char: 'a', name: 'apothem'}],
-				mathjax: 'A=7\tan\left(\frac{\pi}{7}\right)a^{2}',
-				formula: '7 * tan(pi / 7) * a^2'
+				terminology: 'inradius',
+				variables: [{char: 'r', name: 'inradius'}],
+				mathjax: 'A=7r^{2}\tan\left(\frac{\pi}{7}\right)',
+				formula: '7 * r^2 * tan(pi / 7)'
 			},
 			{
 				terminology: 'circumradius',
 				variables: [{char: 'R', name: 'circumradius'}],
-				mathjax: 'A=\frac{7\sin\left(\frac{2\pi}{7}\right)R^{2}}{2}',
-				formula: '7 * sin(2 * pi / 7) * R^2 / 2'
+				mathjax: 'A=\frac{7R^{2}\sin\left(\frac{2\pi}{7}\right)}{2}',
+				formula: '7 * R^2 * sin(2 * pi / 7) / 2'
 			}
 		]
 	},
@@ -34,33 +34,33 @@ properties: [
 		givens: [
 			{
 				terminology: 'side',
-				variables: [{char: 's', name: 'side'}],
-				mathjax: 'P=7s',
-				formula: '7s'
+				variables: [{char: 'a', name: 'side'}],
+				mathjax: 'P=7a',
+				formula: '7 * a'
 			}
 		]
 	},
 	{
-		char: 's',
+		char: 'a',
 		name: 'side',
 		givens: [
 			{
-				terminology: 'apothem',
-				variables: [{char: 'a', name: 'apothem'}],
-				mathjax: 's=2a\tan \left(\frac{\pi}{7}\right)',
-				formula: '2a * tan(pi / 7)'
+				terminology: 'inradius',
+				variables: [{char: 'r', name: 'inradius'}],
+				mathjax: 'a=2r\tan \left(\frac{\pi}{7}\right)',
+				formula: '2 * r * tan(pi / 7)'
 			},
 			{
 				terminology: 'circumradius',
 				variables: [{char: 'R', name: 'circumradius'}],
-				mathjax: 's=2R\sin\left(\frac{\pi}{7}\right)',
-				formula: '2R * sin(pi / 7)'
+				mathjax: 'a=2R\sin\left(\frac{\pi}{7}\right)',
+				formula: '2 * R * sin(pi / 7)'
 			},
 			{
 				terminology: 'area',
 				variables: [{char: 'A', name: 'area'}],
-				mathjax: 's=\frac{\sqrt{28A\tan\left(\frac{\pi}{7}\right)}}{7}',
-				formula: 'sqrt(28A * tan(pi / 7)) / 7'
+				mathjax: 'a=\frac{\sqrt{28A\tan\left(\frac{\pi}{7}\right)}}{7}',
+				formula: 'sqrt(28 * A * tan(pi / 7)) / 7'
 			},
 			{
 				terminology: 'perimeter',
@@ -71,26 +71,62 @@ properties: [
 		]
 	},
 	{
-		char: 'a',
-		name: 'apothem',
+		char: 'h',
+		name: 'height',
 		givens: [
 			{
 				terminology: 'side',
-				variables: [{char: 's', name: 'side'}],
-				mathjax: 'a=\frac{s\cot\left(\frac{\pi}{7}\right)}{2}',
-				formula: 's * cot(pi / 7) / 2'
+				variables: [{char: 'a', name: 'side'}],
+				mathjax: 'h=\frac{a\cot\left(\frac{\pi}{14}\right)}{2}',
+				formula: 'a * cot(pi / 14) / 2'
+			}
+		]
+	},
+	{
+		char: 's',
+		name: 'short diagonal',
+		givens: [
+			{
+				terminology: 'side',
+				variables: [{char: 'a', name: 'side'}],
+				mathjax: 's=2a\cos\left(\frac{\pi}{7}\right)',
+				formula: '2 * a * cos(pi / 7)'
+			}
+		]
+	},
+	{
+		char: 'd',
+		name: 'long diagonal',
+		givens: [
+			{
+				terminology: 'side',
+				variables: [{char: 'a', name: 'side'}],
+				mathjax: 'd=\frac{a\csc\left(\frac{\pi}{14}\right)}{2}',
+				formula: 'a * csc(pi / 14) / 2'
+			}
+		]
+	},
+	{
+		char: 'r',
+		name: 'inradius',
+		givens: [
+			{
+				terminology: 'side',
+				variables: [{char: 'a', name: 'side'}],
+				mathjax: 'r=\frac{a\cot\left(\frac{\pi}{7}\right)}{2}',
+				formula: 'a * cot(pi / 7) / 2'
 			},
 			{
 				terminology: 'circumradius',
 				variables: [{char: 'R', name: 'circumradius'}],
-				mathjax: 'a=R\cos\left(\frac{\pi}{7}\right)',
+				mathjax: 'r=R\cos\left(\frac{\pi}{7}\right)',
 				formula: 'R * cos(pi / 7)'
 			},
 			{
 				terminology: 'area',
 				variables: [{char: 'A', name: 'area'}],
-				mathjax: 'a=\frac{\sqrt{7A\cot\left(\frac{\pi}{7}\right)}}{7}',
-				formula: 'sqrt(7A * cot(pi / 7)) / 7'
+				mathjax: 'r=\frac{\sqrt{7A\cot\left(\frac{\pi}{7}\right)}}{7}',
+				formula: 'sqrt(7 * A * cot(pi / 7)) / 7'
 			}
 		]
 	},
@@ -100,21 +136,21 @@ properties: [
 		givens: [
 			{
 				terminology: 'side',
-				variables: [{char: 's', name: 'side'}],
-				mathjax: 'R=\frac{s\csc\left(\frac{\pi}{7}\right)}{2}',
-				formula: 's * csc(pi / 7) / 2'
+				variables: [{char: 'a', name: 'side'}],
+				mathjax: 'R=\frac{a\csc\left(\frac{\pi}{7}\right)}{2}',
+				formula: 'a * csc(pi / 7) / 2'
 			},
 			{
-				terminology: 'apothem',
-				variables: [{char: 'a', name: 'apothem'}],
-				mathjax: 'R=a\sec\left(\frac{\pi}{7}\right)',
-				formula: 'a * sec(pi / 7)'
+				terminology: 'inradius',
+				variables: [{char: 'r', name: 'inradius'}],
+				mathjax: 'R=r\sec\left(\frac{\pi}{7}\right)',
+				formula: 'r * sec(pi / 7)'
 			},
 			{
 				terminology: 'area',
 				variables: [{char: 'A', name: 'area'}],
-				mathjax: '',
-				formula: ''
+				mathjax: 'R=\frac{\sqrt{14A\csc\left(\frac{2\pi}{7}\right)}}{7}',
+				formula: 'sqrt(14 * A * csc(2 * pi / 7)) / 7'
 			}
 		]
 	}

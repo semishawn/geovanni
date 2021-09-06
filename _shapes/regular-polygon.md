@@ -151,6 +151,20 @@ properties: [
 				formula: '360 / β'
 			}
 		]
+	},
+	{
+		char: 'd',
+		name: 'number of diagonals',
+		givens: [
+			{
+				terminology: 'number of sides',
+				variables: [
+					{char: 'n', name: 'number of sides'}
+				],
+				mathjax: 'd=\frac{n\left(n-3\right)}{2}',
+				formula: 'n * (n - 3) / 2'
+			}
+		]
 	}
 ]
 ---

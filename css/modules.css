@@ -1,4 +1,5 @@
 .module {
+	--line-height: 1.3rem;
 	--shape-dimension: 1.5rem;
 	--shadow: drop-shadow(calc(var(--main-shadow) / 2) calc(var(--main-shadow) / 2) 0 black);
 	display: flex;
@@ -12,7 +13,11 @@
 }
 .module * {transition: all var(--main-transition), visibility 0s;}
 
-.module-label {text-transform: capitalize;}
+.module-label {
+	/* height: calc(2 * var(--line-height));
+	line-height: var(--line-height); */
+	text-transform: capitalize;
+}
 
 .module-icon-container {
 	--icon-height: 5.4rem;
