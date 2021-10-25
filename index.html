@@ -26,10 +26,7 @@ precision_types: [
 	<div class="startup">
 		<div class="startup-window">
 			<div class="startup-border">
-				<div class="startup-logo-container">
-					<img class="startup-logo" src="img/logos/logo.svg">
-					<span class="startup-title">Geovanni</span>
-				</div>
+				<img class="startup-logo" src="img/logos/logo-long.svg">
 				<div class="startup-bar">
 					<div class="startup-bar-fill">
 						<div class="startup-bar-barberpole"></div>
@@ -133,7 +130,7 @@ precision_types: [
 				</div>
 			</div>
 
-			<div class="window-body folder-body">
+			<div class="folder-body window-body">
 				<div class="module ubercalc-module">
 					<div class="module-icon-container">
 						<div class="module-icon i-atom">
@@ -285,7 +282,6 @@ precision_types: [
 		
 		{% assign specific_slug = shape.shape | replace:" ","_" %}
 		<div class="window ubercalc" data-shape="{{ specific_slug }}">
-
 			<div class="window-head">
 				<div class="window-title-bar">
 					<div class="close-btn">
@@ -325,6 +321,8 @@ precision_types: [
 					<button class="btn calculate" id="ubercalc_{{ specific_slug }}"><i class="fas fa-calculator"></i>Calculate</button>
 					<button class="btn clear"><i class="fas fa-trash"></i>Clear values</button>
 				</div>
+
+				<div class="under-construction">UNDER CONSTRUCTION</div>
 
 				{% include ubercalc-js.html %}
 			</div>

@@ -58,24 +58,13 @@ b {font-weight: 800;}
 	align-items: center;
 	height: 100%;
 	width: 100%;
-	border: var(--main-border) dotted var(--color-grey1);
 	padding: 5rem 4rem;
+	border: var(--main-border) dotted var(--color-grey1);
 }
 
-.startup-logo-container {
-	display: flex;
-	align-items: center;
-	width: 100%;
+.startup-logo {
+	height: 5rem;
 	margin-bottom: 3rem;
-}
-
-.startup-logo {height: 7rem;}
-
-.startup-title {
-	font-size: 5rem;
-	font-weight: 900;
-	font-style: italic;
-	margin-left: 1rem;
 }
 
 .startup-bar {
@@ -218,7 +207,7 @@ b {font-weight: 800;}
 
 
 /* Custom Scrollbar */
-.simplebar-track {
+/* .simplebar-track {
 	width: var(--scroll-width) !important;
 	border-left: var(--main-border) solid black !important;
 	background: var(--color-primary1) !important;
@@ -233,4 +222,4 @@ b {font-weight: 800;}
 	border: var(--main-border) solid black !important;
 	border-radius: 999rem !important;
 	background: var(--color-primary1) !important;
-}
+} */

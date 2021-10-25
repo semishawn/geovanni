@@ -4,7 +4,7 @@
 		var scope = {};
 		var formulas = {
 			{%- for property in shape.properties %}
-			{{ property.name }}: [
+			{{ property.name | replace:" ","_" }}: [
 				{%- for given in property.givens %}
 				"{{ given.formula }}",
 				{%- endfor %}

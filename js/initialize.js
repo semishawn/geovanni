@@ -99,7 +99,7 @@ $(window).on('load', function() {
 
 	// Custom scroll styling
 	
-
+	
 
 	// Plugin for making window move on top of all other windows on click
 	$.fn.maxZ = function() {

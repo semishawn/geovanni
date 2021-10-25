@@ -241,4 +241,27 @@ input:checked + .precision-row * {pointer-events: all;}
 
 
 /* UberCalc */
+.ubercalc .calc-body {position: relative;}
+
+.ubercalc .calc-body > * {
+	opacity: 0.1;
+	pointer-events: none;
+}
+
 .ubercalc .field {background: var(--color-accent1);}
+
+.ubercalc .under-construction {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	opacity: 1;
+	font-size: 35px;
+	font-weight: 700;
+	padding: 10px 15px;
+	border: 5px solid black;
+	border-radius: 10px;
+	background: #f2c201;
+	white-space: nowrap;
+	transform: translate(-50%, -50%) rotate(-30deg);
+	filter: blur(0);
+}

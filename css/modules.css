@@ -1,12 +1,13 @@
 .module {
-	--line-height: 1.3rem;
 	--shape-dimension: 1.5rem;
 	--shadow: drop-shadow(calc(var(--main-shadow) / 2) calc(var(--main-shadow) / 2) 0 black);
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
 	align-items: center;
 	text-align: center;
-	width: 8.2rem;
+	height: 8.5rem;
+	width: 8.5rem;
 	margin: 0.9rem 0.3rem;
 	cursor: pointer;
 	user-select: none;
@@ -14,8 +15,9 @@
 .module * {transition: all var(--main-transition), visibility 0s;}
 
 .module-label {
-	/* height: calc(2 * var(--line-height));
-	line-height: var(--line-height); */
+	--line-height: 1.32rem;
+	height: calc(2 * var(--line-height));
+	line-height: var(--line-height);
 	text-transform: capitalize;
 }
 
@@ -27,7 +29,6 @@
 	align-items: center;
 	height: var(--icon-height);
 	width: var(--icon-height);
-	margin-bottom: 0.6rem;
 }
 
 .module:hover .module-icon-container {filter: var(--shadow);}
