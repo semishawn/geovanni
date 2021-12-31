@@ -1,5 +1,5 @@
 :root {
-	--main-font-size: 11px;
+	--main-font-size: 11.5px;
 }
 
 .startup-window {
@@ -7,24 +7,20 @@
 	padding: 1.5rem;
 }
 
-.startup-border {
-	padding: 3rem 2rem;
-}
+.startup-border {padding: 3rem 2rem;}
 
 .startup-logo {
 	width: 100%;
 	margin-bottom: 1rem;
 }
 
-.startup-bar {
-	height: 1rem;
-}
+.startup-bar {height: 1rem;}
 
 .desktop-modules-container {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	justify-items: center;
-	padding: 2rem;
+	padding: 3rem;
 }
 
 .module-spacer {display: none;}
@@ -32,8 +28,19 @@
 .window {
 	height: 100%;
 	width: 100%;
+	border: 0;
+	border-radius: 0;
 }
 
-.folder-body {
-	grid-template-columns: repeat(3, 1fr);
+.window-body {--body-padding: 3rem;}
+
+.folder-body {grid-template-columns: repeat(3, 1fr);}
+
+.shape-data {flex-direction: column-reverse;}
+
+.shape-diagram {
+	margin: 0;
+	margin-bottom: var(--body-padding);
 }
+
+.dropdown-info {display: none;}

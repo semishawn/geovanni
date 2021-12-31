@@ -158,6 +158,7 @@ input:checked + .precision-row * {pointer-events: all;}
 	font-size: 0.7rem;
 	border: 0;
 	background: transparent;
+	color: black;
 	transition: all var(--main-transition);
 	cursor: pointer;
 }
