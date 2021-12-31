@@ -150,7 +150,7 @@ b {font-weight: 800;}
 
 /* Tooltip */
 [tooltip] {
-	--tooltip-width: 19rem;
+	--tooltip-width: 15rem;
 	--tooltip-float: 0.5rem;
 	--arrow-height: 0.5rem;
 	--radius: var(--input-radius);
@@ -187,7 +187,7 @@ b {font-weight: 800;}
 	left: 50%;
 	font-size: 0.9rem;
 	text-align: center;
-	max-width: var(--tooltip-width);
+	width: var(--tooltip-width);
 	border: var(--main-border) solid black;
 	border-radius: var(--radius);
 	padding: var(--input-padding);

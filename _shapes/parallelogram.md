@@ -13,8 +13,10 @@ properties: [
 					{char: 'b', name: 'base'},
 					{char: 'h', name: 'height'}
 				],
-				mathjax: 'A=bh',
-				formula: 'b * h'
+				formulas: {
+					standard: 'A=bh'
+				},
+				javascript: 'b * h'
 			}
 		]
 	},
@@ -28,8 +30,10 @@ properties: [
 					{char: 'A', name: 'area'},
 					{char: 'h', name: 'height'}
 				],
-				mathjax: 'b=\frac{A}{h}',
-				formula: 'A / h'
+				formulas: {
+					standard: 'b=\frac{A}{h}'
+				},
+				javascript: 'A / h'
 			}
 		]
 	},
@@ -43,8 +47,10 @@ properties: [
 					{char: 'A', name: 'area'},
 					{char: 'b', name: 'base'}
 				],
-				mathjax: 'h=\frac{A}{b}',
-				formula: 'A / b'
+				formulas: {
+					standard: 'h=\frac{A}{b}'
+				},
+				javascript: 'A / b'
 			}
 		]
 	},
@@ -58,8 +64,10 @@ properties: [
 					{char: 'b', name: 'base'},
 					{char: 'a', name: 'side'}
 				],
-				mathjax: 'P=2b+2a',
-				formula: '(2 * b) + (2 * a)'
+				formulas: {
+					standard: 'P=2b+2a'
+				},
+				javascript: '(2 * b) + (2 * a)'
 			}
 		]
 	},
@@ -73,8 +81,10 @@ properties: [
 					{char: 'b', name: 'base'},
 					{char: 'P', name: 'perimeter'}
 				],
-				mathjax: 'a=\frac{P}{2}-b',
-				formula: '(P / 2) - b'
+				formulas: {
+					standard: 'a=\frac{P}{2}-b'
+				},
+				javascript: '(P / 2) - b'
 			}
 		]
 	}

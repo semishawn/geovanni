@@ -23,6 +23,7 @@
 <link rel="stylesheet" href="/geovanni/css/main.css">
 <link rel="stylesheet" href="/geovanni/css/calculators.css">
 <link rel="stylesheet" href="/geovanni/css/windows.css">
+<link rel="stylesheet" media="screen and (max-width: 600px)" href="/geovanni/css/mobile.css">
 <style>
 	.flex-show {display: flex;}
 	.grid-show {display: grid;}
@@ -31,9 +32,13 @@
 <!-- Plugins -->
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
 <script src="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.12.1/jquery-ui.min.js"></script>
+
 <script src="https://kit.fontawesome.com/5978d27576.js" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/mathjs@8.0.1/lib/browser/math.min.js"></script>
-<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=default"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.0.1/math.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=default"></script>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplebar/5.3.5/simplebar.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/simplebar/5.3.5/simplebar.min.js"></script>
 </head>
@@ -174,24 +179,24 @@
 				var scope = {};
 				var formulas = {
 					area: [
-						"pi * r^2",
-						"(pi * d^2) / 4",
-						"(C^2) / (4 * pi)",
+						"",
+						"",
+						"",
 					],
 					circumference: [
-						"2 * pi * r",
-						"pi * d",
-						"2 * sqrt(pi * A)",
+						"",
+						"",
+						"",
 					],
 					radius: [
-						"C / (2 * pi)",
-						"sqrt(pi * A) / pi",
-						"d / 2",
+						"",
+						"",
+						"",
 					],
 					diameter: [
-						"C / pi",
-						"2 * sqrt(pi * A) / pi",
-						"2 * r",
+						"",
+						"",
+						"",
 					],
 				}
 

@@ -10,21 +10,33 @@ properties: [
 		givens: [
 			{
 				terminology: 'side',
-				variables: [{char: 'a', name: 'side'}],
-				mathjax: 'A=\frac{3\sqrt{3}a^{2}}{2}',
-				formula: '(3 * sqrt(3) * a^2) / 2'
+				variables: [
+					{char: 'a', name: 'side'}
+				],
+				formulas: {
+					standard: 'A=\frac{3\sqrt{3}a^{2}}{2}'
+				},
+				javascript: '(3 * sqrt(3) * a^2) / 2'
 			},
 			{
 				terminology: 'inradius',
-				variables: [{char: 'r', name: 'inradius'}],
-				mathjax: 'A=2\sqrt{3}r^{2}',
-				formula: '2 * sqrt(3) * r^2'
+				variables: [
+					{char: 'r', name: 'inradius'}
+				],
+				formulas: {
+					standard: 'A=2\sqrt{3}r^{2}'
+				},
+				javascript: '2 * sqrt(3) * r^2'
 			},
 			{
 				terminology: 'circumradius',
-				variables: [{char: 'R', name: 'circumradius'}],
-				mathjax: 'A=\frac{3\sqrt{3}R^{2}}{2}',
-				formula: '(3 * sqrt(3) * R^2) / 2'
+				variables: [
+					{char: 'R', name: 'circumradius'}
+				],
+				formulas: {
+					standard: 'A=\frac{3\sqrt{3}R^{2}}{2}'
+				},
+				javascript: '(3 * sqrt(3) * R^2) / 2'
 			}
 		],
 		tooltip: 'For a hexagon, side length is equal to circumradius (a=R).'
@@ -35,9 +47,13 @@ properties: [
 		givens: [
 			{
 				terminology: 'side',
-				variables: [{char: 'a', name: 'side'}],
-				mathjax: 'P=6a',
-				formula: '6a'
+				variables: [
+					{char: 'a', name: 'side'}
+				],
+				formulas: {
+					standard: 'P=6a'
+				},
+				javascript: '6a'
 			}
 		]
 	},
@@ -47,27 +63,43 @@ properties: [
 		givens: [
 			{
 				terminology: 'inradius',
-				variables: [{char: 'r', name: 'inradius'}],
-				mathjax: 'a=\frac{2r\sqrt{3}}{3}',
-				formula: '2 * r * sqrt(3) / 3'
+				variables: [
+					{char: 'r', name: 'inradius'}
+				],
+				formulas: {
+					standard: 'a=\frac{2r\sqrt{3}}{3}'
+				},
+				javascript: '2 * r * sqrt(3) / 3'
 			},
 			{
 				terminology: 'circumradius',
-				variables: [{char: 'R', name: 'circumradius'}],
-				mathjax: 'a=R',
-				formula: 'R'
+				variables: [
+					{char: 'R', name: 'circumradius'}
+				],
+				formulas: {
+					standard: 'a=R'
+				},
+				javascript: 'R'
 			},
 			{
 				terminology: 'area',
-				variables: [{char: 'A', name: 'area'}],
-				mathjax: 'a=\frac{\sqrt{2A\sqrt{3}}}{3}',
-				formula: 'sqrt(2 * A * sqrt(3)) / 3'
+				variables: [
+					{char: 'A', name: 'area'}
+				],
+				formulas: {
+					standard: 'a=\frac{\sqrt{2A\sqrt{3}}}{3}'
+				},
+				javascript: 'sqrt(2 * A * sqrt(3)) / 3'
 			},
 			{
 				terminology: 'perimeter',
-				variables: [{char: 'P', name: 'perimeter'}],
-				mathjax: 'a=\frac{P}{6}',
-				formula: 'P / 6'
+				variables: [
+					{char: 'P', name: 'perimeter'}
+				],
+				formulas: {
+					standard: 'a=\frac{P}{6}'
+				},
+				javascript: 'P / 6'
 			}
 		]
 	},
@@ -77,15 +109,23 @@ properties: [
 		givens: [
 			{
 				terminology: 'side',
-				variables: [{char: 'a', name: 'side'}],
-				mathjax: 'h=a\sqrt{3}',
-				formula: 'a * sqrt(3)'
+				variables: [
+					{char: 'a', name: 'side'}
+				],
+				formulas: {
+					standard: 'h=a\sqrt{3}'
+				},
+				javascript: 'a * sqrt(3)'
 			},
 			{
 				terminology: 'inradius',
-				variables: [{char: 'r', name: 'inradius'}],
-				mathjax: 'h=2r',
-				formula: '2 * r'
+				variables: [
+					{char: 'r', name: 'inradius'}
+				],
+				formulas: {
+					standard: 'h=2r'
+				},
+				javascript: '2 * r'
 			}
 		]
 	},
@@ -95,9 +135,13 @@ properties: [
 		givens: [
 			{
 				terminology: 'side',
-				variables: [{char: 'a', name: 'side'}],
-				mathjax: 's=a\sqrt{3}',
-				formula: 'a * sqrt(3)'
+				variables: [
+					{char: 'a', name: 'side'}
+				],
+				formulas: {
+					standard: 's=a\sqrt{3}'
+				},
+				javascript: 'a * sqrt(3)'
 			}
 		]
 	},
@@ -107,9 +151,13 @@ properties: [
 		givens: [
 			{
 				terminology: 'side',
-				variables: [{char: 'a', name: 'side'}],
-				mathjax: 'd=2a',
-				formula: '2 * a'
+				variables: [
+					{char: 'a', name: 'side'}
+				],
+				formulas: {
+					standard: 'd=2a'
+				},
+				javascript: '2 * a'
 			}
 		]
 	},
@@ -119,21 +167,33 @@ properties: [
 		givens: [
 			{
 				terminology: 'side',
-				variables: [{char: 'a', name: 'side'}],
-				mathjax: 'r=\frac{a\sqrt{3}}{2}',
-				formula: 'a * sqrt(3) / 2'
+				variables: [
+					{char: 'a', name: 'side'}
+				],
+				formulas: {
+					standard: 'r=\frac{a\sqrt{3}}{2}'
+				},
+				javascript: 'a * sqrt(3) / 2'
 			},
 			{
 				terminology: 'circumradius',
-				variables: [{char: 'R', name: 'circumradius'}],
-				mathjax: 'r=\frac{R\sqrt{3}}{2}',
-				formula: 'R * sqrt(3) / 2'
+				variables: [
+					{char: 'R', name: 'circumradius'}
+				],
+				formulas: {
+					standard: 'r=\frac{R\sqrt{3}}{2}'
+				},
+				javascript: 'R * sqrt(3) / 2'
 			},
 			{
 				terminology: 'area',
-				variables: [{char: 'A', name: 'area'}],
-				mathjax: 'r=\sqrt{\frac{A\sqrt{3}}{6}}',
-				formula: 'sqrt(A * sqrt(3) / 6)'
+				variables: [
+					{char: 'A', name: 'area'}
+				],
+				formulas: {
+					standard: 'r=\sqrt{\frac{A\sqrt{3}}{6}}'
+				},
+				javascript: 'sqrt(A * sqrt(3) / 6)'
 			}
 		]
 	},
@@ -143,21 +203,33 @@ properties: [
 		givens: [
 			{
 				terminology: 'side',
-				variables: [{char: 'a', name: 'side'}],
-				mathjax: 'R=a',
-				formula: 'a'
+				variables: [
+					{char: 'a', name: 'side'}
+				],
+				formulas: {
+					standard: 'R=a'
+				},
+				javascript: 'a'
 			},
 			{
 				terminology: 'inradius',
-				variables: [{char: 'r', name: 'inradius'}],
-				mathjax: 'R=\frac{2r\sqrt{3}}{3}',
-				formula: '2 * r * sqrt(3) / 3'
+				variables: [
+					{char: 'r', name: 'inradius'}
+				],
+				formulas: {
+					standard: 'R=\frac{2r\sqrt{3}}{3}'
+				},
+				javascript: '2 * r * sqrt(3) / 3'
 			},
 			{
 				terminology: 'area',
-				variables: [{char: 'A', name: 'area'}],
-				mathjax: 'R=\frac{\sqrt{2A\sqrt{3}}}{3}',
-				formula: 'sqrt(2 * A * sqrt(3)) / 3'
+				variables: [
+					{char: 'A', name: 'area'}
+				],
+				formulas: {
+					standard: 'R=\frac{\sqrt{2A\sqrt{3}}}{3}'
+				},
+				javascript: 'sqrt(2 * A * sqrt(3)) / 3'
 			}
 		]
 	}

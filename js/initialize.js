@@ -11,6 +11,7 @@ else {
 	$(`#${theme}-theme`).prop("checked", true);
 }
 
+
 var defaultFontSize = "14px";
 if (localStorage.getItem("fontSize") === null) $(".current-font-size").html(defaultFontSize);
 else {
@@ -20,13 +21,37 @@ else {
 }
 
 
+var defaultConstant = "pi";
+$(`.formula[data-${defaultConstant}]`).parent().children().hide();
+if (localStorage.getItem("constant") === null) {
+	$(`.formula[data-${defaultConstant}]`).show();
+	$(`#${defaultConstant}-constant`).prop("checked", true);
+} else {
+	var constant = localStorage.getItem("constant");
+	$(`.formula[data-${constant}]`).show();
+	$(`#${constant}-constant`).prop("checked", true);
+}
+
+
+var defaultRationalization = "rational";
+$(`.formula[data-${defaultRationalization}]`).parent().children().hide();
+if (localStorage.getItem("rationalization") === null) {
+	$(`.formula[data-${defaultRationalization}]`).show();
+	$(`#${defaultRationalization}-rationalization`).prop("checked", true);
+} else {
+	var rationalization = localStorage.getItem("rationalization");
+	$(`.formula[data-${rationalization}]`).show();
+	$(`#${rationalization}-rationalization`).prop("checked", true);
+}
+
+
 
 // Stuff to initialize/config once all assets are fully loaded
-$(window).on('load', function() {
+$(window).on("load", function() {
 	// MathJax config
 	MathJax.Hub.Queue(
-		function () {
-			$('.MathJax').attr('tabindex', '-1');
+		function() {
+			$(".MathJax").attr("tabindex", "-1");
 		}
 	);
 
@@ -38,61 +63,59 @@ $(window).on('load', function() {
 
 	// Math config
 	math.config({
-		number: 'BigNumber',
+		number: "BigNumber",
 		precision: 64,
-		angles: 'deg'
+		angles: "deg"
 	});
 
 	math.import({
-		ellipticInt: function (n) {
-			var a0 = math.bignumber(1);
-			var g0 = math.sqrt(math.subtract(math.bignumber(1), n));
+		ellipticInt: function(eccentricity) {
+			let steps = 1000;
+			let subInt = math.divide(math.evaluate("pi / 2"), steps);
+			let xVal = 0;
+			let total = 0;
 
-			var an = a0;
-			var gn = g0;
+			for (let n = 0; n <= steps; n++) {
+				let scope = {
+					k: eccentricity,
+					x: xVal
+				}
 
-			var twoPow = math.bignumber(0.25);
-			var partialSum = math.subtract(math.bignumber(1), math.divide(n, math.bignumber(2)));
+				let yVal = math.evaluate("sqrt(1 - k^2 * sin(x)^2)", scope);
 
-			var iter = 0;
+				let factor = 2;
+				if (n == 0 || n == steps) factor = 1;
 
-			do {
-				partialSum = math.subtract(partialSum, math.multiply(twoPow, math.square(math.subtract(an, gn))));
-				twoPow = math.multiply(twoPow, math.bignumber(2));
+				let curve = math.multiply(yVal, factor);
 
-				a0 = math.divide(math.add(an, gn), math.bignumber(2));
-				g0 = math.sqrt(math.multiply(an, gn));
+				total = math.add(total, curve);
 
-				an = a0;
-				gn = g0;
-
-				iter++;
+				xVal = math.add(xVal, subInt);
 			}
-			while (math.larger(math.abs(math.subtract(an, gn)), math.bignumber(1e-64)));
 
-			return math.divide(math.multiply(math.pi, math.divide(partialSum, an)), math.bignumber(2));
+			return math.multiply(math.divide(subInt, 2), total)
 		}
 	});
 
 
 
 	// Set each shape vector into each shape diagram
-	$('.shape-diagram').each(function() {
-		var shape = $(this).closest('.window').attr('data-shape');
-		$(this).load('img/diagrams/' + shape + '.svg');
+	$(".shape-diagram").each(function() {
+		var shape = $(this).closest(".window").attr("data-shape");
+		$(this).load("img/diagrams/" + shape + ".svg");
 	});
 
-	$('.mini-shape').each(function() {
-		var shape = $(this).closest('.module').attr('data-shape');
-		$(this).load('img/mini-shapes/mini-shapes_' + shape + '.svg');
+	$(".mini-shape").each(function() {
+		var shape = $(this).closest(".module").attr("data-shape");
+		$(this).load("img/mini-shapes/mini-shapes_" + shape + ".svg");
 	});
 
 
 
 	// Window drag functionality
-	$('.window').draggable({
-		containment: 'parent',
-		handle: '.window-title-bar'
+	$(".window").draggable({
+		containment: "parent",
+		handle: ".window-title-bar"
 	});
 
 
@@ -104,20 +127,20 @@ $(window).on('load', function() {
 	// Plugin for making window move on top of all other windows on click
 	$.fn.maxZ = function() {
 		var zArray = [];
-		$('.window:visible').each(function() {
-			var z = parseInt($(this).css('z-index'), 10);
+		$(".window:visible").each(function() {
+			var z = parseInt($(this).css("z-index"), 10);
 			zArray.push(z);
 		});
 		var highestZ = Math.max.apply(null, zArray) + 1;
-		$(this).css('z-index', highestZ);
+		$(this).css("z-index", highestZ);
 	}
 
 
 
 	// Startup animation
-	$('.startup-bar-fill').animate(
-		{width: '100%'}, 3000,
-		() => $('.startup').delay(300).fadeOut(400)
+	$(".startup-bar-fill").animate(
+		{width: "100%"}, 3000,
+		() => $(".startup").delay(300).fadeOut(400)
 	);
 });
 

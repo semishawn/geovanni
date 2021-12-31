@@ -15,12 +15,12 @@
 			{{ variable.char }}: math.bignumber(calcContent.find('.field:visible').eq({% assign count = count | plus:1 %}{{ count }}).val()),
 			{%- endfor %}
 			{%- if given.specialVariable %}
-			{{ given.specialVariable.char }}: math.evaluate('{{ given.specialVariable.formula }}', preScope)
+			{{ given.specialVariable.char }}: math.evaluate('{{ given.specialVariable.javascript }}', preScope)
 			{%- endif %}
 		}
 		{%- endif %}
 
-		var result = math.evaluate('{{ given.formula }}', scope);
+		var result = math.evaluate('{{ given.javascript }}', scope);
 
 		if (result == 'Infinity') formattedResult = 'Undefined';
 		else if (result == 'NaN') formattedResult = 'Error';

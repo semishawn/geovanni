@@ -1,5 +1,5 @@
 /* Given */
-.given-label {margin-right: 0.7rem;}
+.dropdown-label {margin-right: 0.7rem;}
 
 .given {
 	position: relative;
@@ -8,22 +8,23 @@
 	align-items: center;
 }
 
-.given-info {
+.dropdown-info {
 	position: relative;
 	margin-right: auto;
 }
-.given-info svg {
+.dropdown-info svg {
 	font-size: 1.5rem;
 	color: var(--color-accent2);
 }
 
-.given-select svg {
+.dropdown-select {white-space: nowrap;}
+.dropdown-select svg {
 	font-size: 1.2rem;
 	margin-right: 0.5rem;
 	margin-bottom: 0.4rem;
 }
 
-.given-dropdown {
+.dropdown-option-container {
 	position: absolute;
 	top: calc(var(--input-height) + var(--input-spacing));
 	right: 0;
@@ -34,7 +35,7 @@
 	z-index: 999;
 }
 
-.given-option {
+.dropdown-option {
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
@@ -45,7 +46,7 @@
 	cursor: pointer;
 }
 
-.given-select:hover, .given-option:hover {
+.dropdown-select:hover, .dropdown-option:hover {
 	color: var(--color-primary1);
 	background: black;
 }

@@ -1,19 +1,25 @@
-// Given functionality
-$(".given-select").click(function() {
-	$(this).closest(".given").find(".given-dropdown").toggle();
+// Dropdown functionality
+$(".dropdown-select").click(function() {
+	$(this).parent().find(".dropdown-option-container").toggle();
 });
 
-$(".given-option").click(function() {
-	var terminology = $(this).html();
-	var terminologySlug = $(this).attr("data-given");
-	$(this).closest(".given").find(".given-current").html(terminology);
-	$(this).closest(".given").find(".given-dropdown").hide();
-	$(this).closest(".window").find(".calc-content").hide();
-	$(this).closest(".window").find(".calc-content[data-given='" + terminologySlug + "']").show();
+$(".dropdown-option").click(function() {
+	var optionData = $(this).html();
+	$(this).parent().parent().find(".dropdown-current").html(optionData);
+	$(this).parent().hide();
 });
 
 $(document).click(function(e) {
-	if (!$(e.target).closest(".given-select").length) $(".given-dropdown").hide();
+	if (!$(e.target).closest(".dropdown-select").length) $(".dropdown-option-container").hide();
+});
+
+
+
+// Given functionality
+$(".given .dropdown-option").click(function() {
+	var terminologySlug = $(this).attr("data-given");
+	$(this).closest(".window").find(".calc-content").hide();
+	$(this).closest(".window").find(".calc-content[data-given='" + terminologySlug + "']").show();
 });
 
 

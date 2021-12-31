@@ -13,8 +13,11 @@ properties: [
 					{char: 'a', name: 'major axis'},
 					{char: 'b', name: 'minor axis'}
 				],
-				mathjax: 'A=\pi ab',
-				formula: 'pi * a * b'
+				formulas: {
+					standard: 'A=\pi ab',
+					tau: 'A=\frac{\tau ab}{2}'
+				},
+				javascript: 'pi * a * b'
 			}
 		]
 	},
@@ -29,12 +32,14 @@ properties: [
 					{char: 'b', name: 'minor axis'}
 				],
 				specialVariable: {
-					char: 'e',
-					mathjax: 'e=\sqrt{1-\frac{b^2}{a^2}}',
-					formula: 'sqrt(1 - (b^2 / a^2))'
+					char: 'k',
+					formula: 'k=\sqrt{1-\frac{b^2}{a^2}}',
+					javascript: 'sqrt(1 - (b^2 / a^2))'
 				},
-				mathjax: 'C=4a\int_0^\frac{\pi}{2} \sqrt{1-e^2 sin^{2}\theta} d\theta',
-				formula: '4 * a * ellipticInt(e^2)'
+				formulas: {
+					standard: 'C=4a\int_0^\frac{\pi}{2} \sqrt{1-k^2 sin^{2}\theta} d\theta'
+				},
+				javascript: '4 * a * ellipticInt(k)'
 			},
 			{
 				terminology: 'major and minor axis (Ramanujan approximation)',
@@ -44,14 +49,16 @@ properties: [
 				],
 				specialVariable: {
 					char: 'h',
-					mathjax: 'h=\left(\frac{a-b}{a+b}\right)^2',
-					formula: '((a - b) / (a + b))^2'
+					formula: 'h=\left(\frac{a-b}{a+b}\right)^2',
+					javascript: '((a - b) / (a + b))^2'
 				},
-				mathjax: 'C≈\pi(a+b)\left(1+\frac{3h}{10+\sqrt{4-3h}}\right)',
-				formula: 'pi * (a + b) * (1 + (3 * h) / (10 + sqrt(4 - (3 * h))))'
+				formulas: {
+					standard: 'C≈\pi(a+b)\left(1+\frac{3h}{10+\sqrt{4-3h}}\right)'
+				},
+				javascript: 'pi * (a + b) * (1 + (3 * h) / (10 + sqrt(4 - (3 * h))))'
 			}
 		],
-		tooltip: "An ellipse's circumference cannot be exactly determined with a standard algebraic formula, a direct elliptic integral must be calculated. Ramanujan's approximation is a simplified iterative step in the integral process, no less than 99.995% accurate when the ratio of a:b is < 5. For elliptic integral method, a must be greater than b."
+		tooltip: "An ellipse's circumference cannot be exactly determined with a standard algebraic formula, a complete elliptic integral of the second kind must be calculated. Ramanujan's approximation is a simplified iterative step in the integral process, no less than 99.995% accurate when the ratio of a:b is < 5. For elliptic integral method, a must be greater than b."
 	},
 	{
 		char: 'a',
@@ -63,8 +70,11 @@ properties: [
 					{char: 'A', name: 'area'},
 					{char: 'b', name: 'minor axis'}
 				],
-				mathjax: 'a=\frac{A}{\pi b}',
-				formula: 'A / pi * b'
+				formulas: {
+					standard: 'a=\frac{A}{\pi b}',
+					tau: 'A=\frac{2A}{\tau b}'
+				},
+				javascript: 'A / pi * b',
 			}
 		]
 	},
@@ -78,8 +88,11 @@ properties: [
 					{char: 'A', name: 'area'},
 					{char: 'a', name: 'major axis'}
 				],
-				mathjax: 'b=\frac{A}{\pi a}',
-				formula: 'A / pi * a'
+				javascript: {
+					standard: 'b=\frac{A}{\pi a}',
+					tau: 'b=\frac{2A}{\tau a}'
+				},
+				javascript: 'A / pi * a',
 			}
 		]
 	}

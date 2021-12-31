@@ -14,8 +14,10 @@ properties: [
 					{char: 'b', name: 'base 2'},
 					{char: 'h', name: 'height'}
 				],
-				mathjax: 'A=\frac{a+b}{2}h',
-				formula: '((a + b) / 2) * h'
+				formulas: {
+					standard: 'A=\frac{a+b}{2}h'
+				},
+				javascript: '((a + b) / 2) * h'
 			},
 			{
 				terminology: 'four sides',
@@ -25,8 +27,10 @@ properties: [
 					{char: 'c', name: 'side'},
 					{char: 'd', name: 'side'}
 				],
-				mathjax: 'A=\frac{a+b}{2}c\sqrt{1-\left( \frac{(b-a)^2+c^2-d^2}{2c(b-a)} \right)^2}',
-				formula: '(a + b) / 2 * c * sqrt(1 - (((b - a)^2 + c^2 - d^2) / (2 * c * (b - a)))^2)'
+				formulas: {
+					standard: 'A=\frac{a+b}{2}c\sqrt{1-\left( \frac{(b-a)^2+c^2-d^2}{2c(b-a)} \right)^2}'
+				},
+				javascript: '(a + b) / 2 * c * sqrt(1 - (((b - a)^2 + c^2 - d^2) / (2 * c * (b - a)))^2)'
 			}
 		],
 		tooltip: 'For four sides method, b must be greater than a.'
@@ -43,8 +47,10 @@ properties: [
 					{char: 'c', name: 'side'},
 					{char: 'd', name: 'side'}
 				],
-				mathjax: 'P=a+b+c+d',
-				formula: 'a + b + c + d'
+				formulas: {
+					standard: 'P=a+b+c+d'
+				},
+				javascript: 'a + b + c + d'
 			}
 		]
 	},
@@ -59,8 +65,10 @@ properties: [
 					{char: 'a', name: 'base 1'},
 					{char: 'b', name: 'base 2'}
 				],
-				mathjax: 'h=\frac{2A}{a+b}',
-				formula: '(2 * A) / (a + b)'
+				formulas: {
+					standard: 'h=\frac{2A}{a+b}'
+				},
+				javascript: '(2 * A) / (a + b)'
 			}
 		]
 	},
@@ -75,8 +83,10 @@ properties: [
 					{char: 'h', name: 'height'},
 					{char: 'b', name: 'base 2'}
 				],
-				mathjax: 'a=\frac{2A}{h}-b',
-				formula: '((2 * A) / h) - b'
+				formulas: {
+					standard: 'a=\frac{2A}{h}-b'
+				},
+				javascript: '((2 * A) / h) - b'
 			}
 		]
 	},
@@ -91,8 +101,10 @@ properties: [
 					{char: 'h', name: 'height'},
 					{char: 'a', name: 'base 1'}
 				],
-				mathjax: 'b=\frac{2A}{h}-a',
-				formula: '((2 * A) / h) - a'
+				formulas: {
+					standard: 'b=\frac{2A}{h}-a'
+				},
+				javascript: '((2 * A) / h) - a'
 			}
 		]
 	}

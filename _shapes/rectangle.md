@@ -13,8 +13,10 @@ properties: [
 					{char: 'l', name: 'length'},
 					{char: 'w', name: 'width'}
 				],
-				mathjax: 'A=lw',
-				formula: 'l * w'
+				formulas: {
+					standard: 'A=lw'
+				},
+				javascript: 'l * w'
 			},
 			{
 				terminology: 'length and diagonal',
@@ -22,8 +24,10 @@ properties: [
 					{char: 'l', name: 'length'},
 					{char: 'd', name: 'diagonal'}
 				],
-				mathjax: 'A=l\sqrt{d^2-l^2}',
-				formula: 'l * sqrt(d^2 - l^2)'
+				formulas: {
+					standard: 'A=l\sqrt{d^2-l^2}'
+				},
+				javascript: 'l * sqrt(d^2 - l^2)'
 			},
 			{
 				terminology: 'width and diagonal',
@@ -31,8 +35,10 @@ properties: [
 					{char: 'w', name: 'width'},
 					{char: 'd', name: 'diagonal'}
 				],
-				mathjax: 'A=w\sqrt{d^2-w^2}',
-				formula: 'w * sqrt(d^2 - w^2)'
+				formulas: {
+					standard: 'A=w\sqrt{d^2-w^2}'
+				},
+				javascript: 'w * sqrt(d^2 - w^2)'
 			},
 			{
 				terminology: 'length and perimeter',
@@ -40,8 +46,10 @@ properties: [
 					{char: 'l', name: 'length'},
 					{char: 'P', name: 'perimeter'}
 				],
-				mathjax: 'A=\frac{Pl-2l^2}{2}',
-				formula: '((P * l) - (2 * l^2)) / 2'
+				formulas: {
+					standard: 'A=\frac{Pl-2l^2}{2}'
+				},
+				javascript: '((P * l) - (2 * l^2)) / 2'
 			},
 			{
 				terminology: 'width and perimeter',
@@ -49,8 +57,10 @@ properties: [
 					{char: 'w', name: 'width'},
 					{char: 'P', name: 'perimeter'}
 				],
-				mathjax: 'A=\frac{Pw-2w^2}{2}',
-				formula: '((P * w) - (2 * w^2)) / 2'
+				formulas: {
+					standard: 'A=\frac{Pw-2w^2}{2}'
+				},
+				javascript: '((P * w) - (2 * w^2)) / 2'
 			}
 		]
 	},
@@ -64,8 +74,10 @@ properties: [
 					{char: 'l', name: 'length'},
 					{char: 'w', name: 'width'}
 				],
-				mathjax: 'P=2l+2w',
-				formula: '(2 * l) + (2 * w)'
+				formulas: {
+					standard: 'P=2l+2w'
+				},
+				javascript: '(2 * l) + (2 * w)'
 			},
 		]
 	},
@@ -79,8 +91,10 @@ properties: [
 					{char: 'w', name: 'width'},
 					{char: 'A', name: 'area'}
 				],
-				mathjax: 'l=\frac{A}{w}',
-				formula: 'A / w'
+				formulas: {
+					standard: 'l=\frac{A}{w}'
+				},
+				javascript: 'A / w'
 			},
 			{
 				terminology: 'width and perimeter',
@@ -88,8 +102,10 @@ properties: [
 					{char: 'w', name: 'width'},
 					{char: 'P', name: 'perimeter'}
 				],
-				mathjax: 'l=\frac{P-2w}{2}',
-				formula: '(P - (2 * w)) / 2'
+				formulas: {
+					standard: 'l=\frac{P-2w}{2}'
+				},
+				javascript: '(P - (2 * w)) / 2'
 			},
 			{
 				terminology: 'width and diagonal',
@@ -97,8 +113,10 @@ properties: [
 					{char: 'w', name: 'width'},
 					{char: 'd', name: 'diagonal'}
 				],
-				mathjax: 'l=\sqrt{d^2-w^2}',
-				formula: 'sqrt(d^2 - w^2)'
+				formulas: {
+					standard: 'l=\sqrt{d^2-w^2}'
+				},
+				javascript: 'sqrt(d^2 - w^2)'
 			}
 		]
 	},
@@ -112,8 +130,10 @@ properties: [
 					{char: 'l', name: 'length'},
 					{char: 'A', name: 'area'}
 				],
-				mathjax: 'w=\frac{A}{l}',
-				formula: 'A / l'
+				formulas: {
+					standard: 'w=\frac{A}{l}'
+				},
+				javascript: 'A / l'
 			},
 			{
 				terminology: 'length and perimeter',
@@ -121,8 +141,10 @@ properties: [
 					{char: 'l', name: 'length'},
 					{char: 'P', name: 'perimeter'}
 				],
-				mathjax: 'w=\frac{P-2l}{2}',
-				formula: '(P - (2 * l)) / 2'
+				formulas: {
+					standard: 'w=\frac{P-2l}{2}'
+				},
+				javascript: '(P - (2 * l)) / 2'
 			},
 			{
 				terminology: 'length and diagonal',
@@ -130,8 +152,10 @@ properties: [
 					{char: 'l', name: 'length'},
 					{char: 'd', name: 'diagonal'}
 				],
-				mathjax: 'w=\sqrt{d^2-l^2}',
-				formula: 'sqrt(d^2 - l^2)'
+				formulas: {
+					standard: 'w=\sqrt{d^2-l^2}'
+				},
+				javascript: 'sqrt(d^2 - l^2)'
 			}
 		]
 	},
@@ -145,8 +169,10 @@ properties: [
 					{char: 'l', name: 'length'},
 					{char: 'w', name: 'width'}
 				],
-				mathjax: 'd=\sqrt{l^2+w^2}',
-				formula: 'sqrt(2 + w^2)'
+				formulas: {
+					standard: 'd=\sqrt{l^2+w^2}'
+				},
+				javascript: 'sqrt(2 + w^2)'
 			},
 			{
 				terminology: 'length and area',
@@ -154,8 +180,10 @@ properties: [
 					{char: 'l', name: 'length'},
 					{char: 'A', name: 'area'}
 				],
-				mathjax: 'd=\frac{\sqrt{l^4+A^2}}{l}',
-				formula: '(sqrt(l^4 + A^2)) / l'
+				formulas: {
+					standard: 'd=\frac{\sqrt{l^4+A^2}}{l}'
+				},
+				javascript: '(sqrt(l^4 + A^2)) / l'
 			},
 			{
 				terminology: 'width and area',
@@ -163,8 +191,10 @@ properties: [
 					{char: 'w', name: 'width'},
 					{char: 'A', name: 'area'}
 				],
-				mathjax: 'd=\frac{\sqrt{w^4+A^2}}{w}',
-				formula: '(sqrt(w^4 + A^2)) / w'
+				formulas: {
+					standard: 'd=\frac{\sqrt{w^4+A^2}}{w}'
+				},
+				javascript: '(sqrt(w^4 + A^2)) / w'
 			}
 		]
 	},

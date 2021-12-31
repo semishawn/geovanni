@@ -191,24 +191,24 @@ precision_types: [
 			<div class="window-body calc-body">
 				<div class="given">
 					{%- if property.tooltip %}
-					<div class="given-info" tooltip="{{ property.tooltip }}" flow="bottom">
+					<div class="dropdown-info" tooltip="{{ property.tooltip }}" flow="bottom">
 						<i class="fas fa-info-circle"></i>
 					</div>
 					{%- endif %}
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
 						{%- for given in property.givens limit:1 %}
-						<span class="given-current">{{ given.terminology }}</span>
+						<span class="dropdown-current">{{ given.terminology }}</span>
 						{%- endfor %}
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						{%- for given in property.givens %}
 						{% assign given_slug = given.terminology | slugify | replace:"-","_" | remove:"(" | replace:")" %}
-						<div class="given-option" data-given="{{ given_slug }}">{{ given.terminology }}</div>
+						<div class="dropdown-option" data-given="{{ given_slug }}">{{ given.terminology }}</div>
 						{%- endfor %}
 					</div>
 				</div>
@@ -229,9 +229,19 @@ precision_types: [
 
 					<div class="formula-container">
 						{%- if given.specialVariable %}
-						<div class="formula">$${{ given.specialVariable.mathjax }}$$</div>
+						<div class="formula" data-special-var>$${{ given.specialVariable.formula }}$$</div>
 						{%- endif %}
-						<div class="formula">$${{ given.mathjax }}$$</div>
+
+						{%- for formula in given.formulas %}
+						<div class="formula"
+							{%- if formula[0] contains "standard" and given.formulas.tau %} data-pi{% endif %}
+							{%- if formula[0] contains "tau" %} data-tau{% endif %}
+							{%- if formula[0] contains "standard" and given.formulas.irrational %} data-rational{% endif %}
+							{%- if formula[0] contains "irrational" %} data-irrational{% endif -%}
+						>
+							$${{ formula[1] }}$$
+						</div>
+						{%- endfor %}
 					</div>
 
 					<div class="shape-data">
@@ -367,6 +377,23 @@ precision_types: [
 
 
 
+	<div class="window popup cookie-warning">
+		<div class="window-head popup-head">
+			<div class="window-title-bar">Cookie Warning</div>
+		</div>
+
+		<div class="window-body popup-body">
+			Changing settings requires the use of site <b>cookies</b>. Geovanni uses <b>LocalStorage</b> data, which is client-side only, less resource intensive, and more user-secured than traditional cookies, though still considered cookies. I do nothing with this data. I don't even have a privacy policy because I wouldn't know how to breach your privacy even if I had access to your data.
+			<div class="popup-midline">Is this okay with you overall?</div>
+			<div class="popup-btn-container">
+				<button class="btn">No thanks</button>
+				<button class="btn important-btn"><i class="fas fa-cookie-bite"></i>Sure</button>
+			</div>
+		</div>
+	</div>
+
+
+
 	<div class="window settings">
 		<div class="window-head">
 			<div class="window-title-bar">
@@ -390,9 +417,6 @@ precision_types: [
 							name="theme"
 							id="{{ color }}-theme"
 							autocomplete="off"
-							{%- if forloop.first %}
-							checked
-							{%- endif %}
 						>
 						<label for="{{ color }}-theme"></label>
 					{%- endfor %}
@@ -411,6 +435,60 @@ precision_types: [
 					<div class="font-size-setter dec"><i class="fas fa-minus"></i></div>
 					<div class="current-font-size">14px</div>
 					<div class="font-size-setter inc"><i class="fas fa-plus"></i></div>
+				</div>
+			</div>
+
+			<div class="setting-row">
+				<div class="setting-label">Preferred Circle Constant</div>
+				<div class="setting-dots"></div>
+				<div class="toggle-btn-container">
+					{%- assign constants = "pi,tau" | split: "," %}
+					{%- for constant in constants %}
+						<input
+							type="radio"
+							name="constant"
+							id="{{ constant }}-constant"
+							autocomplete="off"
+						>
+						<label class="toggle-btn" for="{{ constant }}-constant">$$\{{ constant }}$$</label>
+					{%- endfor %}
+				</div>
+			</div>
+
+			<div class="setting-row">
+				<div class="setting-label">Do You Care About Rationalization?</div>
+				<div class="setting-dots"></div>
+				<div class="toggle-btn-container">
+					{%- assign rationalizations = "rational,irrational" | split: "," %}
+					{%- for rationalization in rationalizations %}
+						<input
+							type="radio"
+							name="rationalization"
+							id="{{ rationalization }}-rationalization"
+							autocomplete="off"
+						>
+						<label class="toggle-btn" for="{{ rationalization }}-rationalization">
+							{%- if forloop.first %}
+							<i class="far fa-thumbs-up"></i>
+							{%- else %}
+							<i class="far fa-thumbs-down"></i>
+							{%- endif %}
+						</label>
+					{%- endfor %}
+				</div>
+			</div>
+
+			<div class="setting-row">
+				<div class="setting-label">Formula Construction</div>
+				<div class="setting-dots"></div>
+				<div class="btn dropdown-select">
+					<i class="fas fa-sort-down"></i>
+					<span class="dropdown-current">Most efficient</span>
+				</div>
+
+				<div class="dropdown-option-container">
+					<div class="dropdown-option">Most efficient</div>
+					<div class="dropdown-option">Easiest to remember</div>
 				</div>
 			</div>
 
@@ -450,28 +528,12 @@ precision_types: [
 
 
 
-	<div class="window popup cookie-warning">
-		<div class="window-head popup-head">
-			<div class="window-title-bar">Cookie Warning</div>
-		</div>
-
-		<div class="window-body popup-body">
-			Changing settings requires the use of site <b>cookies</b>. Geovanni uses <b>LocalStorage</b> data, which is client-side only, less resource intensive, and more user-secured than traditional cookies, though still considered cookies. I do nothing with this data. I don't even have a privacy policy because I wouldn't know how to breach your privacy even if I had access to your data.
-			<div class="popup-midline">Is this okay with you overall?</div>
-			<div class="popup-btn-container">
-				<button class="btn">No thanks</button>
-				<button class="btn important-btn"><i class="fas fa-cookie-bite"></i>Sure</button>
-			</div>
-		</div>
-	</div>
-
-
-
 	<!-- JS -->
 	<script src="{{ site.baseurl }}/js/initialize.js"></script>
 	<script src="{{ site.baseurl }}/js/windows.js"></script>
 	<script src="{{ site.baseurl }}/js/propcalc.js"></script>
 	<script src="{{ site.baseurl }}/js/ubercalc.js"></script>
+	<script src="{{ site.baseurl }}/js/settings.js"></script>
 	<script src="{{ site.baseurl }}/js/four-function.js"></script>
 </body>
 

@@ -23,6 +23,7 @@
 <link rel="stylesheet" href="/geovanni/css/main.css">
 <link rel="stylesheet" href="/geovanni/css/calculators.css">
 <link rel="stylesheet" href="/geovanni/css/windows.css">
+<link rel="stylesheet" media="screen and (max-width: 600px)" href="/geovanni/css/mobile.css">
 <style>
 	.flex-show {display: flex;}
 	.grid-show {display: grid;}
@@ -31,9 +32,13 @@
 <!-- Plugins -->
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
 <script src="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.12.1/jquery-ui.min.js"></script>
+
 <script src="https://kit.fontawesome.com/5978d27576.js" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/mathjs@8.0.1/lib/browser/math.min.js"></script>
-<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=default"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.0.1/math.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=default"></script>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplebar/5.3.5/simplebar.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/simplebar/5.3.5/simplebar.min.js"></script>
 </head>
@@ -364,20 +369,20 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">radius</span>
+						<span class="dropdown-current">radius</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="radius">radius</div>
+						<div class="dropdown-option" data-given="radius">radius</div>
 						
-						<div class="given-option" data-given="diameter">diameter</div>
+						<div class="dropdown-option" data-given="diameter">diameter</div>
 						
-						<div class="given-option" data-given="circumference">circumference</div>
+						<div class="dropdown-option" data-given="circumference">circumference</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -386,7 +391,12 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$A=\pi r^2$$</div>
+						<div class="formula" data-pi>
+							$$A=\pi r^2$$
+						</div>
+						<div class="formula" data-tau>
+							$$A=\frac{\tau r^{2}}{2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -502,7 +512,12 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$A=\frac{\pi d^2}{4}$$</div>
+						<div class="formula" data-pi>
+							$$A=\frac{\pi d^2}{4}$$
+						</div>
+						<div class="formula" data-tau>
+							$$A=\frac{\tau d^{2}}{8}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -618,7 +633,12 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$A=\frac{C^2}{4\pi}$$</div>
+						<div class="formula" data-pi>
+							$$A=\frac{C^2}{4\pi}$$
+						</div>
+						<div class="formula" data-tau>
+							$$A=\frac{C^{2}}{2\tau}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -750,20 +770,20 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">radius</span>
+						<span class="dropdown-current">radius</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="radius">radius</div>
+						<div class="dropdown-option" data-given="radius">radius</div>
 						
-						<div class="given-option" data-given="diameter">diameter</div>
+						<div class="dropdown-option" data-given="diameter">diameter</div>
 						
-						<div class="given-option" data-given="area">area</div>
+						<div class="dropdown-option" data-given="area">area</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -772,7 +792,12 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$C=2\pi r$$</div>
+						<div class="formula" data-pi>
+							$$C=2\pi r$$
+						</div>
+						<div class="formula" data-tau>
+							$$C=\tau r$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -888,7 +913,12 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$C=\pi d$$</div>
+						<div class="formula" data-pi>
+							$$C=\pi d$$
+						</div>
+						<div class="formula" data-tau>
+							$$C=\frac{\tau d}{2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -1004,7 +1034,12 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$C=2 \sqrt{\pi A}$$</div>
+						<div class="formula" data-pi>
+							$$C=2 \sqrt{\pi A}$$
+						</div>
+						<div class="formula" data-tau>
+							$$C=2\sqrt{\frac{\tau A}{2}}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -1136,20 +1171,20 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">circumference</span>
+						<span class="dropdown-current">circumference</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="circumference">circumference</div>
+						<div class="dropdown-option" data-given="circumference">circumference</div>
 						
-						<div class="given-option" data-given="area">area</div>
+						<div class="dropdown-option" data-given="area">area</div>
 						
-						<div class="given-option" data-given="diameter">diameter</div>
+						<div class="dropdown-option" data-given="diameter">diameter</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -1158,7 +1193,12 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$r=\frac{C}{2\pi}$$</div>
+						<div class="formula" data-pi>
+							$$r=\frac{C}{2\pi}$$
+						</div>
+						<div class="formula" data-tau>
+							$$r=\frac{C}{\tau}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -1274,7 +1314,18 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$r=\frac{\sqrt{\pi A}}{\pi}$$</div>
+						<div class="formula" data-pi data-rational>
+							$$r=\frac{\sqrt{\pi A}}{\pi}$$
+						</div>
+						<div class="formula" data-irrational>
+							$$r=\sqrt{\frac{A}{\pi}}$$
+						</div>
+						<div class="formula" data-tau>
+							$$r=\frac{\sqrt{2\tau A}}{\tau}$$
+						</div>
+						<div class="formula" data-tau>
+							$$r=\sqrt{\frac{2A}{\tau}}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -1390,7 +1441,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$r=\frac{d}{2}$$</div>
+						<div class="formula">
+							$$r=\frac{d}{2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -1522,20 +1575,20 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">circumference</span>
+						<span class="dropdown-current">circumference</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="circumference">circumference</div>
+						<div class="dropdown-option" data-given="circumference">circumference</div>
 						
-						<div class="given-option" data-given="area">area</div>
+						<div class="dropdown-option" data-given="area">area</div>
 						
-						<div class="given-option" data-given="radius">radius</div>
+						<div class="dropdown-option" data-given="radius">radius</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -1544,7 +1597,12 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$d=\frac{C}{\pi}$$</div>
+						<div class="formula" data-pi>
+							$$d=\frac{C}{\pi}$$
+						</div>
+						<div class="formula" data-tau>
+							$$d=\frac{2C}{\tau}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -1660,7 +1718,12 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$d=\frac{2\sqrt{\pi A}}{\pi}$$</div>
+						<div class="formula" data-pi>
+							$$d=\frac{2\sqrt{\pi A}}{\pi}$$
+						</div>
+						<div class="formula" data-tau>
+							$$d=\frac{2\sqrt{2\tau A}}{\tau}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -1776,7 +1839,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$d=2r$$</div>
+						<div class="formula">
+							$$d=2r$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -2024,24 +2089,24 @@
 		var scope = {};
 		var formulas = {
 			area: [
-				"pi * r^2",
-				"(pi * d^2) / 4",
-				"(C^2) / (4 * pi)",
+				"",
+				"",
+				"",
 			],
 			circumference: [
-				"2 * pi * r",
-				"pi * d",
-				"2 * sqrt(pi * A)",
+				"",
+				"",
+				"",
 			],
 			radius: [
-				"C / (2 * pi)",
-				"sqrt(pi * A) / pi",
-				"d / 2",
+				"",
+				"",
+				"",
 			],
 			diameter: [
-				"C / pi",
-				"2 * sqrt(pi * A) / pi",
-				"2 * r",
+				"",
+				"",
+				"",
 			],
 		}
 
@@ -2198,16 +2263,16 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">major and minor axis</span>
+						<span class="dropdown-current">major and minor axis</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="major_and_minor_axis">major and minor axis</div>
+						<div class="dropdown-option" data-given="major_and_minor_axis">major and minor axis</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -2216,7 +2281,12 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$A=\pi ab$$</div>
+						<div class="formula" data-pi>
+							$$A=\pi ab$$
+						</div>
+						<div class="formula" data-tau>
+							$$A=\frac{\tau ab}{2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -2359,22 +2429,22 @@
 
 			<div class="window-body calc-body">
 				<div class="given">
-					<div class="given-info" tooltip="An ellipse's circumference cannot be exactly determined with a standard algebraic formula, a direct elliptic integral must be calculated. Ramanujan's approximation is a simplified iterative step in the integral process, no less than 99.995% accurate when the ratio of a:b is < 5. For elliptic integral method, a must be greater than b." flow="bottom">
+					<div class="dropdown-info" tooltip="An ellipse's circumference cannot be exactly determined with a standard algebraic formula, a complete elliptic integral of the second kind must be calculated. Ramanujan's approximation is a simplified iterative step in the integral process, no less than 99.995% accurate when the ratio of a:b is < 5. For elliptic integral method, a must be greater than b." flow="bottom">
 						<i class="fas fa-info-circle"></i>
 					</div>
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">major and minor axis (Complete elliptic integral)</span>
+						<span class="dropdown-current">major and minor axis (Complete elliptic integral)</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="major_and_minor_axis_complete_elliptic_integral">major and minor axis (Complete elliptic integral)</div>
+						<div class="dropdown-option" data-given="major_and_minor_axis_complete_elliptic_integral">major and minor axis (Complete elliptic integral)</div>
 						
-						<div class="given-option" data-given="major_and_minor_axis_ramanujan_approximation">major and minor axis (Ramanujan approximation)</div>
+						<div class="dropdown-option" data-given="major_and_minor_axis_ramanujan_approximation">major and minor axis (Ramanujan approximation)</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -2383,8 +2453,10 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$e=\sqrt{1-\frac{b^2}{a^2}}$$</div>
-						<div class="formula">$$C=4a\int_0^\frac{\pi}{2} \sqrt{1-e^2 sin^{2}\theta} d\theta$$</div>
+						<div class="formula" data-special-var>$$k=\sqrt{1-\frac{b^2}{a^2}}$$</div>
+						<div class="formula">
+							$$C=4a\int_0^\frac{\pi}{2} \sqrt{1-k^2 sin^{2}\theta} d\theta$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -2487,10 +2559,10 @@
 		let scope = {
 			a: math.bignumber(calcContent.find('.field:visible').eq(0).val()),
 			b: math.bignumber(calcContent.find('.field:visible').eq(1).val()),
-			e: math.evaluate('sqrt(1 - (b^2 / a^2))', preScope)
+			k: math.evaluate('sqrt(1 - (b^2 / a^2))', preScope)
 		}
 
-		var result = math.evaluate('4 * a * ellipticInt(e^2)', scope);
+		var result = math.evaluate('4 * a * ellipticInt(k)', scope);
 
 		if (result == 'Infinity') formattedResult = 'Undefined';
 		else if (result == 'NaN') formattedResult = 'Error';
@@ -2515,8 +2587,10 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$h=\left(\frac{a-b}{a+b}\right)^2$$</div>
-						<div class="formula">$$C≈\pi(a+b)\left(1+\frac{3h}{10+\sqrt{4-3h}}\right)$$</div>
+						<div class="formula" data-special-var>$$h=\left(\frac{a-b}{a+b}\right)^2$$</div>
+						<div class="formula">
+							$$C≈\pi(a+b)\left(1+\frac{3h}{10+\sqrt{4-3h}}\right)$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -2663,16 +2737,16 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">area and minor axis</span>
+						<span class="dropdown-current">area and minor axis</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="area_and_minor_axis">area and minor axis</div>
+						<div class="dropdown-option" data-given="area_and_minor_axis">area and minor axis</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -2681,7 +2755,12 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$a=\frac{A}{\pi b}$$</div>
+						<div class="formula" data-pi>
+							$$a=\frac{A}{\pi b}$$
+						</div>
+						<div class="formula" data-tau>
+							$$A=\frac{2A}{\tau b}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -2823,16 +2902,16 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">area and major axis</span>
+						<span class="dropdown-current">area and major axis</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="area_and_major_axis">area and major axis</div>
+						<div class="dropdown-option" data-given="area_and_major_axis">area and major axis</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -2841,7 +2920,6 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$b=\frac{A}{\pi a}$$</div>
 					</div>
 
 					<div class="shape-data">
@@ -3099,17 +3177,17 @@
 		var scope = {};
 		var formulas = {
 			area: [
-				"pi * a * b",
+				"",
 			],
 			circumference: [
-				"4 * a * ellipticInt(e^2)",
-				"pi * (a + b) * (1 + (3 * h) / (10 + sqrt(4 - (3 * h))))",
+				"",
+				"",
 			],
 			major_axis: [
-				"A / pi * b",
+				"",
 			],
 			minor_axis: [
-				"A / pi * a",
+				"",
 			],
 		}
 
@@ -3330,20 +3408,20 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">side</span>
+						<span class="dropdown-current">side</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="side">side</div>
+						<div class="dropdown-option" data-given="side">side</div>
 						
-						<div class="given-option" data-given="inradius">inradius</div>
+						<div class="dropdown-option" data-given="inradius">inradius</div>
 						
-						<div class="given-option" data-given="circumradius">circumradius</div>
+						<div class="dropdown-option" data-given="circumradius">circumradius</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -3352,7 +3430,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$A=\frac{7a^{2}\cot\left(\frac{\pi}{7}\right)}{4}$$</div>
+						<div class="formula">
+							$$A=\frac{7a^{2}\cot\left(\frac{\pi}{7}\right)}{4}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -3468,7 +3548,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$A=7r^{2}\tan\left(\frac{\pi}{7}\right)$$</div>
+						<div class="formula">
+							$$A=7r^{2}\tan\left(\frac{\pi}{7}\right)$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -3584,7 +3666,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$A=\frac{7R^{2}\sin\left(\frac{2\pi}{7}\right)}{2}$$</div>
+						<div class="formula">
+							$$A=\frac{7R^{2}\sin\left(\frac{2\pi}{7}\right)}{2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -3716,16 +3800,16 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">side</span>
+						<span class="dropdown-current">side</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="side">side</div>
+						<div class="dropdown-option" data-given="side">side</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -3734,7 +3818,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$P=7a$$</div>
+						<div class="formula">
+							$$P=7a$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -3866,22 +3952,22 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">inradius</span>
+						<span class="dropdown-current">inradius</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="inradius">inradius</div>
+						<div class="dropdown-option" data-given="inradius">inradius</div>
 						
-						<div class="given-option" data-given="circumradius">circumradius</div>
+						<div class="dropdown-option" data-given="circumradius">circumradius</div>
 						
-						<div class="given-option" data-given="area">area</div>
+						<div class="dropdown-option" data-given="area">area</div>
 						
-						<div class="given-option" data-given="perimeter">perimeter</div>
+						<div class="dropdown-option" data-given="perimeter">perimeter</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -3890,7 +3976,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$a=2r\tan \left(\frac{\pi}{7}\right)$$</div>
+						<div class="formula">
+							$$a=2r\tan \left(\frac{\pi}{7}\right)$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -4006,7 +4094,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$a=2R\sin\left(\frac{\pi}{7}\right)$$</div>
+						<div class="formula">
+							$$a=2R\sin\left(\frac{\pi}{7}\right)$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -4122,7 +4212,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$a=\frac{\sqrt{28A\tan\left(\frac{\pi}{7}\right)}}{7}$$</div>
+						<div class="formula">
+							$$a=\frac{\sqrt{28A\tan\left(\frac{\pi}{7}\right)}}{7}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -4238,7 +4330,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$s=\frac{P}{7}$$</div>
+						<div class="formula">
+							$$s=\frac{P}{7}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -4370,16 +4464,16 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">side</span>
+						<span class="dropdown-current">side</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="side">side</div>
+						<div class="dropdown-option" data-given="side">side</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -4388,7 +4482,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$h=\frac{a\cot\left(\frac{\pi}{14}\right)}{2}$$</div>
+						<div class="formula">
+							$$h=\frac{a\cot\left(\frac{\pi}{14}\right)}{2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -4520,16 +4616,16 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">side</span>
+						<span class="dropdown-current">side</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="side">side</div>
+						<div class="dropdown-option" data-given="side">side</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -4538,7 +4634,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$s=2a\cos\left(\frac{\pi}{7}\right)$$</div>
+						<div class="formula">
+							$$s=2a\cos\left(\frac{\pi}{7}\right)$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -4670,16 +4768,16 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">side</span>
+						<span class="dropdown-current">side</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="side">side</div>
+						<div class="dropdown-option" data-given="side">side</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -4688,7 +4786,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$d=\frac{a\csc\left(\frac{\pi}{14}\right)}{2}$$</div>
+						<div class="formula">
+							$$d=\frac{a\csc\left(\frac{\pi}{14}\right)}{2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -4820,20 +4920,20 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">side</span>
+						<span class="dropdown-current">side</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="side">side</div>
+						<div class="dropdown-option" data-given="side">side</div>
 						
-						<div class="given-option" data-given="circumradius">circumradius</div>
+						<div class="dropdown-option" data-given="circumradius">circumradius</div>
 						
-						<div class="given-option" data-given="area">area</div>
+						<div class="dropdown-option" data-given="area">area</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -4842,7 +4942,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$r=\frac{a\cot\left(\frac{\pi}{7}\right)}{2}$$</div>
+						<div class="formula">
+							$$r=\frac{a\cot\left(\frac{\pi}{7}\right)}{2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -4958,7 +5060,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$r=R\cos\left(\frac{\pi}{7}\right)$$</div>
+						<div class="formula">
+							$$r=R\cos\left(\frac{\pi}{7}\right)$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -5074,7 +5178,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$r=\frac{\sqrt{7A\cot\left(\frac{\pi}{7}\right)}}{7}$$</div>
+						<div class="formula">
+							$$r=\frac{\sqrt{7A\cot\left(\frac{\pi}{7}\right)}}{7}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -5206,20 +5312,20 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">side</span>
+						<span class="dropdown-current">side</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="side">side</div>
+						<div class="dropdown-option" data-given="side">side</div>
 						
-						<div class="given-option" data-given="inradius">inradius</div>
+						<div class="dropdown-option" data-given="inradius">inradius</div>
 						
-						<div class="given-option" data-given="area">area</div>
+						<div class="dropdown-option" data-given="area">area</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -5228,7 +5334,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$R=\frac{a\csc\left(\frac{\pi}{7}\right)}{2}$$</div>
+						<div class="formula">
+							$$R=\frac{a\csc\left(\frac{\pi}{7}\right)}{2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -5344,7 +5452,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$R=r\sec\left(\frac{\pi}{7}\right)$$</div>
+						<div class="formula">
+							$$R=r\sec\left(\frac{\pi}{7}\right)$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -5460,7 +5570,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$R=\frac{\sqrt{14A\csc\left(\frac{2\pi}{7}\right)}}{7}$$</div>
+						<div class="formula">
+							$$R=\frac{\sqrt{14A\csc\left(\frac{2\pi}{7}\right)}}{7}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -5760,37 +5872,37 @@
 		var scope = {};
 		var formulas = {
 			area: [
-				"7 * a^2 * cot(pi / 7) / 4",
-				"7 * r^2 * tan(pi / 7)",
-				"7 * R^2 * sin(2 * pi / 7) / 2",
+				"",
+				"",
+				"",
 			],
 			perimeter: [
-				"7 * a",
+				"",
 			],
 			side: [
-				"2 * r * tan(pi / 7)",
-				"2 * R * sin(pi / 7)",
-				"sqrt(28 * A * tan(pi / 7)) / 7",
-				"P / 7",
+				"",
+				"",
+				"",
+				"",
 			],
 			height: [
-				"a * cot(pi / 14) / 2",
+				"",
 			],
 			short_diagonal: [
-				"2 * a * cos(pi / 7)",
+				"",
 			],
 			long_diagonal: [
-				"a * csc(pi / 14) / 2",
+				"",
 			],
 			inradius: [
-				"a * cot(pi / 7) / 2",
-				"R * cos(pi / 7)",
-				"sqrt(7 * A * cot(pi / 7)) / 7",
+				"",
+				"",
+				"",
 			],
 			circumradius: [
-				"a * csc(pi / 7) / 2",
-				"r * sec(pi / 7)",
-				"sqrt(14 * A * csc(2 * pi / 7)) / 7",
+				"",
+				"",
+				"",
 			],
 		}
 
@@ -6012,24 +6124,24 @@
 
 			<div class="window-body calc-body">
 				<div class="given">
-					<div class="given-info" tooltip="For a hexagon, side length is equal to circumradius (a=R)." flow="bottom">
+					<div class="dropdown-info" tooltip="For a hexagon, side length is equal to circumradius (a=R)." flow="bottom">
 						<i class="fas fa-info-circle"></i>
 					</div>
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">side</span>
+						<span class="dropdown-current">side</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="side">side</div>
+						<div class="dropdown-option" data-given="side">side</div>
 						
-						<div class="given-option" data-given="inradius">inradius</div>
+						<div class="dropdown-option" data-given="inradius">inradius</div>
 						
-						<div class="given-option" data-given="circumradius">circumradius</div>
+						<div class="dropdown-option" data-given="circumradius">circumradius</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -6038,7 +6150,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$A=\frac{3\sqrt{3}a^{2}}{2}$$</div>
+						<div class="formula">
+							$$A=\frac{3\sqrt{3}a^{2}}{2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -6154,7 +6268,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$A=2\sqrt{3}r^{2}$$</div>
+						<div class="formula">
+							$$A=2\sqrt{3}r^{2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -6270,7 +6386,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$A=\frac{3\sqrt{3}R^{2}}{2}$$</div>
+						<div class="formula">
+							$$A=\frac{3\sqrt{3}R^{2}}{2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -6402,16 +6520,16 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">side</span>
+						<span class="dropdown-current">side</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="side">side</div>
+						<div class="dropdown-option" data-given="side">side</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -6420,7 +6538,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$P=6a$$</div>
+						<div class="formula">
+							$$P=6a$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -6552,22 +6672,22 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">inradius</span>
+						<span class="dropdown-current">inradius</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="inradius">inradius</div>
+						<div class="dropdown-option" data-given="inradius">inradius</div>
 						
-						<div class="given-option" data-given="circumradius">circumradius</div>
+						<div class="dropdown-option" data-given="circumradius">circumradius</div>
 						
-						<div class="given-option" data-given="area">area</div>
+						<div class="dropdown-option" data-given="area">area</div>
 						
-						<div class="given-option" data-given="perimeter">perimeter</div>
+						<div class="dropdown-option" data-given="perimeter">perimeter</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -6576,7 +6696,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$a=\frac{2r\sqrt{3}}{3}$$</div>
+						<div class="formula">
+							$$a=\frac{2r\sqrt{3}}{3}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -6692,7 +6814,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$a=R$$</div>
+						<div class="formula">
+							$$a=R$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -6808,7 +6932,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$a=\frac{\sqrt{2A\sqrt{3}}}{3}$$</div>
+						<div class="formula">
+							$$a=\frac{\sqrt{2A\sqrt{3}}}{3}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -6924,7 +7050,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$a=\frac{P}{6}$$</div>
+						<div class="formula">
+							$$a=\frac{P}{6}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -7056,18 +7184,18 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">side</span>
+						<span class="dropdown-current">side</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="side">side</div>
+						<div class="dropdown-option" data-given="side">side</div>
 						
-						<div class="given-option" data-given="inradius">inradius</div>
+						<div class="dropdown-option" data-given="inradius">inradius</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -7076,7 +7204,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$h=a\sqrt{3}$$</div>
+						<div class="formula">
+							$$h=a\sqrt{3}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -7192,7 +7322,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$h=2r$$</div>
+						<div class="formula">
+							$$h=2r$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -7324,16 +7456,16 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">side</span>
+						<span class="dropdown-current">side</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="side">side</div>
+						<div class="dropdown-option" data-given="side">side</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -7342,7 +7474,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$s=a\sqrt{3}$$</div>
+						<div class="formula">
+							$$s=a\sqrt{3}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -7474,16 +7608,16 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">side</span>
+						<span class="dropdown-current">side</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="side">side</div>
+						<div class="dropdown-option" data-given="side">side</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -7492,7 +7626,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$d=2a$$</div>
+						<div class="formula">
+							$$d=2a$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -7624,20 +7760,20 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">side</span>
+						<span class="dropdown-current">side</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="side">side</div>
+						<div class="dropdown-option" data-given="side">side</div>
 						
-						<div class="given-option" data-given="circumradius">circumradius</div>
+						<div class="dropdown-option" data-given="circumradius">circumradius</div>
 						
-						<div class="given-option" data-given="area">area</div>
+						<div class="dropdown-option" data-given="area">area</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -7646,7 +7782,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$r=\frac{a\sqrt{3}}{2}$$</div>
+						<div class="formula">
+							$$r=\frac{a\sqrt{3}}{2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -7762,7 +7900,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$r=\frac{R\sqrt{3}}{2}$$</div>
+						<div class="formula">
+							$$r=\frac{R\sqrt{3}}{2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -7878,7 +8018,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$r=\sqrt{\frac{A\sqrt{3}}{6}}$$</div>
+						<div class="formula">
+							$$r=\sqrt{\frac{A\sqrt{3}}{6}}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -8010,20 +8152,20 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">side</span>
+						<span class="dropdown-current">side</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="side">side</div>
+						<div class="dropdown-option" data-given="side">side</div>
 						
-						<div class="given-option" data-given="inradius">inradius</div>
+						<div class="dropdown-option" data-given="inradius">inradius</div>
 						
-						<div class="given-option" data-given="area">area</div>
+						<div class="dropdown-option" data-given="area">area</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -8032,7 +8174,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$R=a$$</div>
+						<div class="formula">
+							$$R=a$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -8148,7 +8292,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$R=\frac{2r\sqrt{3}}{3}$$</div>
+						<div class="formula">
+							$$R=\frac{2r\sqrt{3}}{3}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -8264,7 +8410,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$R=\frac{\sqrt{2A\sqrt{3}}}{3}$$</div>
+						<div class="formula">
+							$$R=\frac{\sqrt{2A\sqrt{3}}}{3}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -8564,38 +8712,38 @@
 		var scope = {};
 		var formulas = {
 			area: [
-				"(3 * sqrt(3) * a^2) / 2",
-				"2 * sqrt(3) * r^2",
-				"(3 * sqrt(3) * R^2) / 2",
+				"",
+				"",
+				"",
 			],
 			perimeter: [
-				"6a",
+				"",
 			],
 			side: [
-				"2 * r * sqrt(3) / 3",
-				"R",
-				"sqrt(2 * A * sqrt(3)) / 3",
-				"P / 6",
+				"",
+				"",
+				"",
+				"",
 			],
 			height: [
-				"a * sqrt(3)",
-				"2 * r",
+				"",
+				"",
 			],
 			short_diagonal: [
-				"a * sqrt(3)",
+				"",
 			],
 			long_diagonal: [
-				"2 * a",
+				"",
 			],
 			inradius: [
-				"a * sqrt(3) / 2",
-				"R * sqrt(3) / 2",
-				"sqrt(A * sqrt(3) / 6)",
+				"",
+				"",
+				"",
 			],
 			circumradius: [
-				"a",
-				"2 * r * sqrt(3) / 3",
-				"sqrt(2 * A * sqrt(3)) / 3",
+				"",
+				"",
+				"",
 			],
 		}
 
@@ -8832,20 +8980,20 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">side</span>
+						<span class="dropdown-current">side</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="side">side</div>
+						<div class="dropdown-option" data-given="side">side</div>
 						
-						<div class="given-option" data-given="inradius">inradius</div>
+						<div class="dropdown-option" data-given="inradius">inradius</div>
 						
-						<div class="given-option" data-given="circumradius">circumradius</div>
+						<div class="dropdown-option" data-given="circumradius">circumradius</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -8854,7 +9002,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$A=2a^{2}\left(1+\sqrt{2}\right)$$</div>
+						<div class="formula">
+							$$A=2a^{2}\left(1+\sqrt{2}\right)$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -8970,7 +9120,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$A=8r^{2}\left(\sqrt{2}-1\right)$$</div>
+						<div class="formula">
+							$$A=8r^{2}\left(\sqrt{2}-1\right)$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -9086,7 +9238,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$A=2R^{2}\sqrt{2}$$</div>
+						<div class="formula">
+							$$A=2R^{2}\sqrt{2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -9218,16 +9372,16 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">side</span>
+						<span class="dropdown-current">side</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="side">side</div>
+						<div class="dropdown-option" data-given="side">side</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -9236,7 +9390,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$P=8a$$</div>
+						<div class="formula">
+							$$P=8a$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -9368,22 +9524,22 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">inradius</span>
+						<span class="dropdown-current">inradius</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="inradius">inradius</div>
+						<div class="dropdown-option" data-given="inradius">inradius</div>
 						
-						<div class="given-option" data-given="circumradius">circumradius</div>
+						<div class="dropdown-option" data-given="circumradius">circumradius</div>
 						
-						<div class="given-option" data-given="area">area</div>
+						<div class="dropdown-option" data-given="area">area</div>
 						
-						<div class="given-option" data-given="perimeter">perimeter</div>
+						<div class="dropdown-option" data-given="perimeter">perimeter</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -9392,7 +9548,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$a=2r\left(\sqrt{2}-1\right)$$</div>
+						<div class="formula">
+							$$a=2r\left(\sqrt{2}-1\right)$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -9508,7 +9666,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$a=R\sqrt{2-\sqrt{2}}$$</div>
+						<div class="formula">
+							$$a=R\sqrt{2-\sqrt{2}}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -9624,7 +9784,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$a=\frac{\sqrt{2A\left(\sqrt{2}-1\right)}}{2}$$</div>
+						<div class="formula">
+							$$a=\frac{\sqrt{2A\left(\sqrt{2}-1\right)}}{2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -9740,7 +9902,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$a=\frac{P}{8}$$</div>
+						<div class="formula">
+							$$a=\frac{P}{8}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -9872,18 +10036,18 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">side</span>
+						<span class="dropdown-current">side</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="side">side</div>
+						<div class="dropdown-option" data-given="side">side</div>
 						
-						<div class="given-option" data-given="inradius">inradius</div>
+						<div class="dropdown-option" data-given="inradius">inradius</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -9892,7 +10056,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$h=\frac{a\sqrt{5+2\sqrt{5}}}{2}$$</div>
+						<div class="formula">
+							$$h=\frac{a\sqrt{5+2\sqrt{5}}}{2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -10008,7 +10174,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$h=2r$$</div>
+						<div class="formula">
+							$$h=2r$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -10140,16 +10308,16 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">side</span>
+						<span class="dropdown-current">side</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="side">side</div>
+						<div class="dropdown-option" data-given="side">side</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -10158,7 +10326,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$s=a\sqrt{2+\sqrt{2}}$$</div>
+						<div class="formula">
+							$$s=a\sqrt{2+\sqrt{2}}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -10290,18 +10460,18 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">side</span>
+						<span class="dropdown-current">side</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="side">side</div>
+						<div class="dropdown-option" data-given="side">side</div>
 						
-						<div class="given-option" data-given="inradius">inradius</div>
+						<div class="dropdown-option" data-given="inradius">inradius</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -10310,7 +10480,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$m=a(1+\sqrt{2})$$</div>
+						<div class="formula">
+							$$m=a(1+\sqrt{2})$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -10426,7 +10598,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$m=2r$$</div>
+						<div class="formula">
+							$$m=2r$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -10558,18 +10732,18 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">side</span>
+						<span class="dropdown-current">side</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="side">side</div>
+						<div class="dropdown-option" data-given="side">side</div>
 						
-						<div class="given-option" data-given="circumradius">circumradius</div>
+						<div class="dropdown-option" data-given="circumradius">circumradius</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -10578,7 +10752,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$d=a\sqrt{4+2\sqrt{2}}$$</div>
+						<div class="formula">
+							$$d=a\sqrt{4+2\sqrt{2}}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -10694,7 +10870,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$d=2R$$</div>
+						<div class="formula">
+							$$d=2R$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -10826,20 +11004,20 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">side</span>
+						<span class="dropdown-current">side</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="side">side</div>
+						<div class="dropdown-option" data-given="side">side</div>
 						
-						<div class="given-option" data-given="circumradius">circumradius</div>
+						<div class="dropdown-option" data-given="circumradius">circumradius</div>
 						
-						<div class="given-option" data-given="area">area</div>
+						<div class="dropdown-option" data-given="area">area</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -10848,7 +11026,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$r=\frac{a\left(\sqrt{2}+1\right)}{2}$$</div>
+						<div class="formula">
+							$$r=\frac{a\left(\sqrt{2}+1\right)}{2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -10964,7 +11144,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$r=\frac{R\sqrt{2+\sqrt{2}}}{2}$$</div>
+						<div class="formula">
+							$$r=\frac{R\sqrt{2+\sqrt{2}}}{2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -11080,7 +11262,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$r=\frac{\sqrt{2A\left(\sqrt{2}+1\right)}}{4}$$</div>
+						<div class="formula">
+							$$r=\frac{\sqrt{2A\left(\sqrt{2}+1\right)}}{4}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -11212,20 +11396,20 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">side</span>
+						<span class="dropdown-current">side</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="side">side</div>
+						<div class="dropdown-option" data-given="side">side</div>
 						
-						<div class="given-option" data-given="inradius">inradius</div>
+						<div class="dropdown-option" data-given="inradius">inradius</div>
 						
-						<div class="given-option" data-given="area">area</div>
+						<div class="dropdown-option" data-given="area">area</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -11234,7 +11418,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$R=\frac{a\left(2+\sqrt{2}\right)\sqrt{2-\sqrt{2}}}{2}$$</div>
+						<div class="formula">
+							$$R=\frac{a\left(2+\sqrt{2}\right)\sqrt{2-\sqrt{2}}}{2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -11350,7 +11536,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$R=r\sqrt{4-2\sqrt{2}}$$</div>
+						<div class="formula">
+							$$R=r\sqrt{4-2\sqrt{2}}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -11466,7 +11654,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$R=\frac{\sqrt{A\sqrt{2}}}{2}$$</div>
+						<div class="formula">
+							$$R=\frac{\sqrt{A\sqrt{2}}}{2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -11779,43 +11969,43 @@
 		var scope = {};
 		var formulas = {
 			area: [
-				"2 * a^2 * (1 + sqrt(2))",
-				"8 * r^2 * (sqrt(2) - 1)",
-				"2 * R^2 * sqrt(2)",
+				"",
+				"",
+				"",
 			],
 			perimeter: [
-				"8 * a",
+				"",
 			],
 			side: [
-				"2 * r * (sqrt(2) - 1)",
-				"R * sqrt(2 - sqrt(2))",
-				"sqrt(2A * (sqrt(2) - 1)) / 2",
-				"P / 8",
+				"",
+				"",
+				"",
+				"",
 			],
 			height: [
-				"a * sqrt(5 + 2 * sqrt(5)) / 2",
-				"2 * r",
+				"",
+				"",
 			],
 			short_diagonal: [
-				"a * sqrt(2 + sqrt(2))",
+				"",
 			],
 			medium_diagonal: [
-				"a * (1 + sqrt(2))",
-				"2 * r",
+				"",
+				"",
 			],
 			long_diagonal: [
-				"a * sqrt(4 + 2 * sqrt(2))",
-				"2 * R",
+				"",
+				"",
 			],
 			inradius: [
-				"a * (sqrt(2) + 1) / 2",
-				"R * sqrt(2 + sqrt(2)) / 2",
-				"sqrt(2 * A * (sqrt(2) + 1)) / 4",
+				"",
+				"",
+				"",
 			],
 			circumradius: [
-				"a * (2 + sqrt(2)) * sqrt(2 - sqrt(2)) / 2",
-				"r * sqrt(4 * 2 * sqrt(2))",
-				"sqrt(A * sqrt(2)) / 2",
+				"",
+				"",
+				"",
 			],
 		}
 
@@ -11988,16 +12178,16 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">base and height</span>
+						<span class="dropdown-current">base and height</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="base_and_height">base and height</div>
+						<div class="dropdown-option" data-given="base_and_height">base and height</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -12006,7 +12196,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$A=bh$$</div>
+						<div class="formula">
+							$$A=bh$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -12148,16 +12340,16 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">area and height</span>
+						<span class="dropdown-current">area and height</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="area_and_height">area and height</div>
+						<div class="dropdown-option" data-given="area_and_height">area and height</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -12166,7 +12358,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$b=\frac{A}{h}$$</div>
+						<div class="formula">
+							$$b=\frac{A}{h}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -12308,16 +12502,16 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">area and base</span>
+						<span class="dropdown-current">area and base</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="area_and_base">area and base</div>
+						<div class="dropdown-option" data-given="area_and_base">area and base</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -12326,7 +12520,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$h=\frac{A}{b}$$</div>
+						<div class="formula">
+							$$h=\frac{A}{b}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -12468,16 +12664,16 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">base and side</span>
+						<span class="dropdown-current">base and side</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="base_and_side">base and side</div>
+						<div class="dropdown-option" data-given="base_and_side">base and side</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -12486,7 +12682,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$P=2b+2a$$</div>
+						<div class="formula">
+							$$P=2b+2a$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -12628,16 +12826,16 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">base and perimeter</span>
+						<span class="dropdown-current">base and perimeter</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="base_and_perimeter">base and perimeter</div>
+						<div class="dropdown-option" data-given="base_and_perimeter">base and perimeter</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -12646,7 +12844,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$a=\frac{P}{2}-b$$</div>
+						<div class="formula">
+							$$a=\frac{P}{2}-b$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -12917,19 +13117,19 @@
 		var scope = {};
 		var formulas = {
 			area: [
-				"b * h",
+				"",
 			],
 			base: [
-				"A / h",
+				"",
 			],
 			height: [
-				"A / b",
+				"",
 			],
 			perimeter: [
-				"(2 * b) + (2 * a)",
+				"",
 			],
 			side: [
-				"(P / 2) - b",
+				"",
 			],
 		}
 
@@ -13134,20 +13334,20 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">side</span>
+						<span class="dropdown-current">side</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="side">side</div>
+						<div class="dropdown-option" data-given="side">side</div>
 						
-						<div class="given-option" data-given="inradius">inradius</div>
+						<div class="dropdown-option" data-given="inradius">inradius</div>
 						
-						<div class="given-option" data-given="circumradius">circumradius</div>
+						<div class="dropdown-option" data-given="circumradius">circumradius</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -13156,7 +13356,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$A=\frac{a^{2}\sqrt{25+10\sqrt{5}}}{4}$$</div>
+						<div class="formula">
+							$$A=\frac{a^{2}\sqrt{25+10\sqrt{5}}}{4}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -13247,7 +13449,7 @@
 			a: math.bignumber(calcContent.find('.field:visible').eq(0).val()),
 		}
 
-		var result = math.evaluate('(5 * R^2 * sqrt(25 + 10 * sqrt(5))) / 4', scope);
+		var result = math.evaluate('(a^2 * sqrt(25 + 10 * sqrt(5))) / 4', scope);
 
 		if (result == 'Infinity') formattedResult = 'Undefined';
 		else if (result == 'NaN') formattedResult = 'Error';
@@ -13272,7 +13474,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$A=5r^{2}\sqrt{5-2\sqrt{5}}$$</div>
+						<div class="formula">
+							$$A=5r^{2}\sqrt{5-2\sqrt{5}}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -13388,7 +13592,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$A=\frac{5R^{2}\sqrt{10+2\sqrt{5}}}{8}$$</div>
+						<div class="formula">
+							$$A=\frac{5R^{2}\sqrt{10+2\sqrt{5}}}{8}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -13479,7 +13685,7 @@
 			R: math.bignumber(calcContent.find('.field:visible').eq(0).val()),
 		}
 
-		var result = math.evaluate('5 * r^2 * sqrt(10 + 2 * sqrt(5)) / 8', scope);
+		var result = math.evaluate('5 * R^2 * sqrt(10 + 2 * sqrt(5)) / 8', scope);
 
 		if (result == 'Infinity') formattedResult = 'Undefined';
 		else if (result == 'NaN') formattedResult = 'Error';
@@ -13520,16 +13726,16 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">side</span>
+						<span class="dropdown-current">side</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="side">side</div>
+						<div class="dropdown-option" data-given="side">side</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -13538,7 +13744,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$P=5a$$</div>
+						<div class="formula">
+							$$P=5a$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -13670,22 +13878,22 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">inradius</span>
+						<span class="dropdown-current">inradius</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="inradius">inradius</div>
+						<div class="dropdown-option" data-given="inradius">inradius</div>
 						
-						<div class="given-option" data-given="circumradius">circumradius</div>
+						<div class="dropdown-option" data-given="circumradius">circumradius</div>
 						
-						<div class="given-option" data-given="area">area</div>
+						<div class="dropdown-option" data-given="area">area</div>
 						
-						<div class="given-option" data-given="perimeter">perimeter</div>
+						<div class="dropdown-option" data-given="perimeter">perimeter</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -13694,7 +13902,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$a=2r\sqrt{5-2\sqrt{5}}$$</div>
+						<div class="formula">
+							$$a=2r\sqrt{5-2\sqrt{5}}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -13810,7 +14020,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$a=\frac{R\sqrt{10-2\sqrt{5}}}{2}$$</div>
+						<div class="formula">
+							$$a=\frac{R\sqrt{10-2\sqrt{5}}}{2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -13926,7 +14138,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$a=\sqrt{\frac{A\left(\sqrt{10}-\sqrt{2}\right)\sqrt{5-\sqrt{5}}}{5}}$$</div>
+						<div class="formula">
+							$$a=\sqrt{\frac{A\left(\sqrt{10}-\sqrt{2}\right)\sqrt{5-\sqrt{5}}}{5}}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -14042,7 +14256,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$a=\frac{P}{5}$$</div>
+						<div class="formula">
+							$$a=\frac{P}{5}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -14174,16 +14390,16 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">side</span>
+						<span class="dropdown-current">side</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="side">side</div>
+						<div class="dropdown-option" data-given="side">side</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -14192,7 +14408,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$h=\frac{a\sqrt{5+2\sqrt{5}}}{2}$$</div>
+						<div class="formula">
+							$$h=\frac{a\sqrt{5+2\sqrt{5}}}{2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -14324,16 +14542,16 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">side</span>
+						<span class="dropdown-current">side</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="side">side</div>
+						<div class="dropdown-option" data-given="side">side</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -14342,7 +14560,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$d=\frac{a\left(1+\sqrt{5}\right)}{2}$$</div>
+						<div class="formula">
+							$$d=\frac{a\left(1+\sqrt{5}\right)}{2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -14474,20 +14694,20 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">side</span>
+						<span class="dropdown-current">side</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="side">side</div>
+						<div class="dropdown-option" data-given="side">side</div>
 						
-						<div class="given-option" data-given="circumradius">circumradius</div>
+						<div class="dropdown-option" data-given="circumradius">circumradius</div>
 						
-						<div class="given-option" data-given="area">area</div>
+						<div class="dropdown-option" data-given="area">area</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -14496,7 +14716,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$r=\frac{a\left(3\sqrt{10}+5\sqrt{2}\right)\sqrt{5-\sqrt{5}}}{40}$$</div>
+						<div class="formula">
+							$$r=\frac{a\left(3\sqrt{10}+5\sqrt{2}\right)\sqrt{5-\sqrt{5}}}{40}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -14612,7 +14834,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$r=\frac{R\left(1+\sqrt{5}\right)}{4}$$</div>
+						<div class="formula">
+							$$r=\frac{R\left(1+\sqrt{5}\right)}{4}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -14728,7 +14952,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$r=\frac{\sqrt{A\left(5+2\sqrt{5}\right)\sqrt{5-2\sqrt{5}}}}{5}$$</div>
+						<div class="formula">
+							$$r=\frac{\sqrt{A\left(5+2\sqrt{5}\right)\sqrt{5-2\sqrt{5}}}}{5}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -14860,20 +15086,20 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">side</span>
+						<span class="dropdown-current">side</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="side">side</div>
+						<div class="dropdown-option" data-given="side">side</div>
 						
-						<div class="given-option" data-given="inradius">inradius</div>
+						<div class="dropdown-option" data-given="inradius">inradius</div>
 						
-						<div class="given-option" data-given="area">area</div>
+						<div class="dropdown-option" data-given="area">area</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -14882,7 +15108,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$R=\frac{a\left(5+\sqrt{5}\right)\sqrt{10-2\sqrt{5}}}{20}$$</div>
+						<div class="formula">
+							$$R=\frac{a\left(5+\sqrt{5}\right)\sqrt{10-2\sqrt{5}}}{20}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -14998,7 +15226,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$R=r\left(\sqrt{5}-1\right)$$</div>
+						<div class="formula">
+							$$R=r\left(\sqrt{5}-1\right)$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -15114,7 +15344,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$R=\frac{\sqrt{A\left(5-\sqrt{5}\right)\sqrt{10+2\sqrt{5}}}}{5}$$</div>
+						<div class="formula">
+							$$R=\frac{\sqrt{A\left(5-\sqrt{5}\right)\sqrt{10+2\sqrt{5}}}}{5}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -15401,34 +15633,34 @@
 		var scope = {};
 		var formulas = {
 			area: [
-				"(5 * R^2 * sqrt(25 + 10 * sqrt(5))) / 4",
-				"5 * r^2 * sqrt(5 - 2 * sqrt(5))",
-				"5 * r^2 * sqrt(10 + 2 * sqrt(5)) / 8",
+				"",
+				"",
+				"",
 			],
 			perimeter: [
-				"5a",
+				"",
 			],
 			side: [
-				"2 * r * sqrt(5 - 2 * sqrt(5))",
-				"R * sqrt(10 - 2 * sqrt(5)) / 2",
-				"sqrt(A * (sqrt(10) - sqrt(2)) * sqrt(5 - sqrt(5)) / 5)",
-				"P / 5",
+				"",
+				"",
+				"",
+				"",
 			],
 			height: [
-				"a * sqrt(5 + 2 * sqrt(5)) / 2",
+				"",
 			],
 			diagonal: [
-				"a * (1 + sqrt(5)) / 2",
+				"",
 			],
 			inradius: [
-				"a * (3 * sqrt(10) + 5 * sqrt(2)) * sqrt(5 - sqrt(5)) / 40",
-				"R * (1 + sqrt(5)) / 4",
-				"sqrt(A * (5 + 2 * sqrt(5)) * sqrt(5 - 2 * sqrt(5))) / 5",
+				"",
+				"",
+				"",
 			],
 			circumradius: [
-				"a * (5 + sqrt(5)) * sqrt(10 - 2 * sqrt(5)) / 20",
-				"r * (sqrt(5) - 1)",
-				"sqrt(A * (5 - sqrt(5)) * sqrt(10 + 2 * sqrt(5))) / 5",
+				"",
+				"",
+				"",
 			],
 		}
 
@@ -15601,24 +15833,24 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">length and width</span>
+						<span class="dropdown-current">length and width</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="length_and_width">length and width</div>
+						<div class="dropdown-option" data-given="length_and_width">length and width</div>
 						
-						<div class="given-option" data-given="length_and_diagonal">length and diagonal</div>
+						<div class="dropdown-option" data-given="length_and_diagonal">length and diagonal</div>
 						
-						<div class="given-option" data-given="width_and_diagonal">width and diagonal</div>
+						<div class="dropdown-option" data-given="width_and_diagonal">width and diagonal</div>
 						
-						<div class="given-option" data-given="length_and_perimeter">length and perimeter</div>
+						<div class="dropdown-option" data-given="length_and_perimeter">length and perimeter</div>
 						
-						<div class="given-option" data-given="width_and_perimeter">width and perimeter</div>
+						<div class="dropdown-option" data-given="width_and_perimeter">width and perimeter</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -15627,7 +15859,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$A=lw$$</div>
+						<div class="formula">
+							$$A=lw$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -15753,7 +15987,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$A=l\sqrt{d^2-l^2}$$</div>
+						<div class="formula">
+							$$A=l\sqrt{d^2-l^2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -15879,7 +16115,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$A=w\sqrt{d^2-w^2}$$</div>
+						<div class="formula">
+							$$A=w\sqrt{d^2-w^2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -16005,7 +16243,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$A=\frac{Pl-2l^2}{2}$$</div>
+						<div class="formula">
+							$$A=\frac{Pl-2l^2}{2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -16131,7 +16371,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$A=\frac{Pw-2w^2}{2}$$</div>
+						<div class="formula">
+							$$A=\frac{Pw-2w^2}{2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -16273,16 +16515,16 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">length and width</span>
+						<span class="dropdown-current">length and width</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="length_and_width">length and width</div>
+						<div class="dropdown-option" data-given="length_and_width">length and width</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -16291,7 +16533,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$P=2l+2w$$</div>
+						<div class="formula">
+							$$P=2l+2w$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -16433,20 +16677,20 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">width and area</span>
+						<span class="dropdown-current">width and area</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="width_and_area">width and area</div>
+						<div class="dropdown-option" data-given="width_and_area">width and area</div>
 						
-						<div class="given-option" data-given="width_and_perimeter">width and perimeter</div>
+						<div class="dropdown-option" data-given="width_and_perimeter">width and perimeter</div>
 						
-						<div class="given-option" data-given="width_and_diagonal">width and diagonal</div>
+						<div class="dropdown-option" data-given="width_and_diagonal">width and diagonal</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -16455,7 +16699,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$l=\frac{A}{w}$$</div>
+						<div class="formula">
+							$$l=\frac{A}{w}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -16581,7 +16827,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$l=\frac{P-2w}{2}$$</div>
+						<div class="formula">
+							$$l=\frac{P-2w}{2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -16707,7 +16955,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$l=\sqrt{d^2-w^2}$$</div>
+						<div class="formula">
+							$$l=\sqrt{d^2-w^2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -16849,20 +17099,20 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">length and area</span>
+						<span class="dropdown-current">length and area</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="length_and_area">length and area</div>
+						<div class="dropdown-option" data-given="length_and_area">length and area</div>
 						
-						<div class="given-option" data-given="length_and_perimeter">length and perimeter</div>
+						<div class="dropdown-option" data-given="length_and_perimeter">length and perimeter</div>
 						
-						<div class="given-option" data-given="length_and_diagonal">length and diagonal</div>
+						<div class="dropdown-option" data-given="length_and_diagonal">length and diagonal</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -16871,7 +17121,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$w=\frac{A}{l}$$</div>
+						<div class="formula">
+							$$w=\frac{A}{l}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -16997,7 +17249,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$w=\frac{P-2l}{2}$$</div>
+						<div class="formula">
+							$$w=\frac{P-2l}{2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -17123,7 +17377,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$w=\sqrt{d^2-l^2}$$</div>
+						<div class="formula">
+							$$w=\sqrt{d^2-l^2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -17265,20 +17521,20 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">length and width</span>
+						<span class="dropdown-current">length and width</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="length_and_width">length and width</div>
+						<div class="dropdown-option" data-given="length_and_width">length and width</div>
 						
-						<div class="given-option" data-given="length_and_area">length and area</div>
+						<div class="dropdown-option" data-given="length_and_area">length and area</div>
 						
-						<div class="given-option" data-given="width_and_area">width and area</div>
+						<div class="dropdown-option" data-given="width_and_area">width and area</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -17287,7 +17543,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$d=\sqrt{l^2+w^2}$$</div>
+						<div class="formula">
+							$$d=\sqrt{l^2+w^2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -17413,7 +17671,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$d=\frac{\sqrt{l^4+A^2}}{l}$$</div>
+						<div class="formula">
+							$$d=\frac{\sqrt{l^4+A^2}}{l}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -17539,7 +17799,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$d=\frac{\sqrt{w^4+A^2}}{w}$$</div>
+						<div class="formula">
+							$$d=\frac{\sqrt{w^4+A^2}}{w}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -17810,29 +18072,29 @@
 		var scope = {};
 		var formulas = {
 			area: [
-				"l * w",
-				"l * sqrt(d^2 - l^2)",
-				"w * sqrt(d^2 - w^2)",
-				"((P * l) - (2 * l^2)) / 2",
-				"((P * w) - (2 * w^2)) / 2",
+				"",
+				"",
+				"",
+				"",
+				"",
 			],
 			perimeter: [
-				"(2 * l) + (2 * w)",
+				"",
 			],
 			length: [
-				"A / w",
-				"(P - (2 * w)) / 2",
-				"sqrt(d^2 - w^2)",
+				"",
+				"",
+				"",
 			],
 			width: [
-				"A / l",
-				"(P - (2 * l)) / 2",
-				"sqrt(d^2 - l^2)",
+				"",
+				"",
+				"",
 			],
 			diagonal: [
-				"sqrt(2 + w^2)",
-				"(sqrt(l^4 + A^2)) / l",
-				"(sqrt(w^4 + A^2)) / w",
+				"",
+				"",
+				"",
 			],
 		}
 
@@ -18037,22 +18299,22 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">number of sides and side</span>
+						<span class="dropdown-current">number of sides and side</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="number_of_sides_and_side">number of sides and side</div>
+						<div class="dropdown-option" data-given="number_of_sides_and_side">number of sides and side</div>
 						
-						<div class="given-option" data-given="number_of_sides_and_apothem">number of sides and apothem</div>
+						<div class="dropdown-option" data-given="number_of_sides_and_apothem">number of sides and apothem</div>
 						
-						<div class="given-option" data-given="number_of_sides_side_and_apothem">number of sides, side, and apothem</div>
+						<div class="dropdown-option" data-given="number_of_sides_side_and_apothem">number of sides, side, and apothem</div>
 						
-						<div class="given-option" data-given="perimeter_and_apothem">perimeter and apothem</div>
+						<div class="dropdown-option" data-given="perimeter_and_apothem">perimeter and apothem</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -18061,7 +18323,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$A=\frac{n s^2 \cot \left( \frac{\pi}{n} \right)}{4}$$</div>
+						<div class="formula">
+							$$A=\frac{n s^2 \cot \left( \frac{\pi}{n} \right)}{4}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -18187,7 +18451,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$A=na^2 \tan \left( \frac{\pi}{n} \right)$$</div>
+						<div class="formula">
+							$$A=na^2 \tan \left( \frac{\pi}{n} \right)$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -18313,7 +18579,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$A=\frac{nsa}{2}$$</div>
+						<div class="formula">
+							$$A=\frac{nsa}{2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -18449,7 +18717,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$A=\frac{Pa}{2}$$</div>
+						<div class="formula">
+							$$A=\frac{Pa}{2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -18591,16 +18861,16 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">number of sides and perimeter</span>
+						<span class="dropdown-current">number of sides and perimeter</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="number_of_sides_and_perimeter">number of sides and perimeter</div>
+						<div class="dropdown-option" data-given="number_of_sides_and_perimeter">number of sides and perimeter</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -18609,7 +18879,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$s=\frac{P}{n}$$</div>
+						<div class="formula">
+							$$s=\frac{P}{n}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -18751,18 +19023,18 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">number of sides and side</span>
+						<span class="dropdown-current">number of sides and side</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="number_of_sides_and_side">number of sides and side</div>
+						<div class="dropdown-option" data-given="number_of_sides_and_side">number of sides and side</div>
 						
-						<div class="given-option" data-given="number_of_sides_and_circumradius">number of sides and circumradius</div>
+						<div class="dropdown-option" data-given="number_of_sides_and_circumradius">number of sides and circumradius</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -18771,7 +19043,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$a=\frac{s}{2 \tan \left( \frac{\pi}{n} \right) }$$</div>
+						<div class="formula">
+							$$a=\frac{s}{2 \tan \left( \frac{\pi}{n} \right) }$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -18897,7 +19171,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$a=R \cos \left( \frac{\pi}{n} \right)$$</div>
+						<div class="formula">
+							$$a=R \cos \left( \frac{\pi}{n} \right)$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -19039,18 +19315,18 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">number of sides</span>
+						<span class="dropdown-current">number of sides</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="number_of_sides">number of sides</div>
+						<div class="dropdown-option" data-given="number_of_sides">number of sides</div>
 						
-						<div class="given-option" data-given="exterior_angle">exterior angle</div>
+						<div class="dropdown-option" data-given="exterior_angle">exterior angle</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -19059,7 +19335,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$\alpha=\frac{180(n-2)}{n}$$</div>
+						<div class="formula">
+							$$\alpha=\frac{180(n-2)}{n}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -19175,7 +19453,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$\alpha=180-\beta$$</div>
+						<div class="formula">
+							$$\alpha=180-\beta$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -19307,18 +19587,18 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">number of sides</span>
+						<span class="dropdown-current">number of sides</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="number_of_sides">number of sides</div>
+						<div class="dropdown-option" data-given="number_of_sides">number of sides</div>
 						
-						<div class="given-option" data-given="interior_angle">interior angle</div>
+						<div class="dropdown-option" data-given="interior_angle">interior angle</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -19327,7 +19607,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$\beta=\frac{360}{n}$$</div>
+						<div class="formula">
+							$$\beta=\frac{360}{n}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -19443,7 +19725,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$\beta=180-\alpha$$</div>
+						<div class="formula">
+							$$\beta=180-\alpha$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -19575,18 +19859,18 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">interior angle</span>
+						<span class="dropdown-current">interior angle</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="interior_angle">interior angle</div>
+						<div class="dropdown-option" data-given="interior_angle">interior angle</div>
 						
-						<div class="given-option" data-given="exterior_angle">exterior angle</div>
+						<div class="dropdown-option" data-given="exterior_angle">exterior angle</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -19595,7 +19879,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$n=\frac{360}{180-\alpha}$$</div>
+						<div class="formula">
+							$$n=\frac{360}{180-\alpha}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -19711,7 +19997,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$n=\frac{360}{\beta}$$</div>
+						<div class="formula">
+							$$n=\frac{360}{\beta}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -19843,16 +20131,16 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">number of sides</span>
+						<span class="dropdown-current">number of sides</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="number_of_sides">number of sides</div>
+						<div class="dropdown-option" data-given="number_of_sides">number of sides</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -19861,7 +20149,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$d=\frac{n\left(n-3\right)}{2}$$</div>
+						<div class="formula">
+							$$d=\frac{n\left(n-3\right)}{2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -20148,32 +20438,32 @@
 		var scope = {};
 		var formulas = {
 			area: [
-				"n * s^2 * cot(pi / n) / 4",
-				"n * a^2 * tan(pi / n)",
-				"n * s * a / 2",
-				"P * a / 2",
+				"",
+				"",
+				"",
+				"",
 			],
 			side: [
-				"P / n",
+				"",
 			],
 			apothem: [
-				"s / 2 * tan(pi / n)",
-				"R * cos(pi / n)",
+				"",
+				"",
 			],
 			interior_angle: [
-				"180 * (n - 2) / n",
-				"180 - β",
+				"",
+				"",
 			],
 			exterior_angle: [
-				"360 / n",
-				"180 - α",
+				"",
+				"",
 			],
 			number_of_sides: [
-				"360 / (180 - α)",
-				"360 / β",
+				"",
+				"",
 			],
 			number_of_diagonals: [
-				"n * (n - 3) / 2",
+				"",
 			],
 		}
 
@@ -20346,22 +20636,22 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">two diagonals</span>
+						<span class="dropdown-current">two diagonals</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="two_diagonals">two diagonals</div>
+						<div class="dropdown-option" data-given="two_diagonals">two diagonals</div>
 						
-						<div class="given-option" data-given="height_and_side">height and side</div>
+						<div class="dropdown-option" data-given="height_and_side">height and side</div>
 						
-						<div class="given-option" data-given="height_and_perimeter">height and perimeter</div>
+						<div class="dropdown-option" data-given="height_and_perimeter">height and perimeter</div>
 						
-						<div class="given-option" data-given="side_and_angle">side and angle</div>
+						<div class="dropdown-option" data-given="side_and_angle">side and angle</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -20370,7 +20660,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$A=\frac{d_1 d_2}{2}$$</div>
+						<div class="formula">
+							$$A=\frac{d_1 d_2}{2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -20496,7 +20788,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$A=hs$$</div>
+						<div class="formula">
+							$$A=hs$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -20622,7 +20916,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$A=\frac{hP}{4}$$</div>
+						<div class="formula">
+							$$A=\frac{hP}{4}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -20748,7 +21044,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$A=s^2 \sin{α}$$</div>
+						<div class="formula">
+							$$A=s^2 \sin{α}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -20890,18 +21188,18 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">side</span>
+						<span class="dropdown-current">side</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="side">side</div>
+						<div class="dropdown-option" data-given="side">side</div>
 						
-						<div class="given-option" data-given="two_diagonals">two diagonals</div>
+						<div class="dropdown-option" data-given="two_diagonals">two diagonals</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -20910,7 +21208,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$P=4s$$</div>
+						<div class="formula">
+							$$P=4s$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -21026,7 +21326,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$P=4\sqrt{\left(\frac{d_{1}}{2}\right)^{2}+\left(\frac{d_{2}}{2}\right)^{2}}$$</div>
+						<div class="formula">
+							$$P=4\sqrt{\left(\frac{d_{1}}{2}\right)^{2}+\left(\frac{d_{2}}{2}\right)^{2}}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -21168,16 +21470,16 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">two diagonals</span>
+						<span class="dropdown-current">two diagonals</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="two_diagonals">two diagonals</div>
+						<div class="dropdown-option" data-given="two_diagonals">two diagonals</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -21186,7 +21488,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$s=\sqrt{\left(\frac{d_{1}}{2}\right)^{2}+\left(\frac{d_{2}}{2}\right)^{2}}$$</div>
+						<div class="formula">
+							$$s=\sqrt{\left(\frac{d_{1}}{2}\right)^{2}+\left(\frac{d_{2}}{2}\right)^{2}}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -21328,16 +21632,16 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">side and diagonal 2</span>
+						<span class="dropdown-current">side and diagonal 2</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="side_and_diagonal_2">side and diagonal 2</div>
+						<div class="dropdown-option" data-given="side_and_diagonal_2">side and diagonal 2</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -21346,7 +21650,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$d_1=\sqrt{4s^2-{d_2}^2}$$</div>
+						<div class="formula">
+							$$d_1=\sqrt{4s^2-{d_2}^2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -21488,16 +21794,16 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">side and diagonal 1</span>
+						<span class="dropdown-current">side and diagonal 1</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="side_and_diagonal_1">side and diagonal 1</div>
+						<div class="dropdown-option" data-given="side_and_diagonal_1">side and diagonal 1</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -21506,7 +21812,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$d_2=\sqrt{4s^2-{d_2}^2}$$</div>
+						<div class="formula">
+							$$d_2=\sqrt{4s^2-{d_2}^2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -21777,23 +22085,23 @@
 		var scope = {};
 		var formulas = {
 			area: [
-				"(d_1 * d_2) / 2",
-				"h * s",
-				"(h * P) / 4",
-				"s^2 * sin(α)",
+				"",
+				"",
+				"",
+				"",
 			],
 			perimeter: [
-				"4 * s",
-				"4 * sqrt((d_1 / 2)^2 + (d_2 / 2)^2)",
+				"",
+				"",
 			],
 			side: [
-				"sqrt((d_1 / 2)^2 + (d_2 / 2)^2)",
+				"",
 			],
 			diagonal_1: [
-				"sqrt( (4 * s^2) - (d_2)^2 )",
+				"",
 			],
 			diagonal_2: [
-				"sqrt( (4 * s^2) - (d_2)^2 )",
+				"",
 			],
 		}
 
@@ -21950,20 +22258,20 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">side</span>
+						<span class="dropdown-current">side</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="side">side</div>
+						<div class="dropdown-option" data-given="side">side</div>
 						
-						<div class="given-option" data-given="diagonal">diagonal</div>
+						<div class="dropdown-option" data-given="diagonal">diagonal</div>
 						
-						<div class="given-option" data-given="perimeter">perimeter</div>
+						<div class="dropdown-option" data-given="perimeter">perimeter</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -21972,7 +22280,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$A=s^2$$</div>
+						<div class="formula">
+							$$A=s^2$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -22088,7 +22398,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$A=\frac{d^2}{2}$$</div>
+						<div class="formula">
+							$$A=\frac{d^2}{2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -22204,7 +22516,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$A=\frac{P^2}{16}$$</div>
+						<div class="formula">
+							$$A=\frac{P^2}{16}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -22336,20 +22650,20 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">side</span>
+						<span class="dropdown-current">side</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="side">side</div>
+						<div class="dropdown-option" data-given="side">side</div>
 						
-						<div class="given-option" data-given="area">area</div>
+						<div class="dropdown-option" data-given="area">area</div>
 						
-						<div class="given-option" data-given="diagonal">diagonal</div>
+						<div class="dropdown-option" data-given="diagonal">diagonal</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -22358,7 +22672,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$P=4s$$</div>
+						<div class="formula">
+							$$P=4s$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -22474,7 +22790,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$P=4\sqrt{A}$$</div>
+						<div class="formula">
+							$$P=4\sqrt{A}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -22590,7 +22908,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$P=2d \sqrt{2}$$</div>
+						<div class="formula">
+							$$P=2d \sqrt{2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -22722,20 +23042,20 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">side</span>
+						<span class="dropdown-current">side</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="side">side</div>
+						<div class="dropdown-option" data-given="side">side</div>
 						
-						<div class="given-option" data-given="perimeter">perimeter</div>
+						<div class="dropdown-option" data-given="perimeter">perimeter</div>
 						
-						<div class="given-option" data-given="area">area</div>
+						<div class="dropdown-option" data-given="area">area</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -22744,7 +23064,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$d=s \sqrt{2}$$</div>
+						<div class="formula">
+							$$d=s \sqrt{2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -22860,7 +23182,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$d=\frac{P \sqrt{2}}{4}$$</div>
+						<div class="formula">
+							$$d=\frac{P \sqrt{2}}{4}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -22976,7 +23300,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$d=\sqrt{2A}$$</div>
+						<div class="formula">
+							$$d=\sqrt{2A}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -23108,20 +23434,20 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">area</span>
+						<span class="dropdown-current">area</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="area">area</div>
+						<div class="dropdown-option" data-given="area">area</div>
 						
-						<div class="given-option" data-given="perimeter">perimeter</div>
+						<div class="dropdown-option" data-given="perimeter">perimeter</div>
 						
-						<div class="given-option" data-given="diagonal">diagonal</div>
+						<div class="dropdown-option" data-given="diagonal">diagonal</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -23130,7 +23456,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$s=\sqrt{A}$$</div>
+						<div class="formula">
+							$$s=\sqrt{A}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -23246,7 +23574,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$s=\frac{P}{4}$$</div>
+						<div class="formula">
+							$$s=\frac{P}{4}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -23362,7 +23692,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$s=\frac{d\sqrt{2}}{2}$$</div>
+						<div class="formula">
+							$$s=\frac{d\sqrt{2}}{2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -23610,24 +23942,24 @@
 		var scope = {};
 		var formulas = {
 			area: [
-				"s^2",
-				"d^2 / 2",
-				"P^2 / 16",
+				"",
+				"",
+				"",
 			],
 			perimeter: [
-				"4s",
-				"4 * sqrt(A)",
-				"2d * sqrt(2)",
+				"",
+				"",
+				"",
 			],
 			diagonal: [
-				"s * sqrt(2)",
-				"P * sqrt(2) / 4",
-				"sqrt(2A)",
+				"",
+				"",
+				"",
 			],
 			side: [
-				"sqrt(A)",
-				"P / 4",
-				"d * sqrt(2) / 2",
+				"",
+				"",
+				"",
 			],
 		}
 
@@ -23801,22 +24133,22 @@
 
 			<div class="window-body calc-body">
 				<div class="given">
-					<div class="given-info" tooltip="For four sides method, b must be greater than a." flow="bottom">
+					<div class="dropdown-info" tooltip="For four sides method, b must be greater than a." flow="bottom">
 						<i class="fas fa-info-circle"></i>
 					</div>
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">two bases and height</span>
+						<span class="dropdown-current">two bases and height</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="two_bases_and_height">two bases and height</div>
+						<div class="dropdown-option" data-given="two_bases_and_height">two bases and height</div>
 						
-						<div class="given-option" data-given="four_sides">four sides</div>
+						<div class="dropdown-option" data-given="four_sides">four sides</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -23825,7 +24157,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$A=\frac{a+b}{2}h$$</div>
+						<div class="formula">
+							$$A=\frac{a+b}{2}h$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -23961,7 +24295,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$A=\frac{a+b}{2}c\sqrt{1-\left( \frac{(b-a)^2+c^2-d^2}{2c(b-a)} \right)^2}$$</div>
+						<div class="formula">
+							$$A=\frac{a+b}{2}c\sqrt{1-\left( \frac{(b-a)^2+c^2-d^2}{2c(b-a)} \right)^2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -24123,16 +24459,16 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">four sides</span>
+						<span class="dropdown-current">four sides</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="four_sides">four sides</div>
+						<div class="dropdown-option" data-given="four_sides">four sides</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -24141,7 +24477,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$P=a+b+c+d$$</div>
+						<div class="formula">
+							$$P=a+b+c+d$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -24303,16 +24641,16 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">area and two bases</span>
+						<span class="dropdown-current">area and two bases</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="area_and_two_bases">area and two bases</div>
+						<div class="dropdown-option" data-given="area_and_two_bases">area and two bases</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -24321,7 +24659,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$h=\frac{2A}{a+b}$$</div>
+						<div class="formula">
+							$$h=\frac{2A}{a+b}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -24473,16 +24813,16 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">area, height, and base 2</span>
+						<span class="dropdown-current">area, height, and base 2</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="area_height_and_base_2">area, height, and base 2</div>
+						<div class="dropdown-option" data-given="area_height_and_base_2">area, height, and base 2</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -24491,7 +24831,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$a=\frac{2A}{h}-b$$</div>
+						<div class="formula">
+							$$a=\frac{2A}{h}-b$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -24643,16 +24985,16 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">area, height, and base 1</span>
+						<span class="dropdown-current">area, height, and base 1</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="area_height_and_base_1">area, height, and base 1</div>
+						<div class="dropdown-option" data-given="area_height_and_base_1">area, height, and base 1</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -24661,7 +25003,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$b=\frac{2A}{h}-a$$</div>
+						<div class="formula">
+							$$b=\frac{2A}{h}-a$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -24942,20 +25286,20 @@
 		var scope = {};
 		var formulas = {
 			area: [
-				"((a + b) / 2) * h",
-				"(a + b) / 2 * c * sqrt(1 - (((b - a)^2 + c^2 - d^2) / (2 * c * (b - a)))^2)",
+				"",
+				"",
 			],
 			perimeter: [
-				"a + b + c + d",
+				"",
 			],
 			height: [
-				"(2 * A) / (a + b)",
+				"",
 			],
 			base_1: [
-				"((2 * A) / h) - b",
+				"",
 			],
 			base_2: [
-				"((2 * A) / h) - a",
+				"",
 			],
 		}
 
@@ -25112,22 +25456,22 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">base and height</span>
+						<span class="dropdown-current">base and height</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="base_and_height">base and height</div>
+						<div class="dropdown-option" data-given="base_and_height">base and height</div>
 						
-						<div class="given-option" data-given="three_sides">three sides</div>
+						<div class="dropdown-option" data-given="three_sides">three sides</div>
 						
-						<div class="given-option" data-given="two_sides_and_angle_between">two sides and angle between</div>
+						<div class="dropdown-option" data-given="two_sides_and_angle_between">two sides and angle between</div>
 						
-						<div class="given-option" data-given="two_angles_and_side_between">two angles and side between</div>
+						<div class="dropdown-option" data-given="two_angles_and_side_between">two angles and side between</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -25136,7 +25480,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$A=\frac{bh}{2}$$</div>
+						<div class="formula">
+							$$A=\frac{bh}{2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -25262,8 +25608,10 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$s=\frac{a+b+c}{2}$$</div>
-						<div class="formula">$$A=\sqrt{s(s-a)(s-b)(s-c)}$$</div>
+						<div class="formula" data-special-var>$$s=\frac{a+b+c}{2}$$</div>
+						<div class="formula">
+							$$A=\sqrt{s(s-a)(s-b)(s-c)}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -25405,7 +25753,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$A=\frac{ ab \sin( \gamma ) }{2}$$</div>
+						<div class="formula">
+							$$A=\frac{ ab \sin( \gamma ) }{2}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -25541,7 +25891,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$A=\frac{ a^2 \sin( \beta ) \sin( \gamma ) }{ 2 \sin( 180-\beta-\gamma ) }$$</div>
+						<div class="formula">
+							$$A=\frac{ a^2 \sin( \beta ) \sin( \gamma ) }{ 2 \sin( 180-\beta-\gamma ) }$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -25693,18 +26045,18 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">three sides</span>
+						<span class="dropdown-current">three sides</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="three_sides">three sides</div>
+						<div class="dropdown-option" data-given="three_sides">three sides</div>
 						
-						<div class="given-option" data-given="two_sides_and_angle_between">two sides and angle between</div>
+						<div class="dropdown-option" data-given="two_sides_and_angle_between">two sides and angle between</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -25713,7 +26065,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$P=a+b+c$$</div>
+						<div class="formula">
+							$$P=a+b+c$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -25849,7 +26203,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$P=a+b+\sqrt{a^2+b^2-2ab \cos( \gamma )}$$</div>
+						<div class="formula">
+							$$P=a+b+\sqrt{a^2+b^2-2ab \cos( \gamma )}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -26001,16 +26357,16 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">area and height</span>
+						<span class="dropdown-current">area and height</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="area_and_height">area and height</div>
+						<div class="dropdown-option" data-given="area_and_height">area and height</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -26019,7 +26375,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$b=\frac{2A}{h}$$</div>
+						<div class="formula">
+							$$b=\frac{2A}{h}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -26161,16 +26519,18 @@
 			<div class="window-body calc-body">
 				<div class="given">
 
-					<span class="given-label">Given:</span>
+					<span class="dropdown-label">Given:</span>
 
-					<div class="btn given-select">
+					<div class="btn dropdown-select">
 						<i class="fas fa-sort-down"></i>
-						<span class="given-current">area and base</span>
+						<span class="dropdown-current">area and base</span>
 					</div>
 
-					<div class="given-dropdown">
+					<div class="dropdown-option-container">
 						
-						<div class="given-option" data-given="area_and_base">area and base</div>
+						<div class="dropdown-option" data-given="area_and_base">area and base</div>
+						
+						<div class="dropdown-option" data-given="three_sides">three sides</div>
 					</div>
 				</div><div
 					class="calc-content"
@@ -26179,7 +26539,9 @@
 				>
 
 					<div class="formula-container">
-						<div class="formula">$$h=\frac{2A}{b}$$</div>
+						<div class="formula">
+							$$h=\frac{2A}{b}$$
+						</div>
 					</div>
 
 					<div class="shape-data">
@@ -26286,6 +26648,151 @@
 		else if (result == 'NaN') formattedResult = 'Error';
 		else {
 			if ($('#propcalc_triangle_height_given_area_and_base_decimal_precision').is(':checked')) {
+				var precision = calcContent.find('.decimal-row .current-places').html();
+				formattedResult = math.round(result, precision);
+			}
+			else {
+				var precision = calcContent.find('.sig-fig-row .current-places').html();
+				formattedResult = math.format(result, precision);
+			}
+		}
+		
+		calcContent.find('.result').val(formattedResult);
+		calcContent.find('.copy').show();
+	});
+</script>
+				</div><div
+					class="calc-content"
+					data-given="three_sides"
+				>
+
+					<div class="formula-container">
+						<div class="formula" data-special-var>$$s=\frac{a+b+c}{2}$$</div>
+						<div class="formula">
+							$$h=\frac{2\sqrt{s\left(s-a\right)\left(s-b\right)\left(s-c\right)}}{b}$$
+						</div>
+					</div>
+
+					<div class="shape-data">
+						<div class="variable-container">
+							<div class="variable-row" data-char="a">
+								<div class="char">$$a=$$</div>
+								<input
+									class="field"
+									type="text"
+									placeholder="Side"
+									autocomplete="off"
+								>
+							</div>
+							<div class="variable-row" data-char="b">
+								<div class="char">$$b=$$</div>
+								<input
+									class="field"
+									type="text"
+									placeholder="Side"
+									autocomplete="off"
+								>
+							</div>
+							<div class="variable-row" data-char="c">
+								<div class="char">$$c=$$</div>
+								<input
+									class="field"
+									type="text"
+									placeholder="Side"
+									autocomplete="off"
+								>
+							</div>
+
+							
+<input
+	type="radio"
+	name="propcalc_triangle_height_given_three_sides-precision"
+	id="propcalc_triangle_height_given_three_sides_decimal_precision"
+	autocomplete="off"
+	checked
+>
+<label
+	class="precision-row decimal-row"
+	for="propcalc_triangle_height_given_three_sides_decimal_precision"
+>
+	Decimal Places
+	<div
+		class="precision-setter-container"
+		data-min="0"
+		data-max="10"
+	>
+		<button class="precision-setter dec" tabindex="-1"><i class="fas fa-minus"></i></button>
+		<span class="current-places">2</span>
+		<button class="precision-setter inc" tabindex="-1"><i class="fas fa-plus"></i></button>
+	</div>
+</label>
+
+<input
+	type="radio"
+	name="propcalc_triangle_height_given_three_sides-precision"
+	id="propcalc_triangle_height_given_three_sides_sig-fig_precision"
+	autocomplete="off"
+>
+<label
+	class="precision-row sig-fig-row"
+	for="propcalc_triangle_height_given_three_sides_sig-fig_precision"
+>
+	Significant Figures
+	<div
+		class="precision-setter-container"
+		data-min="1"
+		data-max="64"
+	>
+		<button class="precision-setter dec" tabindex="-1"><i class="fas fa-minus"></i></button>
+		<span class="current-places">2</span>
+		<button class="precision-setter inc" tabindex="-1"><i class="fas fa-plus"></i></button>
+	</div>
+</label>
+
+
+							<div class="variable-row" data-char="h">
+								<div class="char">$$h=$$</div>
+								<div class="result-wrap">
+									<input
+										class="field result"
+										type="text"
+										placeholder="Height"
+										autocomplete="off"
+									>
+									<button class="copy"><i class="far fa-copy"></i></button>
+								</div>
+							</div>
+						</div>
+						<div class="shape-diagram"></div>
+					</div>
+
+					<div class="btn-container">
+						<button class="btn calculate" id="propcalc_triangle_height_given_three_sides"><i class="fas fa-calculator"></i>Calculate</button>
+						<button class="btn clear"><i class="fas fa-trash"></i>Clear values</button>
+					</div>
+
+					<script>
+	$('#propcalc_triangle_height_given_three_sides').click(function() {
+		var calcContent = $(this).closest('.calc-content');
+
+		let preScope = {
+			a: math.bignumber(calcContent.find('.field:visible').eq(0).val()),
+			b: math.bignumber(calcContent.find('.field:visible').eq(1).val()),
+			c: math.bignumber(calcContent.find('.field:visible').eq(2).val()),
+		}
+		let scope = {
+			a: math.bignumber(calcContent.find('.field:visible').eq(0).val()),
+			b: math.bignumber(calcContent.find('.field:visible').eq(1).val()),
+			c: math.bignumber(calcContent.find('.field:visible').eq(2).val()),
+			s: math.evaluate('(a + b + c) / 2', preScope)
+		}
+
+		var result = math.evaluate('(2 * sqrt(s * (s - a) * (s - b) * (s - c))) / b', scope);
+
+		if (result == 'Infinity') formattedResult = 'Undefined';
+		else if (result == 'NaN') formattedResult = 'Error';
+		else {
+			if ($('#propcalc_triangle_height_given_three_sides_decimal_precision').is(':checked')) {
 				var precision = calcContent.find('.decimal-row .current-places').html();
 				formattedResult = math.round(result, precision);
 			}
@@ -26437,20 +26944,21 @@
 		var scope = {};
 		var formulas = {
 			area: [
-				"(b * h) / 2",
-				"sqrt(s * (s - a) * (s - b) * (s - c))",
-				"(a * b * sin(γ deg)) / 2",
-				"(a^2 * sin(β deg) * sin(γ deg)) / (2 * sin(180 deg - β deg - γ deg))",
+				"",
+				"",
+				"",
+				"",
 			],
 			perimeter: [
-				"a + b + c",
-				"a + b + sqrt(a^2 + b^2 - (2 * a * b * cos(γ deg)))",
+				"",
+				"",
 			],
 			base: [
-				"(2 * A) / h",
+				"",
 			],
 			height: [
-				"(2 * A) / b",
+				"",
+				"",
 			],
 		}
 
@@ -26535,6 +27043,23 @@
 
 
 
+	<div class="window popup cookie-warning">
+		<div class="window-head popup-head">
+			<div class="window-title-bar">Cookie Warning</div>
+		</div>
+
+		<div class="window-body popup-body">
+			Changing settings requires the use of site <b>cookies</b>. Geovanni uses <b>LocalStorage</b> data, which is client-side only, less resource intensive, and more user-secured than traditional cookies, though still considered cookies. I do nothing with this data. I don't even have a privacy policy because I wouldn't know how to breach your privacy even if I had access to your data.
+			<div class="popup-midline">Is this okay with you overall?</div>
+			<div class="popup-btn-container">
+				<button class="btn">No thanks</button>
+				<button class="btn important-btn"><i class="fas fa-cookie-bite"></i>Sure</button>
+			</div>
+		</div>
+	</div>
+
+
+
 	<div class="window settings">
 		<div class="window-head">
 			<div class="window-title-bar">
@@ -26556,7 +27081,6 @@
 							name="theme"
 							id="pink-theme"
 							autocomplete="off"
-							checked
 						>
 						<label for="pink-theme"></label>
 						<input
@@ -26608,6 +27132,66 @@
 			</div>
 
 			<div class="setting-row">
+				<div class="setting-label">Preferred Circle Constant</div>
+				<div class="setting-dots"></div>
+				<div class="toggle-btn-container">
+						<input
+							type="radio"
+							name="constant"
+							id="pi-constant"
+							autocomplete="off"
+						>
+						<label class="toggle-btn" for="pi-constant">$$\pi$$</label>
+						<input
+							type="radio"
+							name="constant"
+							id="tau-constant"
+							autocomplete="off"
+						>
+						<label class="toggle-btn" for="tau-constant">$$\tau$$</label>
+				</div>
+			</div>
+
+			<div class="setting-row">
+				<div class="setting-label">Do You Care About Rationalization?</div>
+				<div class="setting-dots"></div>
+				<div class="toggle-btn-container">
+						<input
+							type="radio"
+							name="rationalization"
+							id="rational-rationalization"
+							autocomplete="off"
+						>
+						<label class="toggle-btn" for="rational-rationalization">
+							<i class="far fa-thumbs-up"></i>
+						</label>
+						<input
+							type="radio"
+							name="rationalization"
+							id="irrational-rationalization"
+							autocomplete="off"
+						>
+						<label class="toggle-btn" for="irrational-rationalization">
+							<i class="far fa-thumbs-down"></i>
+						</label>
+				</div>
+			</div>
+
+			<div class="setting-row">
+				<div class="setting-label">Formula Construction</div>
+				<div class="setting-dots"></div>
+				<div class="btn dropdown-select">
+					<i class="fas fa-sort-down"></i>
+					<span class="dropdown-current">Most efficient</span>
+				</div>
+
+				<div class="dropdown-option-container">
+					<div class="dropdown-option">Most efficient</div>
+					<div class="dropdown-option">Easiest to remember</div>
+				</div>
+			</div>
+
+			<div class="setting-row">
 				<button class="btn restore-btn" style="margin: 0 auto;">Restore default settings</button>
 			</div>
 		</div>
@@ -26643,28 +27227,12 @@
 
 
 
-	<div class="window popup cookie-warning">
-		<div class="window-head popup-head">
-			<div class="window-title-bar">Cookie Warning</div>
-		</div>
-
-		<div class="window-body popup-body">
-			Changing settings requires the use of site <b>cookies</b>. Geovanni uses <b>LocalStorage</b> data, which is client-side only, less resource intensive, and more user-secured than traditional cookies, though still considered cookies. I do nothing with this data. I don't even have a privacy policy because I wouldn't know how to breach your privacy even if I had access to your data.
-			<div class="popup-midline">Is this okay with you overall?</div>
-			<div class="popup-btn-container">
-				<button class="btn">No thanks</button>
-				<button class="btn important-btn"><i class="fas fa-cookie-bite"></i>Sure</button>
-			</div>
-		</div>
-	</div>
-
-
-
 	<!-- JS -->
 	<script src="/geovanni/js/initialize.js"></script>
 	<script src="/geovanni/js/windows.js"></script>
 	<script src="/geovanni/js/propcalc.js"></script>
 	<script src="/geovanni/js/ubercalc.js"></script>
+	<script src="/geovanni/js/settings.js"></script>
 	<script src="/geovanni/js/four-function.js"></script>
 </body>
 

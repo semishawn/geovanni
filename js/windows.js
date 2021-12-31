@@ -55,56 +55,12 @@ $(".close-btn").click(function() {
 
 
 
-// Settings functions
-$(".settings-module").click(function() {
-	if (localStorage.length == 0) $(".cookie-warning").toggleClass("flex-show").maxZ();
-	else $(".settings").toggleClass("flex-show").maxZ();
-});
-
-$(".popup .btn").click(function() {
-	var popup = $(this).closest(".popup");
-	popup.removeClass("flex-show");
-	popup.css({
-		"top": "",
-		"left": ""
-	});
-	if ($(this).is(".important-btn")) $(".settings").addClass("flex-show").maxZ();
-});
-
-$("input[name='theme']").change(function() {
-	var theme = $(this).attr("id").replace("-theme", "");
-	$(":root").css({
-		"--color-accent1": `var(--color-${theme}1)`,
-		"--color-accent2": `var(--color-${theme}2)`,
-		"--color-accent3": `var(--color-${theme}3)`
-	});
-
-	localStorage.setItem("theme", theme);
-	if (theme == defaultTheme) localStorage.removeItem("theme");
-});
-
-$(".font-size-setter").click(function() {
-	var fontSizeDiv = $(".current-font-size");
-	var currentSize = parseInt(fontSizeDiv.html());
-	var min = parseInt($(this).parent().attr("data-min"));
-	var max = parseInt($(this).parent().attr("data-max"));
-
-	if ($(this).is(".dec")) {
-		if (currentSize > min) newSize = currentSize - 1 + "px";
-	} else {
-		if (currentSize < max) newSize = currentSize + 1 + "px";
-	}
-
-	fontSizeDiv.html(newSize);
-	$(":root").css("--main-font-size", newSize);
-
-	localStorage.setItem("fontSize", newSize);
-	if (newSize == defaultFontSize) localStorage.removeItem("fontSize");
-});
-
+// Restore all settings visually, clear all localstorage
 $(".restore-btn").click(function() {
 	localStorage.clear();
 	$(`#${defaultTheme}-theme`).click();
 	$(".current-font-size").html(defaultFontSize);
 	$(":root").css("--main-font-size", defaultFontSize);
+	$(`#${defaultConstant}-constant`).click();
+	$(`#${defaultRationalization}-rationalization`).click();
 });

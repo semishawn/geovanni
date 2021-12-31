@@ -66,7 +66,6 @@
 	--body-padding: 1.3rem;
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
-	grid-template-rows: repeat(2, 1fr);
 }
 
 
@@ -109,7 +108,7 @@
 
 
 /* Settings */
-.settings {width: 35rem;}
+.settings {width: 40rem;}
 
 .setting-row {
 	position: relative;
@@ -118,6 +117,7 @@
 	width: 100%;
 }
 .setting-row ~ .setting-row {margin-top: 1rem;}
+.setting-row:last-child {margin-top: var(--body-padding);}
 
 .setting-label {white-space: nowrap;}
 
@@ -166,11 +166,47 @@ input[name="theme"]:checked + label {border-radius: var(--input-radius);}
 	align-items: center;
 	height: 100%;
 	width: var(--input-height);
+	transition: all var(--main-transition);
 	cursor: pointer;
 }
 .font-size-setter:hover {
 	background: black;
 	color: var(--color-primary1);
+}
+
+/* Settings Buttons */
+.toggle-btn-container {
+	display: flex;
+	height: var(--input-height);
+	border: var(--main-border) solid black;
+	border-radius: var(--input-radius);
+}
+
+.toggle-btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	transition: all var(--main-transition);
+	cursor: pointer;
+}
+.toggle-btn:hover {background: rgba(0, 0, 0, 0.25);}
+input:checked + .toggle-btn {
+	background: black;
+	color: var(--color-primary1);
+}
+
+/* Constants */
+input[name="constant"] + .toggle-btn {
+	width: var(--input-height);
+	font-size: 1.5rem;
+	padding-bottom: 0.2rem;
+}
+
+/* Rationalization */
+input[name="rationalization"] + .toggle-btn {
+	width: var(--input-height);
+	font-size: 1.2rem;
 }
 
 

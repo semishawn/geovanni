@@ -1,0 +1,39 @@
+:root {
+	--main-font-size: 11px;
+}
+
+.startup-window {
+	width: 80%;
+	padding: 1.5rem;
+}
+
+.startup-border {
+	padding: 3rem 2rem;
+}
+
+.startup-logo {
+	width: 100%;
+	margin-bottom: 1rem;
+}
+
+.startup-bar {
+	height: 1rem;
+}
+
+.desktop-modules-container {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	justify-items: center;
+	padding: 2rem;
+}
+
+.module-spacer {display: none;}
+
+.window {
+	height: 100%;
+	width: 100%;
+}
+
+.folder-body {
+	grid-template-columns: repeat(3, 1fr);
+}
