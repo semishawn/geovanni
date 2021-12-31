@@ -2,6 +2,9 @@
 	--main-font-size: 11.5px;
 }
 
+
+
+/* Startup */
 .startup-window {
 	width: 80%;
 	padding: 1.5rem;
@@ -16,6 +19,9 @@
 
 .startup-bar {height: 1rem;}
 
+
+
+/* Desktop Icons */
 .desktop-modules-container {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
@@ -32,9 +38,19 @@
 	border-radius: 0;
 }
 
+.window-head {
+	--close-dimension: 3rem;
+	--close-margin: 0.5rem;
+}
+
 .window-body {--body-padding: 3rem;}
 
 .folder-body {grid-template-columns: repeat(3, 1fr);}
+
+
+
+/* Propcalc */
+.dropdown-info {display: none;}
 
 .shape-data {flex-direction: column-reverse;}
 
@@ -43,4 +59,10 @@
 	margin-bottom: var(--body-padding);
 }
 
-.dropdown-info {display: none;}
+
+
+/* Four Function */
+.four-function-body {
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(6, var(--key-dimension));
+}
