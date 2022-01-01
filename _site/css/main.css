@@ -22,7 +22,10 @@ body {
 	transition: background var(--main-transition);
 }
 
-input, button {outline: none;}
+input, button {
+	outline: none;
+	-webkit-tap-highlight-color: transparent;
+}
 
 input[type="radio"] {display: none;}
 

@@ -40,8 +40,11 @@
 
 .window-head {
 	--close-dimension: 3rem;
-	--close-margin: 0.5rem;
+	--close-margin: 0.45rem;
+	font-size: 1.4rem;
 }
+
+.close-peg {opacity: 1;}
 
 .window-body {--body-padding: 3rem;}
 
