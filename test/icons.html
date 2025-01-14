@@ -1,0 +1,96 @@
+---
+---
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.1.min.js"></script>
+	<link rel="stylesheet" href="../css/variables.css">
+	<link rel="stylesheet" href="../css/modules.css">
+</head>
+
+<body>
+	<style>
+		.i-cog {
+			--icon-height: 5.4rem;
+			--tooth-height: 15%;
+			--tooth-width: 22%;
+			--base-radius: calc(50% - var(--tooth-height));
+			position: relative;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: var(--icon-height);
+			width: var(--icon-height);
+			background: pink;
+		}
+
+		.i-cog-tooth-row {
+			position: absolute;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100%;
+			width: var(--tooth-width);
+			border: var(--main-border) solid black;
+			border-radius: var(--input-radius);
+			background: var(--color-primary1);
+			transform: rotate(calc(45deg * (var(--count) - 1)));
+			box-sizing: border-box;
+		}
+
+		.i-cog-tooth-row:nth-of-type(2) {--count: 2;}
+		.i-cog-tooth-row:nth-of-type(3) {--count: 3;}
+		.i-cog-tooth-row:nth-of-type(4) {--count: 4;}
+
+		.i-cog-base {
+			--dimension: calc(var(--base-radius) * 2);
+			position: absolute;
+			height: var(--dimension);
+			width: var(--dimension);
+			border: var(--main-border) solid black;
+			border-radius: 50%;
+			background: var(--color-primary1);
+			box-sizing: border-box;
+		}
+
+		.i-cog-tooth-cover {
+			position: absolute;
+			height: calc(100% - var(--tooth-height));
+			width: calc(var(--tooth-width) - 2 * var(--main-border));
+			background: var(--color-primary1);
+			transform: rotate(calc(45deg * (var(--count) - 1)));
+		}
+
+		.i-cog-tooth-cover:nth-of-type(2) {--count: 2;}
+		.i-cog-tooth-cover:nth-of-type(3) {--count: 3;}
+
+		.i-cog-center {
+			--dimension: calc(100% - 4 * var(--tooth-height));
+			position: absolute;
+			height: var(--dimension);
+			width: var(--dimension);
+			border: var(--main-border) solid black;
+			border-radius: 50%;
+			background: var(--color-primary1);
+			box-sizing: border-box;
+		}
+	</style>
+
+	<div class="i-cog">
+		{%- for i in (1..4) %}
+		<div class="i-cog-tooth-row"></div>
+		{%- endfor %}
+		<div class="i-cog-base"></div>
+		{%- for i in (1..4) %}
+		<div class="i-cog-tooth-cover"></div>
+		{%- endfor %}
+		<div class="i-cog-center"></div>
+	</div>
+</body>
+
+</html>

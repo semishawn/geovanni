@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.0.1/math.min.js"></script>
+</head>
+
+<body>
+	<script>
+		math.import({
+			integrate: function(k) {
+				let total = 0;
+				let start = 0;
+				let end = math.evaluate("pi / 2");
+				let step = 0.001;
+				for (let x = start; x < parseFloat(end); x += step) {
+					let scope = {
+						k: math.bignumber(k),
+						x: math.bignumber(x + step / 2)
+					}
+					total = math.add(math.multiply(math.evaluate("sqrt(1 - k^2 * sin(x)^2)", scope), step), total);
+				}
+				return total;
+			}
+		});
+
+		let preScope = {
+			a: math.bignumber("3"),
+			b: math.bignumber("2"),
+		}
+
+		let scope = {
+			a: math.bignumber("3"),
+			k: math.evaluate("sqrt(1 - (b^2 / a^2))", preScope)
+		}
+
+		var foo = math.evaluate("4 * a * integrate(k)", scope);
+		console.log(foo.toString());
+	</script>
+</body>
+
+</html>

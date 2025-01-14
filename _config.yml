@@ -1,0 +1,24 @@
+title: Geovanni
+description: A curious little geometry calculator.
+baseurl: "/geovanni"
+url: "https://semishawn.github.io"
+github_username: semishawn
+
+incremental: true
+
+future: true
+
+collections:
+  shapes:
+    output: true
+
+
+
+# Plugins
+plugins:
+  - jekyll-minifier
+
+jekyll-minifier:
+  compress_css: false
+  uglifier_args:
+    harmony: true

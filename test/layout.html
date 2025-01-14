@@ -1,0 +1,146 @@
+---
+precision_types: [
+	{
+		name: 'Decimal Places',
+		min: 0,
+		max: 10,
+		abbreviation: 'decimal'
+	},
+	{
+		name: 'Significant Figures',
+		min: 1,
+		max: 64,
+		abbreviation: 'sig-fig'
+	}
+]
+---
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	{% include head.html %}
+</head>
+
+<body>
+
+	{% for shape in site.shapes %}
+	{% if forloop.first == true %}
+	{% for property in shape.properties %}
+	{% if forloop.first == true %}
+	<div
+		class="window propcalc flex-show"
+		data-shape="{{ shape.shape | replace:" ","_" }}"
+		data-variable="{{ property.name }}"
+		{% if property.tooltip %}
+		tooltipped
+		{% endif %}
+	>
+
+		<div class="window-head">
+			<div class="window-title-bar">
+				<div class="close-btn">
+					<div class="close-peg"></div>
+					<div class="close-peg"></div>
+				</div>
+				<span class="window-title">{{ shape.shape }} ~ {{ property.name }}</span>
+			</div>
+		</div>
+		
+		<div class="window-body calc-body">
+			<div class="given">
+				{%- if property.tooltip %}
+				<div class="given-info" tooltip="{{ property.tooltip }}" flow="bottom">
+					<i class="fas fa-info-circle"></i>
+				</div>
+				{%- endif %}
+
+				<span class="given-label">Given:</span>
+
+				<div class="btn given-select">
+					<i class="fas fa-sort-down"></i>
+					{%- for given in property.givens limit:1 %}
+					<span class="given-current">{{ given.terminology }}</span>
+					{%- endfor %}
+				</div>
+
+				<div class="given-dropdown">
+					{%- for given in property.givens %}
+					{% assign given_slug = given.terminology | slugify | replace:"-","_" | remove:"(" | replace:")" %}
+					<div class="given-option" data-given="{{ given_slug }}">{{ given.terminology }}</div>
+					{%- endfor %}
+				</div>
+			</div>
+
+			{%- for given in property.givens %}
+			{%- assign given_slug = given.terminology | slugify | replace:"-","_" | remove:"(" | replace:")" %}
+			{%- capture specific_slug -%}
+				propcalc_{{ shape.shape | replace:" ","_" }}_{{ property.name | replace:" ","_" }}_given_{{ given_slug }}
+			{%- endcapture -%}
+
+			<div
+				class="calc-content"
+				data-given="{{ given_slug }}"
+				{%- if forloop.first %}
+				style="display: block;"
+				{%- endif %}
+			>
+
+				<div class="formula-container">
+					{%- if given.specialVariable %}
+					<div class="formula">$${{ given.specialVariable.mathjax }}$$</div>
+					{%- endif %}
+					<div class="formula">$${{ given.mathjax }}$$</div>
+				</div>
+
+				<div class="shape-data">
+					<div class="variable-container">
+						{%- for variable in given.variables %}
+						<div class="variable-row" data-char="{{ variable.char }}">
+							<div class="char">$${{ variable.char }}=$$</div>
+							<input
+								class="field"
+								type="text"
+								placeholder="{{ variable.name | capitalize }}"
+								autocomplete="off"
+							>
+						</div>
+						{%- endfor %}
+
+						{% include precision.html %}
+
+						<div class="variable-row" data-char="{{ property.char }}">
+							<div class="char">$${{ property.char }}=$$</div>
+							<div class="result-wrap">
+								<input
+									class="field result"
+									type="text"
+									placeholder="{{ property.name | capitalize }}"
+									autocomplete="off"
+								>
+								<button class="copy"><i class="far fa-copy"></i></button>
+							</div>
+						</div>
+					</div>
+					<div class="shape-diagram"></div>
+				</div>
+
+				<div class="btn-container">
+					<button class="btn calculate" id="{{ specific_slug }}"><i class="fas fa-calculator"></i>Calculate</button>
+					<button class="btn clear"><i class="fas fa-trash"></i>Clear values</button>
+				</div>
+
+				{% include propcalc-js.html %}
+			</div>
+			{%- endfor %}
+		</div>
+	</div>
+	{% endif %}
+	{% endfor %}
+	{% endif %}
+	{% endfor %}
+
+	<script src="../js/propcalc.js"></script>
+</body>
+
+</html>

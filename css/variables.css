@@ -1,0 +1,57 @@
+:root {
+	/* Fonts */
+	--font1: "IBM Plex Sans";
+
+	/* Main */
+	--main-font-size: 14px;
+	--main-font-weight: 500;
+	--main-border: 0.22rem;
+	--main-radius: 0.8rem;
+	--main-shadow: 0.5rem;
+	--main-transition: 0.1s;
+
+	/* Inputs */
+	--input-height: 2.7rem; /* 2.5rem */
+	--input-padding: 0.9rem; /* 0.8rem */
+	--input-spacing: 0.31rem;
+	--input-radius: 0.38rem;
+
+	/* Colors */
+	--color-primary1: hsl(42, 40%, 90%);
+	--color-primary2: hsl(42, 60%, 90%);
+
+	--color-pink1: hsl(0, 79%, 87%);
+	--color-pink2: hsl(0, 79%, 83%);
+	--color-pink3: hsl(0, 79%, 70%);
+	--color-pink4: hsl(0, 79%, 63%);
+
+	--color-orange1: hsl(21, 79%, 87%);
+	--color-orange2: hsl(21, 79%, 83%); /* #f6cab3 */
+	--color-orange3: hsl(21, 79%, 70%);
+	--color-orange4: hsl(21, 79%, 63%);
+
+	--color-green1: hsl(120, 19%, 74%);
+	--color-green2: hsl(120, 19%, 70%);
+	--color-green3: hsl(120, 19%, 57%);
+	--color-green4: hsl(120, 19%, 50%);
+
+	--color-light-blue1: hsl(200, 30%, 87%);
+	--color-light-blue2: hsl(200, 30%, 83%);
+	--color-light-blue3: hsl(200, 30%, 70%);
+	--color-light-blue4: hsl(200, 30%, 63%);
+
+	--color-dark-blue1: hsl(240, 80%, 87%);
+	--color-dark-blue2: hsl(240, 80%, 83%);
+	--color-dark-blue3: hsl(240, 80%, 70%);
+	--color-dark-blue4: hsl(240, 80%, 63%);
+
+	--color-grey1: hsl(0, 0%, 87%);
+	--color-grey2: hsl(0, 0%, 80%);
+	--color-grey3: hsl(0, 0%, 70%);
+	--color-grey4: hsl(0, 0%, 63%);
+
+	--color-accent1: var(--color-green1);
+	--color-accent2: var(--color-green2);
+	--color-accent3: var(--color-green3);
+	--color-accent4: var(--color-green4);
+}

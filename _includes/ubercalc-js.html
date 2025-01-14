@@ -1,0 +1,54 @@
+<script>
+	$(".ubercalc .calculate").click(function() {
+		var calcBody = $(this).closest(".calc-body");
+		var scope = {};
+		var formulas = {
+			{%- for property in shape.properties %}
+			{{ property.name | replace:" ","_" }}: [
+				{%- for given in property.givens %}
+				"{{ given.formula }}",
+				{%- endfor %}
+			],
+			{%- endfor %}
+		}
+
+		calcBody.find(".field").each(function() {
+			if ($(this).val() != "") {
+				var char = $(this).parent().attr("data-char");
+				scope[char] = $(this).val();
+			}
+		});
+
+		var scopeChars = Object.keys(scope);
+
+		calcBody.find(".field").each(function() {
+			if ($(this).val() == "") {
+				var property = $(this).parent().attr("data-property");
+				var propFormulas = formulas[property];
+				var rightFormula = propFormulas.filter(x => x.includes(scopeChars));
+				var preFormattedResult = math.evaluate(rightFormula, scope);
+
+				if (preFormattedResult == "Infinity") formattedResult = "Undefined";
+				else if (preFormattedResult == "NaN") formattedResult = "Error";
+				else if (preFormattedResult == "0") formattedResult = "";
+				else {
+					if ($("#{{ specific_slug }}_decimal_precision").is(":checked")) {
+						var precision = calcBody.find(".decimal-row .current-places").html();
+						formattedResult = math.round(preFormattedResult, precision);
+					}
+					else {
+						var precision = calcBody.find(".sig-fig-row .current-places").html();
+						formattedResult = math.format(preFormattedResult, precision);
+					}
+				}
+
+				$(this).val(formattedResult);
+			}
+		});
+	});
+
+	/* $('.ubercalc .field').on('propertychange input', function() {
+		var calcBody = $(this).closest(".calc-body");
+		calcBody.find(".field").not(this).val("");
+	}); */
+</script>

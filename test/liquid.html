@@ -1,0 +1,47 @@
+---
+---
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
+	<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=default"></script>
+</head>
+
+<body>
+	{%- for shape in site.shapes %}
+		{%- if shape.shape == "testagon" %}
+			{%- for property in shape.properties %}
+				{%- for given in property.givens %}
+					{%- for formula in given.formulas %}
+					<div class="formula"
+						{%- if formula[0] contains "standard" and given.formulas.tau %} data-pi{% endif %}
+						{%- if formula[0] contains "tau" %} data-tau{% endif %}
+						{%- if formula[0] contains "irrational" %} data-irrational{% endif -%}
+					>
+						$${{ formula[1] }}$$
+					</div>
+					{%- endfor %}
+				{%- endfor %}
+			{%- endfor %}
+		{%- endif %}
+	{%- endfor %}
+
+	<script>
+		var defaultConstant = "pi";
+		$(`.formula[data-${defaultConstant}]`).parent().children().hide();
+		if (localStorage.getItem("constant") === null) {
+			$(`.formula[data-${defaultConstant}]`).show();
+		}
+		else {
+			var constant = localStorage.getItem("constant");
+			$(`.formula[data-${constant}]`).show();
+		}
+	</script>
+</body>
+
+</html>

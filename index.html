@@ -1,0 +1,554 @@
+---
+precision_types: [
+	{
+		name: 'Decimal Places',
+		min: 0,
+		max: 10,
+		abbreviation: 'decimal'
+	},
+	{
+		name: 'Significant Figures',
+		min: 1,
+		max: 64,
+		abbreviation: 'sig-fig'
+	}
+]
+---
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	{% include head.html %}
+</head>
+
+<body>
+	<div class="startup">
+		<div class="startup-window">
+			<div class="startup-border">
+				<img class="startup-logo" src="img/logos/logo-long2.png">
+
+				<div class="startup-bar">
+					<div class="startup-bar-fill">
+						<div class="startup-bar-barberpole"></div>
+					</div>
+				</div>
+
+				<div class="startup-info">
+					<div>A curious little geometry calculator.</div>
+					<div>Created by <a href="https://github.com/semishawn">semishawn</a></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<div class="desktop-modules-container">
+		{%- assign shapes = site.shapes | sort:"order" %}
+
+		{%- for shape in shapes %}
+		{%- if shape.regular != true %}
+			<div class="module folder-module" data-shape="{{ shape.shape | replace:" ","_" }}">
+				<div class="module-icon-container">
+					<div class="module-icon i-folder">
+						<div class="i-folder-tab"></div>
+						<div class="i-folder-inside"></div>
+						<div class="i-folder-front">
+							<svg class="mini-shape"></svg>
+						</div>
+					</div>
+				</div>
+				<span class="module-label">{{ shape.shape }} Calculators</span>
+			</div>
+		{%- endif %}
+		{%- endfor %}
+
+		<div class="module-spacer"></div>
+
+		{%- for shape in shapes %}
+		{%- if shape.regular %}
+			<div class="module folder-module" data-shape="{{ shape.shape | replace:" ","_" }}">
+				<div class="module-icon-container">
+					<div class="module-icon i-folder">
+						<div class="i-folder-tab"></div>
+						<div class="i-folder-inside"></div>
+						<div class="i-folder-front">
+							<svg class="mini-shape"></svg>
+						</div>
+					</div>
+				</div>
+				<span class="module-label">{{ shape.shape }} Calculators</span>
+			</div>
+		{%- endif %}
+		{%- endfor %}
+
+		<div class="module-spacer"></div>
+
+		<div class="module four-function-module">
+			<div class="module-icon-container">
+				<div class="module-icon i-four-function">
+					<div class="i-four-function-screen">80085</div>
+					<div>+</div>
+					<div>-</div>
+					<div>×</div>
+					<div>÷</div>
+				</div>
+			</div>
+			<span class="module-label">Basic Calculator</span>
+		</div>
+
+		<div class="module settings-module">
+			<div class="module-icon-container">
+				<div class="module-icon i-cog">
+					<div class="i-cog-base"></div>
+					{%- for i in (1..4) %}
+					<div class="i-cog-tooth-row"></div>
+					{%- endfor %}
+					<div class="i-cog-tooth-cover"></div>
+					<div class="i-cog-center">
+						<div class="i-cog-center-shadow"></div>
+					</div>
+				</div>
+			</div>
+			<span class="module-label">Settings</span>
+		</div>
+
+		<!-- <div class="module guide-module">
+			<div class="module-icon-container">
+				<div class="module-icon i-info">?</div>
+			</div>
+			<span class="module-label">Guide</span>
+		</div> -->
+	</div>
+
+
+
+	{%- for shape in site.shapes %}
+		<div class="window folder" data-shape="{{ shape.shape | replace:" ","_" }}">
+			<div class="window-head">
+				<div class="window-title-bar">
+					<div class="close-btn">
+						<div class="close-peg"></div>
+						<div class="close-peg"></div>
+					</div>
+					<span class="window-title">{{ shape.shape }} Calculators</span>
+				</div>
+			</div>
+
+			<div class="folder-body window-body">
+				{%- for property in shape.properties %}
+				<div
+					class="module calc-module"
+					data-shape="{{ shape.shape | replace:" ","_" }}"
+					data-variable="{{ property.name }}"
+				>
+					<div class="module-icon-container">
+						<div class="module-icon i-file">
+							<div class="i-file-paper">
+								<svg class="mini-shape"></svg>
+							</div>
+							<div class="i-file-corner"></div>
+							<div class="i-file-corner-border"></div>
+						</div>
+					</div>
+					<span class="module-label">{{ property.name }}</span>
+				</div>
+				{%- endfor %}
+
+				<div class="module ubercalc-module">
+					<div class="module-icon-container">
+						<div class="module-icon i-atom">
+							<div class="i-atom-ring"></div>
+							<div class="i-atom-ring"></div>
+							<div class="i-atom-ring"></div>
+							<div class="i-atom-ring"></div>
+							<div class="i-atom-ring"></div>
+							<div class="i-atom-ring"></div>
+							<div class="i-atom-nucleus"></div>
+						</div>
+					</div>
+					<span class="module-label">ÜberCalc</span>
+				</div>
+			</div>
+		</div>
+
+
+
+		{%- for property in shape.properties %}
+		<div
+			class="window propcalc"
+			data-shape="{{ shape.shape | replace:" ","_" }}"
+			data-variable="{{ property.name }}"
+			{% if property.tooltip %}
+			tooltipped
+			{% endif %}
+		>
+			<div class="window-head">
+				<div class="window-title-bar">
+					<div class="close-btn">
+						<div class="close-peg"></div>
+						<div class="close-peg"></div>
+					</div>
+					<span class="window-title">{{ shape.shape }} ~ {{ property.name }}</span>
+				</div>
+			</div>
+
+			<div class="window-body calc-body">
+				<div class="given">
+					{%- if property.tooltip %}
+					<div class="dropdown-info" tooltip="{{ property.tooltip }}" flow="bottom">
+						<i class="fas fa-info-circle"></i>
+					</div>
+					{%- endif %}
+
+					<span class="dropdown-label">Given:</span>
+
+					<div class="btn dropdown-select">
+						<i class="fas fa-sort-down"></i>
+						{%- for given in property.givens limit:1 %}
+						<span class="dropdown-current">{{ given.terminology }}</span>
+						{%- endfor %}
+					</div>
+
+					<div class="dropdown-option-container">
+						{%- for given in property.givens %}
+						{% assign given_slug = given.terminology | slugify | replace:"-","_" | remove:"(" | replace:")" %}
+						<div class="dropdown-option" data-given="{{ given_slug }}">{{ given.terminology }}</div>
+						{%- endfor %}
+					</div>
+				</div>
+
+				{%- for given in property.givens %}
+				{%- assign given_slug = given.terminology | slugify | replace:"-","_" | remove:"(" | replace:")" %}
+				{%- capture specific_slug -%}
+					propcalc_{{ shape.shape | replace:" ","_" }}_{{ property.name | replace:" ","_" }}_given_{{ given_slug }}
+				{%- endcapture -%}
+
+				<div
+					class="calc-content"
+					data-given="{{ given_slug }}"
+					{%- if forloop.first %}
+					style="display: block;"
+					{%- endif %}
+				>
+
+					<div class="formula-container">
+						{%- if given.specialVariable %}
+						<div class="formula" data-special-var>$${{ given.specialVariable.formula }}$$</div>
+						{%- endif %}
+
+						{%- for formula in given.formulas %}
+						<div class="formula"
+							{%- if formula[0] contains "standard" and given.formulas.tau %} data-pi{% endif %}
+							{%- if formula[0] contains "tau" %} data-tau{% endif %}
+							{%- if formula[0] contains "standard" and given.formulas.irrational %} data-rational{% endif %}
+							{%- if formula[0] contains "irrational" %} data-irrational{% endif -%}
+						>
+							$${{ formula[1] }}$$
+						</div>
+						{%- endfor %}
+					</div>
+
+					<div class="shape-data">
+						<div class="variable-container">
+							{%- for variable in given.variables %}
+							<div class="variable-row" data-char="{{ variable.char }}">
+								<div class="char">$${{ variable.char }}=$$</div>
+								<input
+									class="field"
+									type="text"
+									placeholder="{{ variable.name | capitalize }}"
+									autocomplete="off"
+								>
+							</div>
+							{%- endfor %}
+
+							{% include precision.html %}
+
+							<div class="variable-row" data-char="{{ property.char }}">
+								<div class="char">$${{ property.char }}=$$</div>
+								<div class="result-wrap">
+									<input
+										class="field result"
+										type="text"
+										placeholder="{{ property.name | capitalize }}"
+										autocomplete="off"
+									>
+									<button class="copy">
+										<i class="fa-regular fa-copy"></i>
+										<i class="fa-solid fa-check"></i>
+									</button>
+								</div>
+							</div>
+						</div>
+						<div class="shape-diagram"></div>
+					</div>
+
+					<div class="btn-container">
+						<button class="btn calculate" id="{{ specific_slug }}"><i class="fas fa-calculator"></i>Calculate</button>
+						<button class="btn clear"><i class="fas fa-trash"></i>Clear values</button>
+					</div>
+
+					{% include propcalc-js.html %}
+				</div>
+				{%- endfor %}
+			</div>
+		</div>
+		{%- endfor %}
+
+
+		
+		{% assign specific_slug = shape.shape | replace:" ","_" %}
+		<div class="window ubercalc" data-shape="{{ specific_slug }}">
+			<div class="window-head">
+				<div class="window-title-bar">
+					<div class="close-btn">
+						<div class="close-peg"></div>
+						<div class="close-peg"></div>
+					</div>
+					<span class="window-title">{{ shape.shape }} ~ ÜberCalc</span>
+				</div>
+			</div>
+
+			<div class="window-body calc-body">
+				<div class="shape-data">
+					<div class="variable-container">
+						{%- for property in shape.properties %}
+						<div
+							class="variable-row"
+							data-char="{{ property.char }}"
+							data-property="{{ property.name | replace:" ","_" }}"
+						>
+							<div class="char">$${{ property.char }}=$$</div>
+							<input
+								class="field"
+								type="text"
+								placeholder="{{ property.name | capitalize }}"
+								autocomplete="off"
+							>
+						</div>
+						{%- endfor %}
+
+						{% include precision.html %}
+					</div>
+
+					<div class="shape-diagram"></div>
+				</div>
+
+				<div class="btn-container">
+					<button class="btn calculate" id="ubercalc_{{ specific_slug }}"><i class="fas fa-calculator"></i>Calculate</button>
+					<button class="btn clear"><i class="fas fa-trash"></i>Clear values</button>
+				</div>
+
+				<div class="under-construction">UNDER CONSTRUCTION</div>
+
+				{% include ubercalc-js.html %}
+			</div>
+		</div>
+	{%- endfor %}
+
+
+
+	<div class="window four-function">
+		<div class="window-head">
+			<div class="window-title-bar">
+				<div class="close-btn">
+					<div class="close-peg"></div>
+					<div class="close-peg"></div>
+				</div>
+				<span class="window-title">Basic Calculator</span>
+			</div>
+		</div>
+
+		<div class="window-body four-function-body">
+			<input class="four-function-result" type="text">
+			<button class="four-function-key" style="grid-column-end: span 2;" data-action="clear">Clear</button>
+			<button class="four-function-key" style="grid-column-end: span 2;" data-action="delete"><i class="fas fa-backspace"></i></button>
+			<button class="four-function-key">7</button>
+			<button class="four-function-key">8</button>
+			<button class="four-function-key">9</button>
+			<button class="four-function-key four-function-operator">÷</button>
+			<button class="four-function-key">4</button>
+			<button class="four-function-key">5</button>
+			<button class="four-function-key">6</button>
+			<button class="four-function-key four-function-operator">×</button>
+			<button class="four-function-key">1</button>
+			<button class="four-function-key">2</button>
+			<button class="four-function-key">3</button>
+			<button class="four-function-key four-function-operator">-</button>
+			<button class="four-function-key">0</button>
+			<button class="four-function-key">.</button>
+			<button class="four-function-key" data-action="equals">=</button>
+			<button class="four-function-key four-function-operator">+</button>
+		</div>
+	</div>
+
+
+
+	<div class="window popup cookie-warning">
+		<div class="window-head popup-head">
+			<div class="window-title-bar">Cookie Warning</div>
+		</div>
+
+		<div class="window-body popup-body">
+			Changing settings requires the use of site <b>cookies</b>. Geovanni uses <b>LocalStorage</b> data, which is client-side only, less resource intensive, and more user-secured than traditional cookies, though still considered cookies.
+			<div class="popup-midline">Is this okay with you overall?</div>
+			<div class="popup-btn-container">
+				<button class="btn">No thanks</button>
+				<button class="btn important-btn"><i class="fas fa-cookie-bite"></i>Sure</button>
+			</div>
+		</div>
+	</div>
+
+
+
+	<div class="window settings">
+		<div class="window-head">
+			<div class="window-title-bar">
+				<div class="close-btn">
+					<div class="close-peg"></div>
+					<div class="close-peg"></div>
+				</div>
+				<span class="window-title">Geovanni Settings</span>
+			</div>
+		</div>
+
+		<div class="window-body settings-body">
+			<div class="setting-row">
+				<div class="setting-label">Color Theme</div>
+				<div class="setting-dots"></div>
+				<div class="theme-option-container">
+					{%- assign colors = "pink,orange,green,dark-blue,grey" | split: "," %}
+					{%- for color in colors %}
+						<input
+							type="radio"
+							name="theme"
+							id="{{ color }}-theme"
+							autocomplete="off"
+						>
+						<label for="{{ color }}-theme" style="background: var(--color-{{ color }}2);"></label>
+					{%- endfor %}
+				</div>
+			</div>
+
+			<div class="setting-row">
+				<div class="setting-label">Text Size</div>
+				<div class="setting-dots"></div>
+				<div class="font-size-setter-container" data-min="10" data-max="16">
+					<div class="font-size-setter dec"><i class="fas fa-minus"></i></div>
+					<div class="current-font-size">14px</div>
+					<div class="font-size-setter inc"><i class="fas fa-plus"></i></div>
+				</div>
+			</div>
+
+			<div class="setting-row">
+				<div class="setting-label">Preferred Circle Constant</div>
+				<div class="setting-dots"></div>
+				<div class="toggle-btn-container">
+					{%- assign constants = "pi,tau" | split: "," %}
+					{%- for constant in constants %}
+						<input
+							type="radio"
+							name="constant"
+							id="{{ constant }}-constant"
+							autocomplete="off"
+						>
+						<label class="toggle-btn" for="{{ constant }}-constant">$$\{{ constant }}$$</label>
+					{%- endfor %}
+				</div>
+			</div>
+
+			<div class="setting-row">
+				<div class="setting-label">Do You Care About Rationalization?</div>
+				<div class="setting-dots"></div>
+				<div class="toggle-btn-container">
+					{%- assign rationalizations = "rational,irrational" | split: "," %}
+					{%- for rationalization in rationalizations %}
+						<input
+							type="radio"
+							name="rationalization"
+							id="{{ rationalization }}-rationalization"
+							autocomplete="off"
+						>
+						<label class="toggle-btn" for="{{ rationalization }}-rationalization">
+							{%- if forloop.first %}
+							<i class="far fa-thumbs-up"></i>
+							{%- else %}
+							<i class="far fa-thumbs-down"></i>
+							{%- endif %}
+						</label>
+					{%- endfor %}
+				</div>
+			</div>
+
+			<div class="setting-row">
+				<div class="setting-label">Formula Construction</div>
+				<div class="setting-dots"></div>
+				<div class="btn dropdown-select">
+					<i class="fas fa-sort-down"></i>
+					<span class="dropdown-current">Most efficient</span>
+				</div>
+
+				<div class="dropdown-option-container">
+					<div class="dropdown-option">Most efficient</div>
+					<div class="dropdown-option">Easiest to remember</div>
+				</div>
+			</div>
+
+			<div class="setting-row">
+				<button class="btn restore-btn" style="margin: 0 auto;">Restore default settings</button>
+			</div>
+		</div>
+	</div>
+
+
+
+	<div class="window guide">
+		<div class="window-head">
+			<div class="window-title-bar">
+				<div class="close-btn">
+					<div class="close-peg"></div>
+					<div class="close-peg"></div>
+				</div>
+				<span class="window-title">Geovanni Guide</span>
+			</div>
+			<div class="window-tab-container">
+				<input type="radio" name="tab" id="tab-1" autocomplete="off" checked>
+				<label class="window-tab" for="tab-1">About</label>
+
+				<input type="radio" name="tab" id="tab-2" autocomplete="off">
+				<label class="window-tab" for="tab-2">How To Use</label>
+
+				<input type="radio" name="tab" id="tab-3" autocomplete="off">
+				<label class="window-tab" for="tab-3">Precautions</label>
+			</div>
+		</div>
+
+		<div class="window-body guide-body">
+			<div class="about-panel">
+				Geovanni is a comprehensive geometry calculator.<br><br>
+
+				It is designed to be a one-stop shop for formulas on a variety of geometric shapes.<br><br>
+
+				Designed and maintained by semishawn.
+			</div>
+
+			<div class="how-panel"></div>
+
+			<div class="precations-panel"></div>
+		</div>
+	</div>
+
+
+
+	<!-- JS -->
+	<script src="{{ site.baseurl }}/js/initialize.js"></script>
+	<script src="{{ site.baseurl }}/js/windows.js"></script>
+	<script src="{{ site.baseurl }}/js/propcalc.js"></script>
+	<script src="{{ site.baseurl }}/js/ubercalc.js"></script>
+	<script src="{{ site.baseurl }}/js/settings.js"></script>
+	<script src="{{ site.baseurl }}/js/four-function.js"></script>
+</body>
+
+</html>

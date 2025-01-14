@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.0.1/math.min.js"></script>
+</head>
+
+<body>
+	<script>
+		math.config({
+			number: "BigNumber",
+			precision: 64,
+			angles: "deg"
+		});
+
+		math.import({
+			ellipticInt: function(eccentricity) {
+				let steps = 1000;
+				let subInt = math.divide(math.evaluate("pi / 2"), steps);
+				let xVal = 0;
+				let total = 0;
+
+				for (let n = 0; n <= steps; n++) {
+					let scope = {
+						k: eccentricity,
+						x: xVal
+					}
+
+					let yVal = math.evaluate("sqrt(1 - k^2 * sin(x)^2)", scope);
+
+					let factor = 2;
+					if (n == 0 || n == steps) factor = 1;
+
+					let curve = math.multiply(yVal, factor);
+
+					total = math.add(total, curve);
+
+					xVal = math.add(xVal, subInt);
+				}
+
+				let approx = math.multiply(math.divide(subInt, 2), total);
+				return approx;
+			}
+		});
+
+		let preScope = {
+			a: 3,
+			b: 2
+		}
+
+		let scope = {
+			a: 3,
+			k: math.evaluate("sqrt(1 - (b^2 / a^2))", preScope)
+		}
+
+		var int = math.evaluate("4 * a * ellipticInt(k)", scope);
+		int = math.round(int, 10).toString();
+		console.log(int);
+	</script>
+</body>
+
+</html>

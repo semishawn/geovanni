@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Geovanni</title>
+
+<!-- Favicon -->
+<link rel="shortcut icon" type="image/x-icon" href="/geovanni/img/logos/favicon-32.png">
+<link rel="icon" sizes="32x32" href="/geovanni/img/logos/favicon-32.png">
+<link rel="apple-touch-icon" href="/geovanni/img/logos/favicon-300.png">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+<!-- CSS -->
+<link rel="stylesheet" href="/geovanni/css/fonts.css">
+<link rel="stylesheet" href="/geovanni/css/variables.css">
+<link rel="stylesheet" href="/geovanni/css/modules.css">
+<link rel="stylesheet" href="/geovanni/css/main.css">
+<link rel="stylesheet" href="/geovanni/css/calculators.css">
+<link rel="stylesheet" href="/geovanni/css/windows.css">
+<link rel="stylesheet" media="screen and (max-width: 600px)" href="/geovanni/css/mobile.css">
+<style>
+	.flex-show {display: flex;}
+	.grid-show {display: grid;}
+</style>
+
+<!-- Plugins -->
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.12.1/jquery-ui.min.js"></script>
+
+<script src="https://kit.fontawesome.com/5978d27576.js" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.0.1/math.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=default"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplebar/5.3.5/simplebar.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/simplebar/5.3.5/simplebar.min.js"></script>
+</head>
+
+<body>
+
+	
+	
+	
+	
+	<div
+		class="window propcalc flex-show"
+		data-shape="circle"
+		data-variable="area"
+		
+	>
+
+		<div class="window-head">
+			<div class="window-title-bar">
+				<div class="close-btn">
+					<div class="close-peg"></div>
+					<div class="close-peg"></div>
+				</div>
+				<span class="window-title">circle ~ area</span>
+			</div>
+		</div>
+		
+		<div class="window-body calc-body">
+			<div class="given">
+
+				<span class="given-label">Given:</span>
+
+				<div class="btn given-select">
+					<i class="fas fa-sort-down"></i>
+					<span class="given-current">radius</span>
+				</div>
+
+				<div class="given-dropdown">
+					
+					<div class="given-option" data-given="radius">radius</div>
+					
+					<div class="given-option" data-given="diameter">diameter</div>
+					
+					<div class="given-option" data-given="circumference">circumference</div>
+				</div>
+			</div><div
+				class="calc-content"
+				data-given="radius"
+				style="display: block;"
+			>
+
+				<div class="formula-container">
+					<div class="formula">$$$$</div>
+				</div>
+
+				<div class="shape-data">
+					<div class="variable-container">
+						<div class="variable-row" data-char="r">
+							<div class="char">$$r=$$</div>
+							<input
+								class="field"
+								type="text"
+								placeholder="Radius"
+								autocomplete="off"
+							>
+						</div>
+
+						
+<input
+	type="radio"
+	name="propcalc_circle_area_given_radius-precision"
+	id="propcalc_circle_area_given_radius_decimal_precision"
+	autocomplete="off"
+	checked
+>
+<label
+	class="precision-row decimal-row"
+	for="propcalc_circle_area_given_radius_decimal_precision"
+>
+	Decimal Places
+	<div
+		class="precision-setter-container"
+		data-min="0"
+		data-max="10"
+	>
+		<button class="precision-setter dec" tabindex="-1"><i class="fas fa-minus"></i></button>
+		<span class="current-places">2</span>
+		<button class="precision-setter inc" tabindex="-1"><i class="fas fa-plus"></i></button>
+	</div>
+</label>
+
+<input
+	type="radio"
+	name="propcalc_circle_area_given_radius-precision"
+	id="propcalc_circle_area_given_radius_sig-fig_precision"
+	autocomplete="off"
+>
+<label
+	class="precision-row sig-fig-row"
+	for="propcalc_circle_area_given_radius_sig-fig_precision"
+>
+	Significant Figures
+	<div
+		class="precision-setter-container"
+		data-min="1"
+		data-max="64"
+	>
+		<button class="precision-setter dec" tabindex="-1"><i class="fas fa-minus"></i></button>
+		<span class="current-places">2</span>
+		<button class="precision-setter inc" tabindex="-1"><i class="fas fa-plus"></i></button>
+	</div>
+</label>
+
+
+						<div class="variable-row" data-char="A">
+							<div class="char">$$A=$$</div>
+							<div class="result-wrap">
+								<input
+									class="field result"
+									type="text"
+									placeholder="Area"
+									autocomplete="off"
+								>
+								<button class="copy"><i class="far fa-copy"></i></button>
+							</div>
+						</div>
+					</div>
+					<div class="shape-diagram"></div>
+				</div>
+
+				<div class="btn-container">
+					<button class="btn calculate" id="propcalc_circle_area_given_radius"><i class="fas fa-calculator"></i>Calculate</button>
+					<button class="btn clear"><i class="fas fa-trash"></i>Clear values</button>
+				</div>
+
+				<script>
+	$('#propcalc_circle_area_given_radius').click(function() {
+		var calcContent = $(this).closest('.calc-content');
+
+		let scope = {
+			r: math.bignumber(calcContent.find('.field:visible').eq(0).val()),
+		}
+
+		var result = math.evaluate('pi * r^2', scope);
+
+		if (result == 'Infinity') formattedResult = 'Undefined';
+		else if (result == 'NaN') formattedResult = 'Error';
+		else {
+			if ($('#propcalc_circle_area_given_radius_decimal_precision').is(':checked')) {
+				var precision = calcContent.find('.decimal-row .current-places').html();
+				formattedResult = math.round(result, precision);
+			}
+			else {
+				var precision = calcContent.find('.sig-fig-row .current-places').html();
+				formattedResult = math.format(result, precision);
+			}
+		}
+		
+		calcContent.find('.result').val(formattedResult);
+		calcContent.find('.copy').show();
+	});
+</script>
+			</div><div
+				class="calc-content"
+				data-given="diameter"
+			>
+
+				<div class="formula-container">
+					<div class="formula">$$$$</div>
+				</div>
+
+				<div class="shape-data">
+					<div class="variable-container">
+						<div class="variable-row" data-char="d">
+							<div class="char">$$d=$$</div>
+							<input
+								class="field"
+								type="text"
+								placeholder="Diameter"
+								autocomplete="off"
+							>
+						</div>
+
+						
+<input
+	type="radio"
+	name="propcalc_circle_area_given_diameter-precision"
+	id="propcalc_circle_area_given_diameter_decimal_precision"
+	autocomplete="off"
+	checked
+>
+<label
+	class="precision-row decimal-row"
+	for="propcalc_circle_area_given_diameter_decimal_precision"
+>
+	Decimal Places
+	<div
+		class="precision-setter-container"
+		data-min="0"
+		data-max="10"
+	>
+		<button class="precision-setter dec" tabindex="-1"><i class="fas fa-minus"></i></button>
+		<span class="current-places">2</span>
+		<button class="precision-setter inc" tabindex="-1"><i class="fas fa-plus"></i></button>
+	</div>
+</label>
+
+<input
+	type="radio"
+	name="propcalc_circle_area_given_diameter-precision"
+	id="propcalc_circle_area_given_diameter_sig-fig_precision"
+	autocomplete="off"
+>
+<label
+	class="precision-row sig-fig-row"
+	for="propcalc_circle_area_given_diameter_sig-fig_precision"
+>
+	Significant Figures
+	<div
+		class="precision-setter-container"
+		data-min="1"
+		data-max="64"
+	>
+		<button class="precision-setter dec" tabindex="-1"><i class="fas fa-minus"></i></button>
+		<span class="current-places">2</span>
+		<button class="precision-setter inc" tabindex="-1"><i class="fas fa-plus"></i></button>
+	</div>
+</label>
+
+
+						<div class="variable-row" data-char="A">
+							<div class="char">$$A=$$</div>
+							<div class="result-wrap">
+								<input
+									class="field result"
+									type="text"
+									placeholder="Area"
+									autocomplete="off"
+								>
+								<button class="copy"><i class="far fa-copy"></i></button>
+							</div>
+						</div>
+					</div>
+					<div class="shape-diagram"></div>
+				</div>
+
+				<div class="btn-container">
+					<button class="btn calculate" id="propcalc_circle_area_given_diameter"><i class="fas fa-calculator"></i>Calculate</button>
+					<button class="btn clear"><i class="fas fa-trash"></i>Clear values</button>
+				</div>
+
+				<script>
+	$('#propcalc_circle_area_given_diameter').click(function() {
+		var calcContent = $(this).closest('.calc-content');
+
+		let scope = {
+			d: math.bignumber(calcContent.find('.field:visible').eq(0).val()),
+		}
+
+		var result = math.evaluate('(pi * d^2) / 4', scope);
+
+		if (result == 'Infinity') formattedResult = 'Undefined';
+		else if (result == 'NaN') formattedResult = 'Error';
+		else {
+			if ($('#propcalc_circle_area_given_diameter_decimal_precision').is(':checked')) {
+				var precision = calcContent.find('.decimal-row .current-places').html();
+				formattedResult = math.round(result, precision);
+			}
+			else {
+				var precision = calcContent.find('.sig-fig-row .current-places').html();
+				formattedResult = math.format(result, precision);
+			}
+		}
+		
+		calcContent.find('.result').val(formattedResult);
+		calcContent.find('.copy').show();
+	});
+</script>
+			</div><div
+				class="calc-content"
+				data-given="circumference"
+			>
+
+				<div class="formula-container">
+					<div class="formula">$$$$</div>
+				</div>
+
+				<div class="shape-data">
+					<div class="variable-container">
+						<div class="variable-row" data-char="C">
+							<div class="char">$$C=$$</div>
+							<input
+								class="field"
+								type="text"
+								placeholder="Circumference"
+								autocomplete="off"
+							>
+						</div>
+
+						
+<input
+	type="radio"
+	name="propcalc_circle_area_given_circumference-precision"
+	id="propcalc_circle_area_given_circumference_decimal_precision"
+	autocomplete="off"
+	checked
+>
+<label
+	class="precision-row decimal-row"
+	for="propcalc_circle_area_given_circumference_decimal_precision"
+>
+	Decimal Places
+	<div
+		class="precision-setter-container"
+		data-min="0"
+		data-max="10"
+	>
+		<button class="precision-setter dec" tabindex="-1"><i class="fas fa-minus"></i></button>
+		<span class="current-places">2</span>
+		<button class="precision-setter inc" tabindex="-1"><i class="fas fa-plus"></i></button>
+	</div>
+</label>
+
+<input
+	type="radio"
+	name="propcalc_circle_area_given_circumference-precision"
+	id="propcalc_circle_area_given_circumference_sig-fig_precision"
+	autocomplete="off"
+>
+<label
+	class="precision-row sig-fig-row"
+	for="propcalc_circle_area_given_circumference_sig-fig_precision"
+>
+	Significant Figures
+	<div
+		class="precision-setter-container"
+		data-min="1"
+		data-max="64"
+	>
+		<button class="precision-setter dec" tabindex="-1"><i class="fas fa-minus"></i></button>
+		<span class="current-places">2</span>
+		<button class="precision-setter inc" tabindex="-1"><i class="fas fa-plus"></i></button>
+	</div>
+</label>
+
+
+						<div class="variable-row" data-char="A">
+							<div class="char">$$A=$$</div>
+							<div class="result-wrap">
+								<input
+									class="field result"
+									type="text"
+									placeholder="Area"
+									autocomplete="off"
+								>
+								<button class="copy"><i class="far fa-copy"></i></button>
+							</div>
+						</div>
+					</div>
+					<div class="shape-diagram"></div>
+				</div>
+
+				<div class="btn-container">
+					<button class="btn calculate" id="propcalc_circle_area_given_circumference"><i class="fas fa-calculator"></i>Calculate</button>
+					<button class="btn clear"><i class="fas fa-trash"></i>Clear values</button>
+				</div>
+
+				<script>
+	$('#propcalc_circle_area_given_circumference').click(function() {
+		var calcContent = $(this).closest('.calc-content');
+
+		let scope = {
+			C: math.bignumber(calcContent.find('.field:visible').eq(0).val()),
+		}
+
+		var result = math.evaluate('(C^2) / (4 * pi)', scope);
+
+		if (result == 'Infinity') formattedResult = 'Undefined';
+		else if (result == 'NaN') formattedResult = 'Error';
+		else {
+			if ($('#propcalc_circle_area_given_circumference_decimal_precision').is(':checked')) {
+				var precision = calcContent.find('.decimal-row .current-places').html();
+				formattedResult = math.round(result, precision);
+			}
+			else {
+				var precision = calcContent.find('.sig-fig-row .current-places').html();
+				formattedResult = math.format(result, precision);
+			}
+		}
+		
+		calcContent.find('.result').val(formattedResult);
+		calcContent.find('.copy').show();
+	});
+</script>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	<script src="../js/propcalc.js"></script>
+</body>
+
+</html>

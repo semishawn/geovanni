@@ -1,0 +1,41 @@
+<script>
+	$('#{{ specific_slug }}').click(function() {
+		var calcContent = $(this).closest('.calc-content');
+
+		let {% if given.specialVariable %}preScope{% else %}scope{% endif %} = {
+			{%- assign count = -1 -%}
+			{%- for variable in given.variables %}
+			{{ variable.char }}: math.bignumber(calcContent.find('.field:visible').eq({% assign count = count | plus:1 %}{{ count }}).val()),
+			{%- endfor %}
+		}
+		{%- if given.specialVariable %}
+		let scope = {
+			{%- assign count = -1 -%}
+			{%- for variable in given.variables %}
+			{{ variable.char }}: math.bignumber(calcContent.find('.field:visible').eq({% assign count = count | plus:1 %}{{ count }}).val()),
+			{%- endfor %}
+			{%- if given.specialVariable %}
+			{{ given.specialVariable.char }}: math.evaluate('{{ given.specialVariable.javascript }}', preScope)
+			{%- endif %}
+		}
+		{%- endif %}
+
+		var result = math.evaluate('{{ given.javascript }}', scope);
+
+		if (result == 'Infinity') formattedResult = 'Undefined';
+		else if (result == 'NaN') formattedResult = 'Error';
+		else {
+			if ($('#{{ specific_slug }}_decimal_precision').is(':checked')) {
+				var precision = calcContent.find('.decimal-row .current-places').html();
+				formattedResult = math.round(result, precision);
+			}
+			else {
+				var precision = calcContent.find('.sig-fig-row .current-places').html();
+				formattedResult = math.format(result, precision);
+			}
+		}
+		
+		calcContent.find('.result').val(formattedResult);
+		calcContent.find('.copy').show();
+	});
+</script>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Meta -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Geovanni</title>
+
+<!-- Favicon -->
+<link rel="shortcut icon" type="image/x-icon" href="/geovanni/img/logos/favicon-32.png">
+<link rel="icon" sizes="32x32" href="/geovanni/img/logos/favicon-32.png">
+<link rel="apple-touch-icon" href="/geovanni/img/logos/favicon-300.png">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+<!-- CSS -->
+<link rel="stylesheet" href="/geovanni/css/fonts.css">
+<link rel="stylesheet" href="/geovanni/css/variables.css">
+<link rel="stylesheet" href="/geovanni/css/modules.css">
+<link rel="stylesheet" href="/geovanni/css/main.css">
+<link rel="stylesheet" href="/geovanni/css/calculators.css">
+<link rel="stylesheet" href="/geovanni/css/windows.css">
+<link rel="stylesheet" media="screen and (max-width: 600px)" href="/geovanni/css/mobile.css">
+<style>
+	.flex-show {display: flex;}
+	.grid-show {display: grid;}
+</style>
+
+<!-- Plugins -->
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.12.1/jquery-ui.min.js"></script>
+
+<script src="https://kit.fontawesome.com/5978d27576.js" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.0.1/math.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=default"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplebar/5.3.5/simplebar.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/simplebar/5.3.5/simplebar.min.js"></script>
+</head>
+
+<body>
+
+	
+	
+	
+	<div class="window ubercalc flex-show" data-shape="circle">
+
+		<div class="window-head">
+			<div class="window-title-bar">
+				<div class="close-btn">
+					<div class="close-peg"></div>
+					<div class="close-peg"></div>
+				</div>
+				<span class="window-title">circle ~ ÜberCalc</span>
+			</div>
+		</div>
+
+		<div class="window-body calc-body">
+			<div class="shape-data">
+				<div class="variable-container">
+					<div
+						class="variable-row"
+						data-char="A"
+						data-property="area"
+					>
+						<div class="char">$$A=$$</div>
+						<input
+							class="field"
+							type="text"
+							placeholder="Area"
+							autocomplete="off"
+						>
+					</div>
+					<div
+						class="variable-row"
+						data-char="C"
+						data-property="circumference"
+					>
+						<div class="char">$$C=$$</div>
+						<input
+							class="field"
+							type="text"
+							placeholder="Circumference"
+							autocomplete="off"
+						>
+					</div>
+					<div
+						class="variable-row"
+						data-char="r"
+						data-property="radius"
+					>
+						<div class="char">$$r=$$</div>
+						<input
+							class="field"
+							type="text"
+							placeholder="Radius"
+							autocomplete="off"
+						>
+					</div>
+					<div
+						class="variable-row"
+						data-char="d"
+						data-property="diameter"
+					>
+						<div class="char">$$d=$$</div>
+						<input
+							class="field"
+							type="text"
+							placeholder="Diameter"
+							autocomplete="off"
+						>
+					</div>
+
+					
+<input
+	type="radio"
+	name="circle-precision"
+	id="circle_decimal_precision"
+	autocomplete="off"
+	checked
+>
+<label
+	class="precision-row decimal-row"
+	for="circle_decimal_precision"
+>
+	Decimal Places
+	<div
+		class="precision-setter-container"
+		data-min="0"
+		data-max="10"
+	>
+		<button class="precision-setter dec" tabindex="-1"><i class="fas fa-minus"></i></button>
+		<span class="current-places">2</span>
+		<button class="precision-setter inc" tabindex="-1"><i class="fas fa-plus"></i></button>
+	</div>
+</label>
+
+<input
+	type="radio"
+	name="circle-precision"
+	id="circle_sig-fig_precision"
+	autocomplete="off"
+>
+<label
+	class="precision-row sig-fig-row"
+	for="circle_sig-fig_precision"
+>
+	Significant Figures
+	<div
+		class="precision-setter-container"
+		data-min="1"
+		data-max="64"
+	>
+		<button class="precision-setter dec" tabindex="-1"><i class="fas fa-minus"></i></button>
+		<span class="current-places">2</span>
+		<button class="precision-setter inc" tabindex="-1"><i class="fas fa-plus"></i></button>
+	</div>
+</label>
+
+				</div>
+
+				<div class="shape-diagram"></div>
+			</div>
+
+			<div class="btn-container">
+				<button class="btn calculate" id="ubercalc_circle"><i class="fas fa-calculator"></i>Calculate</button>
+				<button class="btn clear"><i class="fas fa-trash"></i>Clear values</button>
+			</div>
+		</div>
+
+		<script>
+			$(".ubercalc .calculate").click(function() {
+				var calcBody = $(this).closest(".calc-body");
+				var scope = {};
+				var formulas = {
+					area: [
+						"",
+						"",
+						"",
+					],
+					circumference: [
+						"",
+						"",
+						"",
+					],
+					radius: [
+						"",
+						"",
+						"",
+					],
+					diameter: [
+						"",
+						"",
+						"",
+					],
+				}
+
+				calcBody.find(".field").each(function() {
+					if ($(this).val() != "") {
+						var char = $(this).parent().attr("data-char");
+						scope[char] = $(this).val();
+					}
+				});
+
+				var scopeChars = Object.keys(scope);
+
+				calcBody.find(".field").each(function() {
+					if ($(this).val() == "") {
+						var property = $(this).parent().attr("data-property");
+						var propFormulas = formulas[property];
+						var rightFormula = propFormulas.filter(x => x.includes(scopeChars));
+						var preFormattedResult = math.evaluate(rightFormula, scope);
+
+						if (preFormattedResult == "Infinity") formattedResult = "Undefined";
+						else if (preFormattedResult == "NaN") formattedResult = "Error";
+						else if (preFormattedResult == "0") formattedResult = "";
+						else {
+							if ($("#circle_decimal_precision").is(":checked")) {
+								var precision = calcBody.find(".decimal-row .current-places").html();
+								formattedResult = math.round(preFormattedResult, precision);
+							}
+							else {
+								var precision = calcBody.find(".sig-fig-row .current-places").html();
+								formattedResult = math.format(preFormattedResult, precision);
+							}
+						}
+
+						$(this).val(formattedResult);
+					}
+				});
+			});
+
+			/* $('.ubercalc .field').on('propertychange input', function() {
+				var calcBody = $(this).closest(".calc-body");
+				calcBody.find(".field").not(this).val("");
+			}); */
+		</script>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	<script src="../js/initialize.js"></script>
+	<script src="../js/propcalc.js"></script>
+</body>
+
+</html>
